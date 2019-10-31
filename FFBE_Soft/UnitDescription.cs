@@ -2,13 +2,8 @@
 using FFBE_Soft.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FFBE_Soft
@@ -145,13 +140,159 @@ namespace FFBE_Soft
             Console.WriteLine("Liste d'armes : " + Unit.GetWeaponsString(u.Weapon).Count);
             Console.WriteLine("Liste d'armures : " + Unit.GetArmorsString(u.Armor).Count);
             this.pictureBox_UnitIdle = this.SetImgByURL(u.ImgURL, this.pictureBox_UnitIdle);
+
+            this.CreateUnitStatListView(u.Stats, this.listView_UnitStats);
+            this.CreateUnitStatUpListView(u.StatsMaxUp, this.listView_UnitStatUp);
+            this.CreateUnitStatMaxUpListView(u.Stats, u.StatsMaxUp, this.listView_UnitMaxUp);
         }
 
         public PictureBox SetImgByURL(string url, PictureBox pictureBox)
         {
             pictureBox.Image = (Image)rm.GetObject(url);
-            pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             return pictureBox;
+        }
+
+        private void CreateUnitStatListView(List<UnitStats> stats, ListView listView)
+        {
+            listView.Bounds = new Rectangle(new Point(10, 10), new Size(500, 100));
+            listView.View = View.Details;
+            listView.OwnerDraw = true;
+            listView.GridLines = true;
+
+            List<ListViewItem> l = new List<ListViewItem>();
+
+            int index = 0;
+            foreach (UnitStats s in stats)
+            {
+                ListViewItem star = new ListViewItem(s.Star.ToString());
+                star.SubItems.Add(stats[index].HP.ToString());
+                star.SubItems.Add(stats[index].MP.ToString());
+                star.SubItems.Add(stats[index].ATK.ToString());
+                star.SubItems.Add(stats[index].DEF.ToString());
+                star.SubItems.Add(stats[index].MAG.ToString());
+                star.SubItems.Add(stats[index].SPR.ToString());
+                star.SubItems.Add(stats[index].AttackHits.ToString());
+                star.SubItems.Add(stats[index].LimitDrop.ToString());
+                star.SubItems.Add(stats[index].ExpPattern.ToString());
+
+                index++;
+                l.Add(star);
+            }
+
+            listView.Columns.Add("Rareté", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("HP", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("MP", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("ATK", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("DEF", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("MAG", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("SPR", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("Attack Hits", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("Limit Drops", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("Exp. Pattern", -2, HorizontalAlignment.Center);
+            
+
+            listView.Items.AddRange(l.ToArray());
+        }
+
+        private void CreateUnitStatUpListView(List<UnitStatsMaxUp> stats, ListView listView)
+        {
+            listView.Bounds = new Rectangle(new Point(10, 125), new Size(300, 100));
+            listView.View = View.Details;
+            listView.OwnerDraw = true;
+            listView.GridLines = true;
+
+            List<ListViewItem> l = new List<ListViewItem>();
+
+            int index = 0;
+            foreach (UnitStatsMaxUp s in stats)
+            {
+                ListViewItem star = new ListViewItem(s.Star.ToString());
+                star.SubItems.Add(stats[index].HP.ToString());
+                star.SubItems.Add(stats[index].MP.ToString());
+                star.SubItems.Add(stats[index].ATK.ToString());
+                star.SubItems.Add(stats[index].DEF.ToString());
+                star.SubItems.Add(stats[index].MAG.ToString());
+                star.SubItems.Add(stats[index].SPR.ToString());
+
+                index++;
+                l.Add(star);
+            }
+
+            listView.Columns.Add("Rareté", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("HP", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("MP", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("ATK", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("DEF", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("MAG", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("SPR", -2, HorizontalAlignment.Center);
+
+
+            listView.Items.AddRange(l.ToArray());
+        }
+
+        private void CreateUnitStatMaxUpListView(List<UnitStats> stats, List<UnitStatsMaxUp> up, ListView listView)
+        {
+            listView.Bounds = new Rectangle(new Point(10, 250), new Size(500, 100));
+            listView.View = View.Details;
+            listView.OwnerDraw = true;
+            listView.GridLines = true;
+
+            List<ListViewItem> l = new List<ListViewItem>();
+
+            int index = 0;
+            foreach (UnitStats s in stats)
+            {
+                ListViewItem star = new ListViewItem(s.Star.ToString());
+                star.SubItems.Add(stats[index].HP.ToString());
+                star.SubItems.Add(stats[index].MP.ToString());
+                star.SubItems.Add(stats[index].ATK.ToString());
+                star.SubItems.Add(stats[index].DEF.ToString());
+                star.SubItems.Add(stats[index].MAG.ToString());
+                star.SubItems.Add(stats[index].SPR.ToString());
+                star.SubItems.Add(stats[index].AttackHits.ToString());
+                star.SubItems.Add(stats[index].LimitDrop.ToString());
+                star.SubItems.Add(stats[index].ExpPattern.ToString());
+
+                index++;
+                l.Add(star);
+            }
+
+            listView.Columns.Add("Rareté", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("HP", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("MP", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("ATK", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("DEF", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("MAG", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("SPR", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("Attack Hits", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("Limit Drops", -2, HorizontalAlignment.Center);
+            listView.Columns.Add("Exp. Pattern", -2, HorizontalAlignment.Center);
+
+
+            listView.Items.AddRange(l.ToArray());
+        }
+
+        private void listView_UnitStats_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.Graphics.FillRectangle(new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")), e.Bounds); // first we fill the header with our color.
+            e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.White), 1), e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2); //then we draw an outline
+            StringFormat sf = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+            e.Graphics.DrawString(e.Header.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.GhostWhite), e.Bounds, sf); // then we draw the text, this bit could use some improvement, if you cant figure out, let me know and ill knock some more code together
+            
+        }
+
+        private void listView_UnitStats_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            e.Graphics.FillRectangle(new SolidBrush((Color)new ColorConverter().ConvertFromString("#FFFFFF")), e.Bounds); // first we fill the header with our color.
+            e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.White), 1), e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2); //then we draw an outline
+            StringFormat sf = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+            e.Graphics.DrawString(e.SubItem.Text, new Font("Franklin Gothic Medium", 10), new SolidBrush((Color)new ColorConverter().ConvertFromString("#1F3656")), e.Bounds, sf); // then we draw the text, this bit could use some improvement, if you cant figure out, let me know and ill knock some more code together
+
         }
     }
 }

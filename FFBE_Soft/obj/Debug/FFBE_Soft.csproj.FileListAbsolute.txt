@@ -18,3 +18,4 @@ C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.UnitDesc
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csproj.GenerateResource.cache
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.exe
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.pdb
+C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.FormDeTest.resources

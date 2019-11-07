@@ -121,4 +121,52 @@
   <data name="Esther_Idle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Esther_Idle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon-Fire_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Fire_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Ice_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Ice_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Lightning_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Lightning_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Water_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Water_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Wind_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Wind_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Earth_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Earth_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Light_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Light_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Dark_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Element\Resistance\Icon-Dark_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Poison_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Poison_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Blind_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Blind_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Sleep_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Sleep_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Silence_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Silence_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Paralysis_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Paralysis_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Confuse_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Confuse_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Disease_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Disease_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Petrification_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ailment\Resistance\Icon-Petrification_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

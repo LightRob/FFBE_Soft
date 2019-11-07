@@ -166,38 +166,54 @@ namespace FFBE_Soft
             foreach (UnitStats s in stats)
             {
                 ListViewItem star = new ListViewItem(s.Star.ToString());
-                star.SubItems.Add(stats[index].HP.ToString());
-                star.SubItems.Add(stats[index].MP.ToString());
-                star.SubItems.Add(stats[index].ATK.ToString());
-                star.SubItems.Add(stats[index].DEF.ToString());
-                star.SubItems.Add(stats[index].MAG.ToString());
-                star.SubItems.Add(stats[index].SPR.ToString());
-                star.SubItems.Add(stats[index].AttackHits.ToString());
-                star.SubItems.Add(stats[index].LimitDrop.ToString());
-                star.SubItems.Add(stats[index].ExpPattern.ToString());
+                star.SubItems.Add(" " + stats[index].HP.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].MP.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].ATK.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].DEF.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].MAG.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].SPR.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].AttackHits.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].LimitDrop.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].ExpPattern.ToString() + " ");
 
                 index++;
                 l.Add(star);
             }
 
-            listView.Columns.Add("Rareté", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("HP", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("MP", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("ATK", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("DEF", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("MAG", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("SPR", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("Attack Hits", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("Limit Drops", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("Exp. Pattern", -2, HorizontalAlignment.Center);
-            
+            listView.Columns.Add(" Rareté ", -2, HorizontalAlignment.Center);
+
+            listView.Columns.Add(" HP ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" MP ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" ATK ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" DEF ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" MAG ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" SPR ", -2, HorizontalAlignment.Center);
+
+            listView.Columns.Add(" Attack Hits ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" Limit Drops ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" Exp. Pattern ", -2, HorizontalAlignment.Center);
+
 
             listView.Items.AddRange(l.ToArray());
+
+
+            listView.BeginUpdate();
+            listView.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize); // Rarity
+            listView.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent); // HP
+            listView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent); // MP
+            listView.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent); // ATK
+            listView.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent); // DEF
+            listView.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.ColumnContent); // MAG
+            listView.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.ColumnContent); // PSY
+            listView.AutoResizeColumn(7, ColumnHeaderAutoResizeStyle.HeaderSize); // Attack Hits
+            listView.AutoResizeColumn(8, ColumnHeaderAutoResizeStyle.HeaderSize); // Limit Drop
+            listView.AutoResizeColumn(9, ColumnHeaderAutoResizeStyle.HeaderSize); // Exp Pattern
+            listView.EndUpdate();
         }
 
         private void CreateUnitStatUpListView(List<UnitStatsMaxUp> stats, ListView listView)
         {
-            listView.Bounds = new Rectangle(new Point(10, 125), new Size(300, 100));
+            listView.Bounds = new Rectangle(new Point(10, 125), new Size(290, 100));
             listView.View = View.Details;
             listView.OwnerDraw = true;
             listView.GridLines = true;
@@ -208,27 +224,38 @@ namespace FFBE_Soft
             foreach (UnitStatsMaxUp s in stats)
             {
                 ListViewItem star = new ListViewItem(s.Star.ToString());
-                star.SubItems.Add(stats[index].HP.ToString());
-                star.SubItems.Add(stats[index].MP.ToString());
-                star.SubItems.Add(stats[index].ATK.ToString());
-                star.SubItems.Add(stats[index].DEF.ToString());
-                star.SubItems.Add(stats[index].MAG.ToString());
-                star.SubItems.Add(stats[index].SPR.ToString());
+                star.SubItems.Add(" " + stats[index].HP.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].MP.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].ATK.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].DEF.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].MAG.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].SPR.ToString() + " ");
 
                 index++;
                 l.Add(star);
             }
 
-            listView.Columns.Add("Rareté", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("HP", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("MP", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("ATK", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("DEF", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("MAG", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("SPR", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" Rareté ", -2, HorizontalAlignment.Center);
+
+            listView.Columns.Add(" HP ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" MP ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" ATK ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" DEF ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" MAG ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" SPR ", -2, HorizontalAlignment.Center);
 
 
             listView.Items.AddRange(l.ToArray());
+
+            listView.BeginUpdate();
+            listView.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize); // Rarity
+            listView.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent); // HP
+            listView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent); // MP
+            listView.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.HeaderSize); // ATK
+            listView.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize); // DEF
+            listView.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize); // MAG
+            listView.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize); // PSY
+            listView.EndUpdate();
         }
 
         private void CreateUnitStatMaxUpListView(List<UnitStats> stats, List<UnitStatsMaxUp> up, ListView listView)
@@ -237,6 +264,7 @@ namespace FFBE_Soft
             listView.View = View.Details;
             listView.OwnerDraw = true;
             listView.GridLines = true;
+            
 
             List<ListViewItem> l = new List<ListViewItem>();
 
@@ -244,33 +272,48 @@ namespace FFBE_Soft
             foreach (UnitStats s in stats)
             {
                 ListViewItem star = new ListViewItem(s.Star.ToString());
-                star.SubItems.Add(stats[index].HP.ToString());
-                star.SubItems.Add(stats[index].MP.ToString());
-                star.SubItems.Add(stats[index].ATK.ToString());
-                star.SubItems.Add(stats[index].DEF.ToString());
-                star.SubItems.Add(stats[index].MAG.ToString());
-                star.SubItems.Add(stats[index].SPR.ToString());
-                star.SubItems.Add(stats[index].AttackHits.ToString());
-                star.SubItems.Add(stats[index].LimitDrop.ToString());
-                star.SubItems.Add(stats[index].ExpPattern.ToString());
+                star.SubItems.Add(" " + (stats[index].HP + up[index].HP).ToString() + " ");
+                star.SubItems.Add(" " + (stats[index].MP + up[index].MP).ToString() + " ");
+                star.SubItems.Add(" " + (stats[index].ATK + up[index].ATK).ToString() + " ");
+                star.SubItems.Add(" " + (stats[index].DEF + up[index].DEF).ToString() + " ");
+                star.SubItems.Add(" " + (stats[index].MAG + up[index].MAG).ToString() + " ");
+                star.SubItems.Add(" " + (stats[index].SPR + up[index].SPR).ToString() + " ");
+                star.SubItems.Add(" " + stats[index].AttackHits.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].LimitDrop.ToString() + " ");
+                star.SubItems.Add(" " + stats[index].ExpPattern.ToString() + " ");
 
                 index++;
                 l.Add(star);
             }
 
-            listView.Columns.Add("Rareté", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("HP", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("MP", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("ATK", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("DEF", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("MAG", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("SPR", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("Attack Hits", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("Limit Drops", -2, HorizontalAlignment.Center);
-            listView.Columns.Add("Exp. Pattern", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" Rareté ", -2, HorizontalAlignment.Center);
+
+            listView.Columns.Add(" HP ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" MP ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" ATK ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" DEF ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" MAG ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" SPR ", -2, HorizontalAlignment.Center);
+
+            listView.Columns.Add(" Attack Hits ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" Limit Drops ", -2, HorizontalAlignment.Center);
+            listView.Columns.Add(" Exp. Pattern ", -2, HorizontalAlignment.Center);
 
 
             listView.Items.AddRange(l.ToArray());
+
+            listView.BeginUpdate();
+            listView.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize); // Rarity
+            listView.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent); // HP
+            listView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent); // MP
+            listView.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent); // ATK
+            listView.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent); // DEF
+            listView.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.ColumnContent); // MAG
+            listView.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.ColumnContent); // PSY
+            listView.AutoResizeColumn(7, ColumnHeaderAutoResizeStyle.HeaderSize); // Attack Hits
+            listView.AutoResizeColumn(8, ColumnHeaderAutoResizeStyle.HeaderSize); // Limit Drop
+            listView.AutoResizeColumn(9, ColumnHeaderAutoResizeStyle.HeaderSize); // Exp Pattern
+            listView.EndUpdate();
         }
 
         private void listView_UnitStats_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)

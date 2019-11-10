@@ -46,7 +46,7 @@ namespace FFBE_Soft
 
             u.Resistance = r;
 
-            this.CreateUnitResTableView(u.Resistance, this.tableRes);
+            //this.CreateUnitResTableView(u.Resistance, this.tableRes);
             //this.InitializeResizingListView();
         }
 
@@ -96,11 +96,11 @@ namespace FFBE_Soft
 
         private void CreateUnitResTableView(UnitResistance res, TableLayoutPanel table)
         {
-            table.Bounds = new Rectangle(new Point(10, 10), new Size(400, 200));
-            table.BackColor = Color.LightGray;
+            table.Bounds = new Rectangle(new Point(10, 10), new Size(400, 200));            
 
             table.RowCount = 6;
             table.ColumnCount = 8;
+            
 
 
             table.Controls.Add(new Label() { Text = "Element Resistance" }, 0, 0);
@@ -154,16 +154,14 @@ namespace FFBE_Soft
 
         }
 
+        /*
         private void tableRes_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
             Control c = this.tableRes.GetControlFromPosition(e.Column, e.Row);
-
-
-
             if (c != null)
             {
                     Graphics g = e.Graphics;
-                if (tableRes.GetColumnSpan(c) > 1)
+                if (tableRes.GetColumnSpan(c) > 1) // CellPaint pour les titres
                 {
                     Pen p = new Pen(new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")));
                     g.DrawRectangle(
@@ -179,24 +177,35 @@ namespace FFBE_Soft
                         e.CellBounds.Location.Y + 1,
                         e.CellBounds.Width - 2,
                         e.CellBounds.Height - 2);
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    e.Graphics.DrawString(c.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.Black), c.DisplayRectangle, sf);
                 }
-                else
+                else // CellPaint pour les items
                 {
+                    Rectangle rectangle = new Rectangle(e.CellBounds.Location.X + 1, e.CellBounds.Location.Y + 1, e.CellBounds.Width - 2, e.CellBounds.Height - 2);
+                    Pen p = new Pen(new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")));
                     g.DrawRectangle(
-                        Pens.Gray,
+                        p,
                         e.CellBounds.Location.X + 1,
                         e.CellBounds.Location.Y + 1,
                         e.CellBounds.Width - 2, e.CellBounds.Height - 2);
 
                     g.FillRectangle(
-                        Brushes.White,
+                        new SolidBrush((Color)new ColorConverter().ConvertFromString("#FFFFFF")),
                         e.CellBounds.Location.X + 1,
                         e.CellBounds.Location.Y + 1,
                         e.CellBounds.Width - 2,
                         e.CellBounds.Height - 2);
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    e.Graphics.DrawString(c.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.Black), rectangle, sf);
                 }
             }
         }
+        */
 
         /*
         private void tableRes_CellPaint(object sender, TableLayoutCellPaintEventArgs e)

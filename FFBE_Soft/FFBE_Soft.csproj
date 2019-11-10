@@ -63,6 +63,12 @@
     <Compile Include="model\UnitResistance.cs" />
     <Compile Include="model\UnitStats.cs" />
     <Compile Include="model\UnitStatsMaxUp.cs" />
+    <Compile Include="PassifTestUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PassifTestUserControl.Designer.cs">
+      <DependentUpon>PassifTestUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -70,11 +76,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StatsTestUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatsTestUserControl.Designer.cs">
+      <DependentUpon>StatsTestUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UnitDescription.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UnitDescription.Designer.cs">
       <DependentUpon>UnitDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -82,10 +100,16 @@
     <EmbeddedResource Include="FormDeTest.resx">
       <DependentUpon>FormDeTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PassifTestUserControl.resx">
+      <DependentUpon>PassifTestUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatsTestUserControl.resx">
+      <DependentUpon>StatsTestUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitDescription.resx">
       <DependentUpon>UnitDescription.cs</DependentUpon>

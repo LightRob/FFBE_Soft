@@ -144,6 +144,7 @@ namespace FFBE_Soft
             this.CreateUnitStatListView(u.Stats, this.listView_UnitStats);
             this.CreateUnitStatUpListView(u.StatsMaxUp, this.listView_UnitStatUp);
             this.CreateUnitStatMaxUpListView(u.Stats, u.StatsMaxUp, this.listView_UnitMaxUp);
+            this.CreateUnitResTableView(u.Resistance, this.tableLayoutPanel_Resistance);
         }
 
         public PictureBox SetImgByURL(string url, PictureBox pictureBox)
@@ -316,6 +317,66 @@ namespace FFBE_Soft
             listView.EndUpdate();
         }
 
+        private void CreateUnitResTableView(UnitResistance res, TableLayoutPanel table)
+        {
+            table.Bounds = new Rectangle(new Point(table.Bounds.X, table.Bounds.Y), new Size(400, 200));
+
+            table.RowCount = 6;
+            table.ColumnCount = 8;
+            table.Update();
+
+
+            table.Controls.Add(new Label() { Text = "Element Resistance" }, 0, 0);
+            table.SetColumnSpan(table.GetControlFromPosition(0, 0), 8);
+            table.SetRowSpan(table.GetControlFromPosition(0, 0), 1);
+
+            table.Controls.Add(new Label() { Text = "Statut Ailment Resistance" }, 0, 3);
+            table.SetColumnSpan(table.GetControlFromPosition(0, 3), 8);
+            table.SetRowSpan(table.GetControlFromPosition(0, 3), 1);
+
+            // Element
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Fire_Resistance") }, 0, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Ice_Resistance") }, 1, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Lightning_Resistance") }, 2, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Water_Resistance") }, 3, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Wind_Resistance") }, 4, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Earth_Resistance") }, 5, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Light_Resistance") }, 6, 1);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Dark_Resistance") }, 7, 1);
+            // Number
+            table.Controls.Add(new Label() { Text = res.Fire.ToString() }, 0, 2);
+            table.Controls.Add(new Label() { Text = res.Ice.ToString() }, 1, 2);
+            table.Controls.Add(new Label() { Text = res.Lightning.ToString() }, 2, 2);
+            table.Controls.Add(new Label() { Text = res.Water.ToString() }, 3, 2);
+            table.Controls.Add(new Label() { Text = res.Wind.ToString() }, 4, 2);
+            table.Controls.Add(new Label() { Text = res.Earth.ToString() }, 5, 2);
+            table.Controls.Add(new Label() { Text = res.Light.ToString() }, 6, 2);
+            table.Controls.Add(new Label() { Text = res.Dark.ToString() }, 7, 2);
+
+
+
+            // Ailment
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Poison_Resistance") }, 0, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Blind_Resistance") }, 1, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Sleep_Resistance") }, 2, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Silence_Resistance") }, 3, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Paralysis_Resistance") }, 4, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Confuse_Resistance") }, 5, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Disease_Resistance") }, 6, 4);
+            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Petrification_Resistance") }, 7, 4);
+            // Number
+            table.Controls.Add(new Label() { Text = res.Poison.ToString() }, 0, 5);
+            table.Controls.Add(new Label() { Text = res.Blind.ToString() }, 1, 5);
+            table.Controls.Add(new Label() { Text = res.Sleep.ToString() }, 2, 5);
+            table.Controls.Add(new Label() { Text = res.Silence.ToString() }, 3, 5);
+            table.Controls.Add(new Label() { Text = res.Paralysis.ToString() }, 4, 5);
+            table.Controls.Add(new Label() { Text = res.Confuse.ToString() }, 5, 5);
+            table.Controls.Add(new Label() { Text = res.Disease.ToString() }, 6, 5);
+            table.Controls.Add(new Label() { Text = res.Petrification.ToString() }, 7, 5);
+
+
+        }
+
         private void listView_UnitStats_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.Graphics.FillRectangle(new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")), e.Bounds); // first we fill the header with our color.
@@ -325,6 +386,57 @@ namespace FFBE_Soft
             sf.LineAlignment = StringAlignment.Center;
             e.Graphics.DrawString(e.Header.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.GhostWhite), e.Bounds, sf); // then we draw the text, this bit could use some improvement, if you cant figure out, let me know and ill knock some more code together
             
+        }
+
+        private void tableRes_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        {
+            Control c = this.tableLayoutPanel_Resistance.GetControlFromPosition(e.Column, e.Row);
+            if (c != null)
+            {
+                Graphics g = e.Graphics;
+                if (tableLayoutPanel_Resistance.GetColumnSpan(c) > 1) // CellPaint pour les titres
+                {
+                    Pen p = new Pen(new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")));
+                    g.DrawRectangle(
+                        p,
+                        e.CellBounds.Location.X + 1,
+                        e.CellBounds.Location.Y + 1,
+                        e.CellBounds.Width - 2,
+                        e.CellBounds.Height - 2);
+
+                    g.FillRectangle(
+                        new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")),
+                        e.CellBounds.Location.X + 1,
+                        e.CellBounds.Location.Y + 1,
+                        e.CellBounds.Width - 2,
+                        e.CellBounds.Height - 2);
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    e.Graphics.DrawString(c.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.Black), c.DisplayRectangle, sf);
+                }
+                else // CellPaint pour les items
+                {
+                    Rectangle rectangle = new Rectangle(e.CellBounds.Location.X + 1, e.CellBounds.Location.Y + 1, e.CellBounds.Width - 2, e.CellBounds.Height - 2);
+                    Pen p = new Pen(new SolidBrush((Color)new ColorConverter().ConvertFromString("#4D627F")));
+                    g.DrawRectangle(
+                        p,
+                        e.CellBounds.Location.X + 1,
+                        e.CellBounds.Location.Y + 1,
+                        e.CellBounds.Width - 2, e.CellBounds.Height - 2);
+
+                    g.FillRectangle(
+                        new SolidBrush((Color)new ColorConverter().ConvertFromString("#FFFFFF")),
+                        e.CellBounds.Location.X + 1,
+                        e.CellBounds.Location.Y + 1,
+                        e.CellBounds.Width - 2,
+                        e.CellBounds.Height - 2);
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    e.Graphics.DrawString(c.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.Black), rectangle, sf);
+                }
+            }
         }
 
         private void listView_UnitStats_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)

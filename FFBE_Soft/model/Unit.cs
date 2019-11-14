@@ -45,15 +45,56 @@ namespace FFBE_Soft.model
     class Unit
     {
         #region Attributs
+        /// <summary>
+        /// Name of the unit
+        /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// URL for the idle gif.
+        /// Example : "Esther_Idle"
+        /// </summary>
         public string ImgURL { get; set; }
+
+
+        /// <summary>
+        /// List of unit's stats, one object for one star
+        /// </summary>
         public List<UnitStats> Stats { get; set; }
+
+        /// <summary>
+        /// List of unit's pots, one object for one star
+        /// </summary>
         public List<UnitStatsMaxUp> StatsMaxUp { get; set; }
+
+        /// <summary>
+        /// Resistance of the unit at lvl 1 without passive
+        /// </summary>
         public UnitResistance Resistance { get; set; }
+
+        /// <summary>
+        /// Enum of weapons usable for the unit
+        /// </summary>
         public Weapon Weapon { get; set; }
+
+        /// <summary>
+        /// Enum of armors usable for the unit
+        /// </summary>
         public Armor Armor { get; set; }
+
+        /// <summary>
+        /// If the unit can use accessory
+        /// </summary>
         public bool Accessory { get; set; }
+
+        /// <summary>
+        /// Number of Abilities slots
+        /// </summary>
         public byte AbilitySlots { get; set; }
+
+        /// <summary>
+        /// Magics abilities of the unit
+        /// </summary>
         public UnitMagicAffinity MagicAffinity { get; set; }
 
         #endregion
@@ -63,9 +104,22 @@ namespace FFBE_Soft.model
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Add a UnitStat object for a star
+        /// </summary>
+        /// <param name="s">UnitStat object</param>
         public void AddStats(UnitStats s) { Stats.Add(s); }
+        /// <summary>
+        /// Add a UnitStatsMaxUp object for a star
+        /// </summary>
+        /// <param name="s">UnitStatsMaxUp object</param>
         public void AddStatsMaxUp(UnitStatsMaxUp s) { StatsMaxUp.Add(s); }
 
+        /// <summary>
+        /// Return a string of the weapon
+        /// </summary>
+        /// <param name="weapon">The weapon to return</param>
+        /// <returns>String of the weapon</returns>
         public static string GetWeaponString(Weapon weapon)
         {
             switch (weapon)
@@ -106,6 +160,11 @@ namespace FFBE_Soft.model
                     return "---";
             }
         }
+        /// <summary>
+        /// Return a list of strings of all weapons in the enum
+        /// </summary>
+        /// <param name="weapon">The Weapon object with all weapons needed</param>
+        /// <returns>List of strings</returns>
         public static List<string> GetWeaponsString(Weapon weapon)
         {
             List<string> list = new List<string>();
@@ -133,6 +192,11 @@ namespace FFBE_Soft.model
             return list;
         }
 
+        /// <summary>
+        /// Return a string of the armor
+        /// </summary>
+        /// <param name="armor">The armor to return</param>
+        /// <returns>String of the armor</returns>
         public static string GetArmorString(Armor armor)
         {
             switch (armor)
@@ -157,6 +221,11 @@ namespace FFBE_Soft.model
                     return "---";
             }
         }
+        /// <summary>
+        /// Return a list of strings of all armors in the enum
+        /// </summary>
+        /// <param name="armor">The Armor object with all armors needed</param>
+        /// <returns>List of strings</returns>
         public static List<string> GetArmorsString(Armor armor)
         {
             List<string> list = new List<string>();

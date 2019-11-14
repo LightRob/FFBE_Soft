@@ -1,4 +1,5 @@
 ﻿using FFBE_Soft.model;
+using FFBE_Soft.model.competence;
 using FFBE_Soft.Properties;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,9 @@ namespace FFBE_Soft
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+
+            CompEffect c = new CompEffect();
+            c.TypeDamage = TypeDamage.Hybrid;
 
             Unit u = new Unit();
 

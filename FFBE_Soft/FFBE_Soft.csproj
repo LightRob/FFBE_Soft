@@ -58,6 +58,8 @@
     <Compile Include="FormDeTest.Designer.cs">
       <DependentUpon>FormDeTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\competence\CompEffect.cs" />
+    <Compile Include="model\competence\UnitCompActive.cs" />
     <Compile Include="model\Unit.cs" />
     <Compile Include="model\UnitMagicAffinity.cs" />
     <Compile Include="model\UnitResistance.cs" />

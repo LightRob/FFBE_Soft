@@ -31,12 +31,12 @@
             this.label_UnitName = new System.Windows.Forms.Label();
             this.tabControl_Unit = new System.Windows.Forms.TabControl();
             this.tabPage_UnitStats = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel_Resistance = new System.Windows.Forms.TableLayoutPanel();
             this.listView_UnitMaxUp = new System.Windows.Forms.ListView();
             this.listView_UnitStatUp = new System.Windows.Forms.ListView();
             this.listView_UnitStats = new System.Windows.Forms.ListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox_UnitIdle = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel_Resistance = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl_Unit.SuspendLayout();
             this.tabPage_UnitStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UnitIdle)).BeginInit();
@@ -78,6 +78,30 @@
             this.tabPage_UnitStats.TabIndex = 0;
             this.tabPage_UnitStats.Text = "Statistiques";
             this.tabPage_UnitStats.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel_Resistance
+            // 
+            this.tableLayoutPanel_Resistance.ColumnCount = 8;
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel_Resistance.Location = new System.Drawing.Point(15, 580);
+            this.tableLayoutPanel_Resistance.Name = "tableLayoutPanel_Resistance";
+            this.tableLayoutPanel_Resistance.RowCount = 6;
+            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel_Resistance.Size = new System.Drawing.Size(400, 200);
+            this.tableLayoutPanel_Resistance.TabIndex = 3;
+            this.tableLayoutPanel_Resistance.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableRes_CellPaint);
             // 
             // listView_UnitMaxUp
             // 
@@ -124,7 +148,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Size = new System.Drawing.Size(1371, 992);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Compétences Actives";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // pictureBox_UnitIdle
@@ -135,30 +159,6 @@
             this.pictureBox_UnitIdle.Size = new System.Drawing.Size(220, 229);
             this.pictureBox_UnitIdle.TabIndex = 1;
             this.pictureBox_UnitIdle.TabStop = false;
-            // 
-            // tableLayoutPanel_Resistance
-            // 
-            this.tableLayoutPanel_Resistance.ColumnCount = 8;
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel_Resistance.Location = new System.Drawing.Point(15, 580);
-            this.tableLayoutPanel_Resistance.Name = "tableLayoutPanel_Resistance";
-            this.tableLayoutPanel_Resistance.RowCount = 6;
-            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel_Resistance.Size = new System.Drawing.Size(400, 200);
-            this.tableLayoutPanel_Resistance.TabIndex = 3;
-            this.tableLayoutPanel_Resistance.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableRes_CellPaint);
             // 
             // UnitDescription
             // 

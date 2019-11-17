@@ -17,10 +17,24 @@ namespace FFBE_Soft
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
-            CompEffect c = new CompEffect();
-            c.TypeDamage = TypeDamage.Hybrid;
+            Unit Esther = this.SetEstherBDD();
 
+            this.label_UnitName.Text = Esther.Name;
+            Console.WriteLine("Liste d'armes : " + Unit.GetWeaponsString(Esther.Weapon).Count);
+            Console.WriteLine("Liste d'armures : " + Unit.GetArmorsString(Esther.Armor).Count);
+            this.pictureBox_UnitIdle = this.SetImgByURL(Esther.ImgURL, this.pictureBox_UnitIdle);
+
+            this.CreateUnitStatListView(Esther.Stats, this.listView_UnitStats);
+            this.CreateUnitStatUpListView(Esther.StatsMaxUp, this.listView_UnitStatUp);
+            this.CreateUnitStatMaxUpListView(Esther.Stats, Esther.StatsMaxUp, this.listView_UnitMaxUp);
+            this.CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
+        }
+
+        private Unit SetEstherBDD()
+        {
             Unit u = new Unit();
+
+            #region Esther Stats
 
             UnitStats s5 = new UnitStats
             {
@@ -64,7 +78,8 @@ namespace FFBE_Soft
                 ExpPattern = 6
             };
 
-            UnitStatsMaxUp su5 = new UnitStatsMaxUp {
+            UnitStatsMaxUp su5 = new UnitStatsMaxUp
+            {
                 Star = 5,
                 HP = 240,
                 MP = 40,
@@ -96,7 +111,8 @@ namespace FFBE_Soft
                 SPR = 40
             };
 
-            UnitResistance r = new UnitResistance() { 
+            UnitResistance r = new UnitResistance()
+            {
                 Fire = 0,
                 Ice = 0,
                 Lightning = 0,
@@ -121,7 +137,7 @@ namespace FFBE_Soft
                 WhiteMagicLvl = 0,
                 BlackMagicLvl = 0,
                 GreenMagicLvl = 0,
-                BlueMagicLvl  = 0
+                BlueMagicLvl = 0
             };
             // -------------------------------------------------------
 
@@ -140,15 +156,19 @@ namespace FFBE_Soft
             u.AbilitySlots = 4;
             u.MagicAffinity = ma;
 
-            this.label_UnitName.Text = u.Name;
-            Console.WriteLine("Liste d'armes : " + Unit.GetWeaponsString(u.Weapon).Count);
-            Console.WriteLine("Liste d'armures : " + Unit.GetArmorsString(u.Armor).Count);
-            this.pictureBox_UnitIdle = this.SetImgByURL(u.ImgURL, this.pictureBox_UnitIdle);
+            #endregion
 
-            this.CreateUnitStatListView(u.Stats, this.listView_UnitStats);
-            this.CreateUnitStatUpListView(u.StatsMaxUp, this.listView_UnitStatUp);
-            this.CreateUnitStatMaxUpListView(u.Stats, u.StatsMaxUp, this.listView_UnitMaxUp);
-            this.CreateUnitResTableView(u.Resistance, this.tableLayoutPanel_Resistance);
+
+            #region Ability
+
+            // ---- Shock Flash
+            CompEffect S_F1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, true, false, false, 7);
+            CompEffect S_F2 = new CompEffect(true, 0, 4, 6, false, false, true);
+            UnitCompActive S_F = new UnitCompActive(5, 5, "", "Shock Flash", 22);
+
+            #endregion
+
+            return u;
         }
 
         public PictureBox SetImgByURL(string url, PictureBox pictureBox)

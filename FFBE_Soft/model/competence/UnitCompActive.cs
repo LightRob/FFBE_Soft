@@ -8,6 +8,7 @@ namespace FFBE_Soft.model.competence
 {
     class UnitCompActive
     {
+        #region Attributs
         public byte Star { get; set; }
 
         public byte Level { get; set; }
@@ -16,6 +17,30 @@ namespace FFBE_Soft.model.competence
 
         public string Name { get; set; }
 
-        public CompEffect CompEffect { get; set; }
+        public List<CompEffect> CompEffect { get; set; }
+        #endregion
+
+        #region Methodes
+        public void AddCompEffect(CompEffect compEffect)
+        {
+            if(CompEffect != null)
+            {
+                CompEffect.Add(compEffect);
+            }
+        }
+
+        /// <summary>
+        /// Number of MP needed for the ability
+        /// </summary>
+        public short MPCost { get; set; }
+        #endregion
+
+        #region Constructors
+        public UnitCompActive (byte star, byte level, string imgURL, string name, short mpCost)
+        {
+            this.Star = star; this.Level = level; this.ImgURL = imgURL; this.Name = name; this.MPCost = mpCost;
+            this.CompEffect = new List<CompEffect>();
+        }
+        #endregion
     }
 }

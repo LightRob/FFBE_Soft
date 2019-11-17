@@ -53,7 +53,8 @@ namespace FFBE_Soft.model.competence
         Wind = 0x10,
         Earth = 0x20,
         Light = 0x40,
-        Dark = 0x80
+        Dark = 0x80,
+        Neutral = 0x100
     }
 
     enum StatsDebuffed
@@ -75,7 +76,7 @@ namespace FFBE_Soft.model.competence
         /// <summary>
         /// Text of the capacity, one string object for one ligne
         /// </summary>
-        public List<string> Text { get; set; }
+        public string Text { get; set; }
 
         #region Damage Ability
         /// <summary>
@@ -123,7 +124,17 @@ namespace FFBE_Soft.model.competence
         /// If the ability target the caster
         /// </summary>
         public bool IsCasterDamage { get; set; }
+
+        
+        public int Hits { get; set; }
         #endregion
+        public CompEffect(bool isDamage, TypeDamage typeDamage, ScalingDamage scalingDamage, ElementDamage elementDamage,
+            int coeffDamage, byte ignoreDefense, bool isSingleTargetDamage, bool isAreaOfEffectDamage, bool isCasterDamage, int hits)
+        {
+            this.IsDamage = isDamage; this.TypeDamage = typeDamage; this.ScalingDamage = scalingDamage; this.ElementDamage = elementDamage;
+            this.CoeffDamage = coeffDamage; this.IgnoreDefense = ignoreDefense; this.IsSingleTargetDamage = isSingleTargetDamage; this.IsAreaOfEffectDamage = isAreaOfEffectDamage; this.IsCasterDamage = isCasterDamage;
+            this.Hits = hits;
+        }
 
         #region Support Ability - Limit
         /// <summary>
@@ -149,18 +160,24 @@ namespace FFBE_Soft.model.competence
         /// <summary>
         /// If the ability is SingleTarget
         /// </summary>
-        public byte IsSingleTargetLimitGauge { get; set; }
+        public bool IsSingleTargetLimitGauge { get; set; }
 
         /// <summary>
         /// If the ability is AreaOfEffect
         /// </summary>
-        public byte IsAreaOfEffectLimitGauge { get; set; }
+        public bool IsAreaOfEffectLimitGauge { get; set; }
 
         /// <summary>
         /// If the ability target the caster
         /// </summary>
-        public byte IsCasterLimitGauge { get; set; }
+        public bool IsCasterLimitGauge { get; set; }
         #endregion
+        public CompEffect(bool isLimitGaugeUp, byte fixedLimitGauge, byte minLimitGauge, byte maxLimitGauge, 
+            bool isSingleTargetLimitGauge, bool isAreaOfEffectLimitGauge, bool isCasterLimitGauge)
+        {
+            this.IsLimitGaugeUp = isLimitGaugeUp; this.FixedLimitGauge = fixedLimitGauge; this.MinLimitGauge = minLimitGauge; this.MaxLimitGauge = maxLimitGauge;
+            this.IsSingleTargetLimitGauge = isSingleTargetLimitGauge; this.IsAreaOfEffectLimitGauge = isAreaOfEffectLimitGauge; this.IsCasterLimitGauge = isCasterLimitGauge;
+        }
 
         #region Support Ability - Debuff Enemy
         /// <summary>

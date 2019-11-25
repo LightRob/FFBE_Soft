@@ -4,6 +4,7 @@ using FFBE_Soft.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Resources;
 using System.Windows.Forms;
 
@@ -165,10 +166,10 @@ namespace FFBE_Soft
             // ---- Shock Flash
             {
                 CompEffect S_F1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, true, false, false, 7);
-                S_F1.Text = "Physical damage (3x) to one enemy" + Environment.NewLine;
+                S_F1.Text = "Physical damage (3x) to one enemy";
                 CompEffect S_F2 = new CompEffect(true, 0, 4, 6, false, false, true);
                 S_F2.Text = "Increase LB Gauge (" + S_F2.MinLimitGauge +"-" + S_F2.MaxLimitGauge + ") to caster";
-                UnitCompActive S_F = new UnitCompActive(5, 5, "Shock_Flash", "Shock Flash", 22);
+                UnitCompActive S_F = new UnitCompActive(5, 5, "Icon-Shock_Flash", "Shock Flash", 22);
                 S_F.AddCompEffect(S_F1);
                 S_F.AddCompEffect(S_F2);
                 u.AddAbility(S_F);
@@ -179,10 +180,10 @@ namespace FFBE_Soft
             {
                 List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.ATK, 50)); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.MAG, 50));
                 CompEffect S_A1 = new CompEffect(true, statsDebuff, 5, false, true);
-                S_A1.Text = "Decrease ATK/MAG (50%) for 5 turms to one enemy" + Environment.NewLine;
+                S_A1.Text = "Decrease ATK/MAG (50%) for 5 turms to one enemy";
                 CompEffect S_A2 = new CompEffect(true, 0, 6, 8, false, false, true);
                 S_A2.Text = "Increase LB Gauge (6-8) to caster";
-                UnitCompActive S_A = new UnitCompActive(5, 38, "icon", "Shatter Arms", 38);
+                UnitCompActive S_A = new UnitCompActive(5, 38, "Icon-Shatter_Arms", "Shatter Arms", 38);
                 S_A.AddCompEffect(S_A1);
                 S_A.AddCompEffect(S_A2);
                 u.AddAbility(S_A);
@@ -192,13 +193,53 @@ namespace FFBE_Soft
             { 
                 List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.DEF, 50)); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.PSY, 50));
                 CompEffect S_G1 = new CompEffect(true, statsDebuff, 5, false, true);
-                S_G1.Text = "Decrease DEF/PSY (50%) for 5 turms to one enemy" + Environment.NewLine;
+                S_G1.Text = "Decrease DEF/PSY (50%) for 5 turms to one enemy";
                 CompEffect S_G2 = new CompEffect(true, 0, 6, 8, false, false, true);
                 S_G2.Text = "Increase LB Gauge (6-8) to caster";
-                UnitCompActive S_G = new UnitCompActive(5, 38, "icon", "Shatter Guard", 38);
+                UnitCompActive S_G = new UnitCompActive(5, 38, "Icon-Shatter_Guard", "Shatter Guard", 38);
                 S_G.AddCompEffect(S_G1);
                 S_G.AddCompEffect(S_G2);
                 u.AddAbility(S_G);
+            }
+
+            // ---- Shock Reflex
+            {
+                CompEffect S_R1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 80, 0, true, false, false, 7); S_R1.AddHPDrain(50);
+                S_R1.Text = "Lightning physical damage (0.8x) as HP drain (50%) to one enemy";
+                CompEffect S_R2 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 160, 50, true, false, false, 7);
+                S_R2.Text = "Lightning physical damage (1.6x) with ignore DEF (50%) to one enemy";
+                UnitCompActive S_R = new UnitCompActive(5, 55, "Icon-Shock_Reflex", "Shock Reflex", 45);
+                S_R.AddCompEffect(S_R1);
+                S_R.AddCompEffect(S_R2);
+                u.AddAbility(S_R);
+            }
+
+            // ---- Charged Protection
+            {
+                CompEffect C_P1 = new CompEffect(true, TypeCover.Physical, 50, 50, 70, 1, true, false);
+                C_P1.Text = "Chance to protect all allies from physical damage (50%) with damage mitigation (50 - 70%) for 1 turn to caster";
+                List<StatBuffCoef> statBuffs = new List<StatBuffCoef>(); statBuffs.Add(CompEffect.GetBuffObject(StatsBuffed.DEF, 150));
+                CompEffect C_P2 = new CompEffect(true, statBuffs, 1, false, false, true);
+                C_P2.Text = "Increase DEF (150%) for 1 turn to caster";
+                UnitCompActive C_P = new UnitCompActive(5, 80, "Icon-Charged_Protection", "Charged Protection", 32);
+                C_P.AddCompEffect(C_P1);
+                C_P.AddCompEffect(C_P2);
+                u.AddAbility(C_P);
+            }
+
+            // ---- Storm Brand
+            {
+                CompEffect S_B1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 280, 50, true, false, false, 9);
+                S_B1.Text = "Lightning physical damage (2.8x) with ignore DEF (50%) to one enemy";
+                CompEffect S_B2 = new CompEffect(true, ElementImbue.Lightning, 5, false, false, true);
+                S_B2.Text = "Add lightning element to physical attacks for 5 turns to caster";
+                CompEffect S_B3 = new CompEffect(true, 15, 0, 0, false, false, true);
+                S_B3.Text = "Increase LB gauge (15) to caster";
+                UnitCompActive S_B = new UnitCompActive(6, 16, "Icon-Storm_Brand", "Storm Brand", 35);
+                S_B.AddCompEffect(S_B1);
+                S_B.AddCompEffect(S_B2);
+                S_B.AddCompEffect(S_B3);
+                u.AddAbility(S_B);
             }
             #endregion
 
@@ -388,7 +429,24 @@ namespace FFBE_Soft
                 DataGridViewRow row = (DataGridViewRow)gridView.Rows[gridView.Rows.GetLastRow(DataGridViewElementStates.Visible)]; // On récupère la dernière ligne
                 row.Cells[0].Value = unitComp.Star;
                 row.Cells[1].Value = unitComp.Level;
+                //row.Cells[2].Value = (Image)rm.GetObject(unitComp.ImgURL);
+                if(unitComp.ImgURL != "icon") { 
+                    try
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        Image image = (Image)rm.GetObject(unitComp.ImgURL);
+                        image.Save(ms, image.RawFormat);
+                        byte[] img = ms.ToArray();
+                        row.Cells[2].Value = img;
+                    }
+                    catch(Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                }
+
                 row.Cells[2].Value = (Image)rm.GetObject(unitComp.ImgURL);
+
                 row.Cells[3].Value = unitComp.Name;
                 row.Cells[4].Value = unitComp.GetEffectsToString();
                 row.Cells[5].Value = unitComp.GetHitsToString();

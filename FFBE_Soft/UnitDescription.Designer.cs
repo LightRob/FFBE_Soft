@@ -38,7 +38,6 @@
             this.listView_UnitStats = new System.Windows.Forms.ListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView_Ability = new System.Windows.Forms.DataGridView();
-            this.pictureBox_UnitIdle = new System.Windows.Forms.PictureBox();
             this.MinRariry_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Level_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Icon_Header = new System.Windows.Forms.DataGridViewImageColumn();
@@ -46,6 +45,7 @@
             this.Effect_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hits_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox_UnitIdle = new System.Windows.Forms.PictureBox();
             this.tabControl_Unit.SuspendLayout();
             this.tabPage_UnitStats.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -59,7 +59,7 @@
             this.label_UnitName.Font = new System.Drawing.Font("Franklin Gothic Medium", 32F);
             this.label_UnitName.Location = new System.Drawing.Point(12, 9);
             this.label_UnitName.Name = "label_UnitName";
-            this.label_UnitName.Size = new System.Drawing.Size(167, 81);
+            this.label_UnitName.Size = new System.Drawing.Size(110, 50);
             this.label_UnitName.TabIndex = 0;
             this.label_UnitName.Text = "Nom";
             // 
@@ -192,17 +192,8 @@
             this.dataGridView_Ability.ReadOnly = true;
             this.dataGridView_Ability.RowHeadersWidth = 62;
             this.dataGridView_Ability.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView_Ability.Size = new System.Drawing.Size(1532, 231);
+            this.dataGridView_Ability.Size = new System.Drawing.Size(1532, 981);
             this.dataGridView_Ability.TabIndex = 0;
-            // 
-            // pictureBox_UnitIdle
-            // 
-            this.pictureBox_UnitIdle.Location = new System.Drawing.Point(26, 115);
-            this.pictureBox_UnitIdle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox_UnitIdle.Name = "pictureBox_UnitIdle";
-            this.pictureBox_UnitIdle.Size = new System.Drawing.Size(220, 229);
-            this.pictureBox_UnitIdle.TabIndex = 1;
-            this.pictureBox_UnitIdle.TabStop = false;
             // 
             // MinRariry_Header
             // 
@@ -228,7 +219,7 @@
             this.Icon_Header.MinimumWidth = 8;
             this.Icon_Header.Name = "Icon_Header";
             this.Icon_Header.ReadOnly = true;
-            this.Icon_Header.Width = 45;
+            this.Icon_Header.Width = 72;
             // 
             // Name_Header
             // 
@@ -248,7 +239,7 @@
             this.Effect_Header.ReadOnly = true;
             this.Effect_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Effect_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Effect_Header.Width = 555;
+            this.Effect_Header.Width = 528;
             // 
             // Hits_Header
             // 
@@ -269,6 +260,15 @@
             this.Cost_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Cost_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Cost_Header.Width = 70;
+            // 
+            // pictureBox_UnitIdle
+            // 
+            this.pictureBox_UnitIdle.Location = new System.Drawing.Point(26, 115);
+            this.pictureBox_UnitIdle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox_UnitIdle.Name = "pictureBox_UnitIdle";
+            this.pictureBox_UnitIdle.Size = new System.Drawing.Size(220, 229);
+            this.pictureBox_UnitIdle.TabIndex = 1;
+            this.pictureBox_UnitIdle.TabStop = false;
             // 
             // UnitDescription
             // 

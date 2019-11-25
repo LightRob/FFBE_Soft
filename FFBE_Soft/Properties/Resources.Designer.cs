@@ -83,6 +83,36 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Bolting_Strike {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Bolting_Strike", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Charged_Protection {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Charged_Protection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Combat_Overdrive {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Combat_Overdrive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Confuse_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Confuse_Resistance", resourceCulture);
@@ -103,6 +133,16 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Demagnetizing_Strike {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Demagnetizing_Strike", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Disease_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Disease_Resistance", resourceCulture);
@@ -116,6 +156,16 @@ namespace FFBE_Soft.Properties {
         internal static System.Drawing.Bitmap Icon_Earth_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Earth_Resistance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Electric_Charge {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Electric_Charge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +243,56 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Shatter_Arms {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Shatter_Arms", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Shatter_Guard {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Shatter_Guard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Shock_Embrace {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Shock_Embrace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Shock_Flash {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Shock_Flash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Shock_Reflex {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Shock_Reflex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Silence_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Silence_Resistance", resourceCulture);
@@ -206,6 +306,46 @@ namespace FFBE_Soft.Properties {
         internal static System.Drawing.Bitmap Icon_Sleep_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Sleep_Resistance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Stasis_Bound {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Stasis_Bound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Storm_Brand {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Storm_Brand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Storm_Calling {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Storm_Calling", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Storm_Clouds {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Storm_Clouds", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

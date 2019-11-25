@@ -139,7 +139,6 @@
     <None Include="Resources\Esther_Idle.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Ability\Icon-Shock_Flash.png" />
     <Content Include="Resources\Ailment\Resistance\Icon-Blind_Resistance.png" />
     <Content Include="Resources\Ailment\Resistance\Icon-Confuse_Resistance.png" />
     <Content Include="Resources\Ailment\Resistance\Icon-Disease_Resistance.png" />
@@ -154,8 +153,25 @@
     <Content Include="Resources\Element\Resistance\Icon-Light_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Water_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Wind_Resistance.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Bolting_Strike.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Charged_Protection.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Combat_Overdrive.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Demagnetizing_Strike.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Electric_Charge.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shatter_Arms.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shatter_Guard.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shock_Embrace.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shock_Reflex.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Stasis_Bound.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Storm_Brand.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Storm_Calling.png" />
+    <Content Include="Resources\Unit\Esther\Abilities\Icon-Storm_Clouds.png" />
+    <None Include="Resources\Unit\Esther\Abilities\Icon-Shock_Flash.png" />
     <None Include="Resources\Element\Resistance\Icon-Lightning_Resistance.png" />
     <None Include="Resources\Element\Resistance\Icon-Ice_Resistance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Ability\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

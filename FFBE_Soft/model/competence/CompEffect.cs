@@ -57,7 +57,27 @@ namespace FFBE_Soft.model.competence
         Neutral = 0x100
     }
 
+    enum ElementImbue
+    {
+        Fire = 0x01,
+        Ice = 0x02,
+        Lightning = 0x04,
+        Water = 0x08,
+        Wind = 0x10,
+        Earth = 0x20,
+        Light = 0x40,
+        Dark = 0x80
+    }
+
     public enum StatsDebuffed
+    {
+        ATK = 0x01,
+        DEF = 0x02,
+        MAG = 0x04,
+        PSY = 0x08
+    }
+
+    public enum StatsBuffed
     {
         ATK = 0x01,
         DEF = 0x02,
@@ -69,6 +89,19 @@ namespace FFBE_Soft.model.competence
     {
         public StatsDebuffed StatsDebuffed;
         public byte Coefficient;
+    }
+
+    public struct StatBuffCoef
+    {
+        public StatsBuffed StatsBuffed;
+        public short Coefficient;
+    }
+
+    public enum TypeCover
+    {
+        Physical,
+        Magical,
+        Hybrid
     }
 
     class CompEffect
@@ -88,6 +121,22 @@ namespace FFBE_Soft.model.competence
             };
 
             return statDebuffCoef;
+        }
+
+
+        static public StatBuffCoef GetBuffObject(StatsBuffed stats, short coeff)
+        {
+            return new StatBuffCoef
+            {
+                StatsBuffed = stats,
+                Coefficient = coeff
+            };
+        }
+
+        public void AddHPDrain(byte coeff)
+        {
+            this.IsHPDrain = true;
+            this.CoeffHPDrain = coeff;
         }
 
         #region Damage Ability
@@ -121,6 +170,16 @@ namespace FFBE_Soft.model.competence
         /// Percent of ingore defense. 0 if no ignore defense
         /// </summary>
         public byte IgnoreDefense { get; set; }
+
+        /// <summary>
+        /// If the ability drain HP to the enemy
+        /// </summary>
+        public bool IsHPDrain { get; set; }
+
+        /// <summary>
+        /// Coefficient of the HP Drain
+        /// </summary>
+        public byte CoeffHPDrain { get; set; }
 
         /// <summary>
         /// If the ability is SingleTarget
@@ -205,7 +264,7 @@ namespace FFBE_Soft.model.competence
         /// <summary>
         /// Numbers of Turns for the debuff
         /// </summary>
-        public byte Turns { get; set; }
+        public byte DebuffTurns { get; set; }
 
         /// <summary>
         /// If the ability is SingleTarget
@@ -219,7 +278,129 @@ namespace FFBE_Soft.model.competence
         #endregion
         public CompEffect(bool isDebuffEnemy, List<StatDebuffCoef> statDebuffed, byte turns, bool isSingleTargetDebuff, bool isAreaOfEffectDebuff)
         {
-            this.IsDebuffEnemy = isDebuffEnemy; this.StatsDebuffed = statDebuffed; this.Turns = turns; this.IsSingleTargetDebuff = isSingleTargetDebuff; this.IsAreaOfEffectDebuff = isAreaOfEffectDebuff;
+            this.IsDebuffEnemy = isDebuffEnemy; this.StatsDebuffed = statDebuffed; this.DebuffTurns = turns; this.IsSingleTargetDebuff = isSingleTargetDebuff; this.IsAreaOfEffectDebuff = isAreaOfEffectDebuff;
+        }
+
+        #region Support Ability - Cover
+        /// <summary>
+        /// If the ability cover allies
+        /// </summary>
+        public bool IsCoverAllies { get; set; }
+
+        /// <summary>
+        /// Type of the cover
+        /// </summary>
+        public TypeCover TypeCover { get; set; }
+
+        /// <summary>
+        /// Chance to proc the cover
+        /// </summary>
+        public byte PercentChanceCover { get; set; }
+
+        /// <summary>
+        /// Minimum of Damage Mitigation
+        /// </summary>
+        public byte MinDamageMitigation { get; set; }
+
+        /// <summary>
+        /// Maximum of Damage Mitigation
+        /// </summary>
+        public byte MaxDamageMitigation { get; set; }
+
+        /// <summary>
+        /// Number of turns
+        /// </summary>
+        public byte CoverTurn { get; set; }
+
+        /// <summary>
+        /// If the cover is for the caster
+        /// </summary>
+        public bool IsCasterCover { get; set; }
+
+        /// <summary>
+        /// If the cover is for one ally
+        /// </summary>
+        public bool IsForOneAlly { get; set; }
+        #endregion
+        public CompEffect(bool isCoverAllies, TypeCover typeCover, byte percentChanceCover, byte minDamageMitigation, byte maxDamageMitigation, byte coverTurn, bool isCasterCover, bool isForOneAlly)
+        {
+            this.IsCoverAllies = isCoverAllies; this.TypeCover = typeCover; this.PercentChanceCover = percentChanceCover;
+            this.MinDamageMitigation = minDamageMitigation; this.MaxDamageMitigation = maxDamageMitigation;
+            this.CoverTurn = coverTurn; this.IsCasterCover = isCasterCover; this.IsForOneAlly = isForOneAlly;
+        }
+
+        #region Support Ability - Buff Allies
+        /// <summary>
+        /// If the ability buff allies
+        /// </summary>
+        public bool IsBuffAlly { get; set; }
+
+        /// <summary>
+        /// List of StatsBuffed and coeff
+        /// </summary>
+        public List<StatBuffCoef> StatsBuffed { get; set; }
+
+        /// <summary>
+        /// Number of turn for the buff
+        /// </summary>
+        public byte BuffTurn { get; set; }
+
+        /// <summary>
+        /// If the ability is single target
+        /// </summary>
+        public bool IsSingleTargetBuff { get; set; }
+
+        /// <summary>
+        /// If the ability is area of effect
+        /// </summary>
+        public bool IsAreaOfEffectBuff { get; set; }
+
+        /// <summary>
+        /// If the ability is for the caster
+        /// </summary>
+        public bool IsCasterBuff { get; set; }
+        #endregion
+        public CompEffect(bool isBuffAlly, List<StatBuffCoef> statBuffCoeff, byte buffTurn, bool isSingleTargetBuff, bool isAreaOfEffectBuff, bool isCasterBuff)
+        {
+            this.IsBuffAlly = isBuffAlly; this.StatsBuffed = statBuffCoeff; this.BuffTurn = buffTurn; this.IsSingleTargetBuff = isSingleTargetBuff;
+            this.IsAreaOfEffectBuff = isAreaOfEffectBuff; this.IsCasterBuff = isCasterBuff;
+        }
+
+        #region Support Ability - Element Imbue
+        /// <summary>
+        /// If the ability add element to attacks
+        /// </summary>
+        public bool IsImbueElement { get; set; }
+
+        /// <summary>
+        /// Element to imbue
+        /// </summary>
+        public ElementImbue ElementImbue { get; set; }
+
+        /// <summary>
+        /// Number of turns of the imbue
+        /// </summary>
+        public byte ImbueTurns { get; set; }
+
+        /// <summary>
+        /// If the ability is single target
+        /// </summary>
+        public bool IsSingleTargetImbue { get; set; }
+
+        /// <summary>
+        /// If the ability is Area of Effect
+        /// </summary>
+        public bool IsAreaOfEffectImbue { get; set; }
+
+        /// <summary>
+        /// If the ability is for the caster
+        /// </summary>
+        public bool IsCasterImbue { get; set; }
+        #endregion
+        public CompEffect(bool isImbueElement, ElementImbue elementImbue, byte imbueTurns, bool isSingleTargetImbue, bool isAreaOfEffectImbue, bool isCasterImbue)
+        {
+            this.IsImbueElement = isImbueElement; this.ElementImbue = elementImbue; this.ImbueTurns = imbueTurns;
+            this.IsSingleTargetImbue = isSingleTargetImbue; this.IsAreaOfEffectImbue = isAreaOfEffectImbue; this.IsCasterImbue = isCasterImbue;
         }
     }
 }

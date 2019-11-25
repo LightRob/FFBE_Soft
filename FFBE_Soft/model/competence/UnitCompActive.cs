@@ -39,6 +39,9 @@ namespace FFBE_Soft.model.competence
             string s = "";
             foreach (CompEffect comp in CompEffect)
             {
+                if (!s.Equals(""))
+                    s += Environment.NewLine;
+
                 s += comp.Text;
             }
             return s;
@@ -51,7 +54,12 @@ namespace FFBE_Soft.model.competence
             foreach (CompEffect comp in CompEffect)
             {
                 if(comp.Hits > 0)
+                { 
+                    if(!s.Equals(""))
+                        s += Environment.NewLine;
+
                     s += comp.Hits;
+                }
             }
             return s;
         }

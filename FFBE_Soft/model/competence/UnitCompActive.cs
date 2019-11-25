@@ -18,6 +18,11 @@ namespace FFBE_Soft.model.competence
         public string Name { get; set; }
 
         public List<CompEffect> CompEffect { get; set; }
+
+        /// <summary>
+        /// Number of MP needed for the ability
+        /// </summary>
+        public short MPCost { get; set; }
         #endregion
 
         #region Methodes
@@ -29,10 +34,27 @@ namespace FFBE_Soft.model.competence
             }
         }
 
-        /// <summary>
-        /// Number of MP needed for the ability
-        /// </summary>
-        public short MPCost { get; set; }
+        public string GetEffectsToString()
+        {
+            string s = "";
+            foreach (CompEffect comp in CompEffect)
+            {
+                s += comp.Text;
+            }
+            return s;
+        }
+
+
+        public string GetHitsToString()
+        {
+            string s = "";
+            foreach (CompEffect comp in CompEffect)
+            {
+                if(comp.Hits > 0)
+                    s += comp.Hits;
+            }
+            return s;
+        }
         #endregion
 
         #region Constructors

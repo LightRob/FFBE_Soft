@@ -15,7 +15,7 @@ namespace FFBE_Soft
         public UnitDescription()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
 
             Unit Esther = this.SetEstherBDD();
 
@@ -28,6 +28,7 @@ namespace FFBE_Soft
             this.CreateUnitStatUpListView(Esther.StatsMaxUp, this.listView_UnitStatUp);
             this.CreateUnitStatMaxUpListView(Esther.Stats, Esther.StatsMaxUp, this.listView_UnitMaxUp);
             this.CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
+            this.CreateAbilityGridData(Esther.Abilities, this.dataGridView_Ability);
         }
 
         private Unit SetEstherBDD()
@@ -162,10 +163,43 @@ namespace FFBE_Soft
             #region Ability
 
             // ---- Shock Flash
-            CompEffect S_F1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, true, false, false, 7);
-            CompEffect S_F2 = new CompEffect(true, 0, 4, 6, false, false, true);
-            UnitCompActive S_F = new UnitCompActive(5, 5, "", "Shock Flash", 22);
+            {
+                CompEffect S_F1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, true, false, false, 7);
+                S_F1.Text = "Physical damage (3x) to one enemy" + Environment.NewLine;
+                CompEffect S_F2 = new CompEffect(true, 0, 4, 6, false, false, true);
+                S_F2.Text = "Increase LB Gauge (" + S_F2.MinLimitGauge +"-" + S_F2.MaxLimitGauge + ") to caster";
+                UnitCompActive S_F = new UnitCompActive(5, 5, "Shock_Flash", "Shock Flash", 22);
+                S_F.AddCompEffect(S_F1);
+                S_F.AddCompEffect(S_F2);
+                u.AddAbility(S_F);
+            }
 
+
+            // ---- Shatter Arms
+            {
+                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.ATK, 50)); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.MAG, 50));
+                CompEffect S_A1 = new CompEffect(true, statsDebuff, 5, false, true);
+                S_A1.Text = "Decrease ATK/MAG (50%) for 5 turms to one enemy" + Environment.NewLine;
+                CompEffect S_A2 = new CompEffect(true, 0, 6, 8, false, false, true);
+                S_A2.Text = "Increase LB Gauge (6-8) to caster";
+                UnitCompActive S_A = new UnitCompActive(5, 38, "icon", "Shatter Arms", 38);
+                S_A.AddCompEffect(S_A1);
+                S_A.AddCompEffect(S_A2);
+                u.AddAbility(S_A);
+            }
+
+            // ---- Shatter Guard
+            { 
+                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.DEF, 50)); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.PSY, 50));
+                CompEffect S_G1 = new CompEffect(true, statsDebuff, 5, false, true);
+                S_G1.Text = "Decrease DEF/PSY (50%) for 5 turms to one enemy" + Environment.NewLine;
+                CompEffect S_G2 = new CompEffect(true, 0, 6, 8, false, false, true);
+                S_G2.Text = "Increase LB Gauge (6-8) to caster";
+                UnitCompActive S_G = new UnitCompActive(5, 38, "icon", "Shatter Guard", 38);
+                S_G.AddCompEffect(S_G1);
+                S_G.AddCompEffect(S_G2);
+                u.AddAbility(S_G);
+            }
             #endregion
 
             return u;
@@ -341,6 +375,28 @@ namespace FFBE_Soft
             listView.EndUpdate();
         }
 
+
+        private void CreateAbilityGridData(List<UnitCompActive> unitComps, DataGridView gridView)
+        {/*
+            Console.WriteLine(gridView.AutoSizeRowsMode);
+            gridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            Console.WriteLine(gridView.AutoSizeRowsMode); */
+
+            foreach (UnitCompActive unitComp in unitComps)
+            {
+                gridView.Rows.Add(); // On créée une nouvelle ligne vide
+                DataGridViewRow row = (DataGridViewRow)gridView.Rows[gridView.Rows.GetLastRow(DataGridViewElementStates.Visible)]; // On récupère la dernière ligne
+                row.Cells[0].Value = unitComp.Star;
+                row.Cells[1].Value = unitComp.Level;
+                row.Cells[2].Value = (Image)rm.GetObject(unitComp.ImgURL);
+                row.Cells[3].Value = unitComp.Name;
+                row.Cells[4].Value = unitComp.GetEffectsToString();
+                row.Cells[5].Value = unitComp.GetHitsToString();
+                row.Cells[6].Value = unitComp.MPCost;
+            }
+
+        }
+
         private void CreateUnitResTableView(UnitResistance res, TableLayoutPanel table)
         {
             table.Bounds = new Rectangle(new Point(table.Bounds.X, table.Bounds.Y), new Size(400, 200));
@@ -471,6 +527,11 @@ namespace FFBE_Soft
             sf.Alignment = StringAlignment.Center;
             sf.LineAlignment = StringAlignment.Center;
             e.Graphics.DrawString(e.SubItem.Text, new Font("Franklin Gothic Medium", 10), new SolidBrush((Color)new ColorConverter().ConvertFromString("#1F3656")), e.Bounds, sf); // then we draw the text, this bit could use some improvement, if you cant figure out, let me know and ill knock some more code together
+
+        }
+
+        private void listView_UnitStats_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

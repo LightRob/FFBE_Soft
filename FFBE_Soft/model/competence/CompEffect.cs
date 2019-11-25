@@ -57,7 +57,7 @@ namespace FFBE_Soft.model.competence
         Neutral = 0x100
     }
 
-    enum StatsDebuffed
+    public enum StatsDebuffed
     {
         ATK = 0x01,
         DEF = 0x02,
@@ -65,10 +65,10 @@ namespace FFBE_Soft.model.competence
         PSY = 0x08
     }
 
-    struct StatDebuffCoef
+    public struct StatDebuffCoef
     {
-        StatsDebuffed StatsDebuffed;
-        byte Coefficient;
+        public StatsDebuffed StatsDebuffed;
+        public byte Coefficient;
     }
 
     class CompEffect
@@ -77,6 +77,18 @@ namespace FFBE_Soft.model.competence
         /// Text of the capacity, one string object for one ligne
         /// </summary>
         public string Text { get; set; }
+
+
+        static public StatDebuffCoef GetDebuffObject(StatsDebuffed stats, byte coeff)
+        {
+            StatDebuffCoef statDebuffCoef = new StatDebuffCoef
+            {
+                StatsDebuffed = stats,
+                Coefficient = coeff
+            };
+
+            return statDebuffCoef;
+        }
 
         #region Damage Ability
         /// <summary>
@@ -205,5 +217,9 @@ namespace FFBE_Soft.model.competence
         /// </summary>
         public bool IsAreaOfEffectDebuff { get; set; }
         #endregion
+        public CompEffect(bool isDebuffEnemy, List<StatDebuffCoef> statDebuffed, byte turns, bool isSingleTargetDebuff, bool isAreaOfEffectDebuff)
+        {
+            this.IsDebuffEnemy = isDebuffEnemy; this.StatsDebuffed = statDebuffed; this.Turns = turns; this.IsSingleTargetDebuff = isSingleTargetDebuff; this.IsAreaOfEffectDebuff = isAreaOfEffectDebuff;
+        }
     }
 }

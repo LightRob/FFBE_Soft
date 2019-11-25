@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FFBE_Soft.model.competence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -97,10 +98,14 @@ namespace FFBE_Soft.model
         /// </summary>
         public UnitMagicAffinity MagicAffinity { get; set; }
 
+        /// <summary>
+        /// Actives abilities of the unit
+        /// </summary>
+        public List<UnitCompActive> Abilities { get; set; }
         #endregion
 
         #region Constructeurs
-        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); }
+        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitCompActive>(); }
         #endregion
 
         #region Methods
@@ -109,6 +114,10 @@ namespace FFBE_Soft.model
         /// </summary>
         /// <param name="s">UnitStat object</param>
         public void AddStats(UnitStats s) { Stats.Add(s); }
+
+        
+
+
         /// <summary>
         /// Add a UnitStatsMaxUp object for a star
         /// </summary>
@@ -160,6 +169,7 @@ namespace FFBE_Soft.model
                     return "---";
             }
         }
+
         /// <summary>
         /// Return a list of strings of all weapons in the enum
         /// </summary>
@@ -241,6 +251,16 @@ namespace FFBE_Soft.model
             if((armor - Armor.LightShield) >= 0) { list.Add(GetArmorString(Armor.LightShield)); armor -= Armor.LightShield; }
 
             return list;
+        }
+
+        /// <summary>
+        /// Add ability to the unit
+        /// </summary>
+        /// <param name="unitCompActive">Ability</param>
+        public void AddAbility(UnitCompActive unitCompActive)
+        {
+            if (Abilities != null)
+                Abilities.Add(unitCompActive);
         }
         #endregion
     }

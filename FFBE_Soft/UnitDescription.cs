@@ -165,11 +165,11 @@ namespace FFBE_Soft
 
             // ---- Shock Flash
             {
-                CompEffect S_F1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, true, false, false, 7);
-                S_F1.Text = "Physical damage (3x) to one enemy";
-                CompEffect S_F2 = new CompEffect(true, 0, 4, 6, false, false, true);
+                AbilityEffect S_F1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, AbilityTarget.SingleTargetEnemy, 7);
+                S_F1.Text = "Physical damage (300%) to one enemy";
+                AbilityEffect S_F2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 4, 6, AbilityTarget.Caster);
                 S_F2.Text = "Increase LB Gauge (" + S_F2.MinLimitGauge +"-" + S_F2.MaxLimitGauge + ") to caster";
-                UnitCompActive S_F = new UnitCompActive(5, 5, "Icon-Shock_Flash", "Shock Flash", 22);
+                UnitAbility S_F = new UnitAbility(5, 5, "Icon-Shock_Flash", "Shock Flash", 22);
                 S_F.AddCompEffect(S_F1);
                 S_F.AddCompEffect(S_F2);
                 u.AddAbility(S_F);
@@ -178,12 +178,12 @@ namespace FFBE_Soft
 
             // ---- Shatter Arms
             {
-                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.ATK, 50)); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.MAG, 50));
-                CompEffect S_A1 = new CompEffect(true, statsDebuff, 5, false, true);
+                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(AbilityEffect.GetDebuffObject(StatsDebuffed.ATK, 50)); statsDebuff.Add(AbilityEffect.GetDebuffObject(StatsDebuffed.MAG, 50));
+                AbilityEffect S_A1 = AbilityEffect.CreateDebuffEnemyEffect(true, statsDebuff, 5, AbilityTarget.SingleTargetEnemy);
                 S_A1.Text = "Decrease ATK/MAG (50%) for 5 turms to one enemy";
-                CompEffect S_A2 = new CompEffect(true, 0, 6, 8, false, false, true);
+                AbilityEffect S_A2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 6, 8, AbilityTarget.Caster);
                 S_A2.Text = "Increase LB Gauge (6-8) to caster";
-                UnitCompActive S_A = new UnitCompActive(5, 38, "Icon-Shatter_Arms", "Shatter Arms", 38);
+                UnitAbility S_A = new UnitAbility(5, 38, "Icon-Shatter_Arms", "Shatter Arms", 38);
                 S_A.AddCompEffect(S_A1);
                 S_A.AddCompEffect(S_A2);
                 u.AddAbility(S_A);
@@ -191,12 +191,12 @@ namespace FFBE_Soft
 
             // ---- Shatter Guard
             { 
-                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.DEF, 50)); statsDebuff.Add(CompEffect.GetDebuffObject(StatsDebuffed.PSY, 50));
-                CompEffect S_G1 = new CompEffect(true, statsDebuff, 5, false, true);
+                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(AbilityEffect.GetDebuffObject(StatsDebuffed.DEF, 50)); statsDebuff.Add(AbilityEffect.GetDebuffObject(StatsDebuffed.PSY, 50));
+                AbilityEffect S_G1 = AbilityEffect.CreateDebuffEnemyEffect(true, statsDebuff, 5, AbilityTarget.SingleTargetEnemy);
                 S_G1.Text = "Decrease DEF/PSY (50%) for 5 turms to one enemy";
-                CompEffect S_G2 = new CompEffect(true, 0, 6, 8, false, false, true);
+                AbilityEffect S_G2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 6, 8, AbilityTarget.Caster);
                 S_G2.Text = "Increase LB Gauge (6-8) to caster";
-                UnitCompActive S_G = new UnitCompActive(5, 38, "Icon-Shatter_Guard", "Shatter Guard", 38);
+                UnitAbility S_G = new UnitAbility(5, 38, "Icon-Shatter_Guard", "Shatter Guard", 38);
                 S_G.AddCompEffect(S_G1);
                 S_G.AddCompEffect(S_G2);
                 u.AddAbility(S_G);
@@ -204,11 +204,11 @@ namespace FFBE_Soft
 
             // ---- Shock Reflex
             {
-                CompEffect S_R1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 80, 0, true, false, false, 7); S_R1.AddHPDrain(50);
-                S_R1.Text = "Lightning physical damage (0.8x) as HP drain (50%) to one enemy";
-                CompEffect S_R2 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 160, 50, true, false, false, 7);
-                S_R2.Text = "Lightning physical damage (1.6x) with ignore DEF (50%) to one enemy";
-                UnitCompActive S_R = new UnitCompActive(5, 55, "Icon-Shock_Reflex", "Shock Reflex", 45);
+                AbilityEffect S_R1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 80, 0, AbilityTarget.SingleTargetEnemy, 7); S_R1.AddHPDrain(50);
+                S_R1.Text = "Lightning physical damage (80%) as HP drain (50%) to one enemy";
+                AbilityEffect S_R2 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 160, 50, AbilityTarget.SingleTargetEnemy, 7);
+                S_R2.Text = "Lightning physical damage (160%) with ignore DEF (50%) to one enemy";
+                UnitAbility S_R = new UnitAbility(5, 55, "Icon-Shock_Reflex", "Shock Reflex", 45);
                 S_R.AddCompEffect(S_R1);
                 S_R.AddCompEffect(S_R2);
                 u.AddAbility(S_R);
@@ -216,12 +216,12 @@ namespace FFBE_Soft
 
             // ---- Charged Protection
             {
-                CompEffect C_P1 = new CompEffect(true, TypeCover.Physical, 50, 50, 70, 1, true, false);
+                AbilityEffect C_P1 = AbilityEffect.CreateCoverEffect(true, TypeCover.Physical, 50, 50, 70, 1, true, false);
                 C_P1.Text = "Chance to protect all allies from physical damage (50%) with damage mitigation (50 - 70%) for 1 turn to caster";
-                List<StatBuffCoef> statBuffs = new List<StatBuffCoef>(); statBuffs.Add(CompEffect.GetBuffObject(StatsBuffed.DEF, 150));
-                CompEffect C_P2 = new CompEffect(true, statBuffs, 1, false, false, true);
+                List<StatBuffCoef> statBuffs = new List<StatBuffCoef>(); statBuffs.Add(AbilityEffect.GetBuffObject(StatsBuffed.DEF, 150));
+                AbilityEffect C_P2 = AbilityEffect.CreateBuffAlliesEffect(true, statBuffs, 1, AbilityTarget.Caster);
                 C_P2.Text = "Increase DEF (150%) for 1 turn to caster";
-                UnitCompActive C_P = new UnitCompActive(5, 80, "Icon-Charged_Protection", "Charged Protection", 32);
+                UnitAbility C_P = new UnitAbility(5, 80, "Icon-Charged_Protection", "Charged Protection", 32);
                 C_P.AddCompEffect(C_P1);
                 C_P.AddCompEffect(C_P2);
                 u.AddAbility(C_P);
@@ -229,18 +229,166 @@ namespace FFBE_Soft
 
             // ---- Storm Brand
             {
-                CompEffect S_B1 = new CompEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 280, 50, true, false, false, 9);
-                S_B1.Text = "Lightning physical damage (2.8x) with ignore DEF (50%) to one enemy";
-                CompEffect S_B2 = new CompEffect(true, ElementImbue.Lightning, 5, false, false, true);
+                AbilityEffect S_B1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 280, 50, AbilityTarget.SingleTargetEnemy, 9);
+                S_B1.Text = "Lightning physical damage (280%) with ignore DEF (50%) to one enemy";
+                AbilityEffect S_B2 = AbilityEffect.CreateElementImbueEffect(true, ElementImbue.Lightning, 5, AbilityTarget.Caster);
                 S_B2.Text = "Add lightning element to physical attacks for 5 turns to caster";
-                CompEffect S_B3 = new CompEffect(true, 15, 0, 0, false, false, true);
+                AbilityEffect S_B3 = AbilityEffect.CreateLimitGaugeEffect(true, 15, 0, 0, AbilityTarget.Caster);
                 S_B3.Text = "Increase LB gauge (15) to caster";
-                UnitCompActive S_B = new UnitCompActive(6, 16, "Icon-Storm_Brand", "Storm Brand", 35);
+                UnitAbility S_B = new UnitAbility(6, 16, "Icon-Storm_Brand", "Storm Brand", 35);
                 S_B.AddCompEffect(S_B1);
                 S_B.AddCompEffect(S_B2);
                 S_B.AddCompEffect(S_B3);
                 u.AddAbility(S_B);
             }
+
+            // ---- Storm Calling
+            {
+                AbilityEffect S_C1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 430, 0, AbilityTarget.SingleTargetEnemy, 8);
+                S_C1.Text = "Physical damage (430%) to one enemy";
+                AbilityEffect S_C2 = AbilityEffect.CreateHealHPEffect(true, 2500, AbilityEffect.GetHealHPObject(0, 0), 0, AbilityTarget.Caster);
+                S_C2.AddHealMPToAbility(true, 65, AbilityEffect.GetHealMPObject(0, 0), 0, AbilityTarget.Caster);
+                S_C2.Text = "Restore HP (2500) and MP (65) to caster";
+                AbilityEffect S_C3 = AbilityEffect.CreateLimitGaugeEffect(true, 10, 0, 0, AbilityTarget.Caster);
+                S_C3.Text = "Increase LB gauge (10) to caster";
+                UnitAbility S_C = new UnitAbility(6, 42, "Icon-Storm_Calling", "Storm Calling", 40);
+                S_C.AddCompEffect(S_C1);
+                S_C.AddCompEffect(S_C2);
+                S_C.AddCompEffect(S_C3);
+                u.AddAbility(S_C);
+            }
+
+            // ---- Stasis Bound
+            {
+                AbilityEffect S_B1 = AbilityEffect.CreateTauntEffect(true, 100, 2, AbilityTarget.Caster);
+                S_B1.Text = "Increase chance of being targeted (100%) for 2 turns to caster";
+                AbilityEffect S_B2 = AbilityEffect.CreateMitigationEffect(true, TypeMitigation.Physical, 20, 2, AbilityTarget.Caster);
+                S_B2.Text = "Mitigate physical damage taken (20%) for 2 turns to caster";
+                UnitAbility S_B = new UnitAbility(6, 65, "Icon-Stasis_Bound", "Stasis Bound", 30);
+                S_B.AddCompEffect(S_B1);
+                S_B.AddCompEffect(S_B2);
+                u.AddAbility(S_B);
+            }
+
+            // ---- Demagnetizing Strike
+            {
+                AbilityEffect D_S1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 350, 50, AbilityTarget.SingleTargetEnemy, 9);
+                D_S1.Text = "Physical damage (350%) with ignore DEF (50%) to one enemy";
+                AbilityEffect D_S2 = AbilityEffect.CreateDebuffElementEffect(true, ElementDebuffed.Lightning, 75, 3, AbilityTarget.SingleTargetEnemy);
+                D_S2.Text = "Decrease lightning resistance (75%) for 3 turns to one enemy";
+                AbilityEffect D_S3 = AbilityEffect.CreateLimitGaugeEffect(true, 15, 0, 0, AbilityTarget.Caster);
+                D_S3.Text = "Increase LB gauge (15) to caster";
+                UnitAbility D_S = new UnitAbility(6, 74, "Icon-Demagnetizing_Strike", "Demagnetizing Strike", 38);
+                D_S.AddCompEffect(D_S1);
+                D_S.AddCompEffect(D_S2);
+                D_S.AddCompEffect(D_S3);
+                u.AddAbility(D_S);
+            }
+
+            // ---- Electric Charge
+            {
+                List<UnitAbility> abilities = new List<UnitAbility>();
+                AbilityEffect E_C1 = AbilityEffect.CreateMultipleSkillEffect(true, 2, abilities);
+                E_C1.Text = "Use Bolting Strike, Combat Overdrive, Demagnetizing Strike, Shatter Arms, Shatter Guard, Shock Embrace, Shock Reflex, Storm Brand, Storm Calling, Storm Clouds twice in one turn";
+                UnitAbility E_C = new UnitAbility(6, 100, "Icon-Electric_Charge", "Electric Charge", 0);
+                E_C.AddCompEffect(E_C1);
+                u.AddAbility(E_C);
+            }
+
+            // ---- Combat Overdrive
+            {
+                List<StatBuffCoef> buffCoefs = new List<StatBuffCoef>(); buffCoefs.Add(AbilityEffect.GetBuffObject(StatsBuffed.ATK, 200));
+                AbilityEffect C_O1 = AbilityEffect.CreateBuffAlliesEffect(true, buffCoefs, 3, AbilityTarget.Caster);
+                C_O1.Text = "Increase ATK (200%) for 3 turns to caster";
+                List<UnitAbility> abilities = new List<UnitAbility>();
+                AbilityEffect C_O2 = AbilityEffect.CreateAbilityCoeffUpEffect(true, 150, abilities, 4, false, AbilityTarget.Caster);
+                C_O2.Text = "Increase modifier (150%) for 4 turns to caster (can't be dispelled): Demagnetizing Strike, Static Barrage, Storm Brand, Storm Calling";
+                List<UnitAbility> abilities2 = new List<UnitAbility>();
+                AbilityEffect C_O3 = AbilityEffect.CreateGiveAbilityEffect(true, abilities2, 2, AbilityTarget.Caster);
+                C_O3.Text = "Enable skill for 2 turns to caster : Tempest Charge";
+                UnitAbility C_O = new UnitAbility(6, 100, "Icon-Combat_Overdrive", "Combat Overdrive", 48);
+                C_O.AddCompEffect(C_O1);
+                C_O.AddCompEffect(C_O2);
+                C_O.AddCompEffect(C_O3);
+                u.AddAbility(C_O);
+            }
+
+            // ---- Shock Embrace
+            {
+                AbilityEffect S_E1 = AbilityEffect.CreateCooldownEffect(true, 5, true);
+                S_E1.Text = "[ 5 tuns cooldown, available on turn 1 ]";
+                AbilityEffect S_E2 = AbilityEffect.CreateDebuffElementEffect(true, ElementDebuffed.Lightning, 100, 5, AbilityTarget.AreaOfEffectEnemies);
+                S_E2.Text = "Decrease lightning resistance (100%) for 5 turns to all enemies";
+                AbilityEffect S_E3 = AbilityEffect.CreateElementImbueEffect(true, ElementImbue.Lightning, 5, AbilityTarget.Caster);
+                S_E3.Text = "Add lightning element to physical attacks for 5 turns to caster";
+                AbilityEffect S_E4 = AbilityEffect.CreateLimitGaugeEffect(true, 20, 0, 0, AbilityTarget.Caster);
+                S_E4.Text = "Increase LB Gauge (20) to caster";
+                List<UnitAbility> abilities = new List<UnitAbility>();
+                AbilityEffect S_E5 = AbilityEffect.CreateGiveAbilityEffect(true, abilities, 4, AbilityTarget.Caster);
+                S_E5.Text = "Enable skill for 4 turns to caster : Tempest Charge";
+                UnitAbility S_E = new UnitAbility(7, 105, "Icon-Shock_Embrace", "Shock Embrace", 100);
+                S_E.AddCompEffect(S_E1);
+                S_E.AddCompEffect(S_E2);
+                S_E.AddCompEffect(S_E3);
+                S_E.AddCompEffect(S_E4);
+                S_E.AddCompEffect(S_E5);
+                u.AddAbility(S_E);
+            }
+
+            // ---- Storm Clouds
+            {
+                AbilityEffect S_C1 = AbilityEffect.CreateCooldownEffect(true, 4, false);
+                S_C1.Text = "[ 4 turns cooldown, available on turn 4 ]";
+                AbilityEffect S_C2 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 0, AbilityTarget.SingleTargetEnemy, 8);
+                S_C2.Text = "Physical damage (1100%) to one enemy";
+                List<UnitAbility> abilities = new List<UnitAbility>();
+                AbilityEffect S_C3 = AbilityEffect.CreateAbilityCoeffUpEffect(true, 300, abilities, 2, false, AbilityTarget.Caster);
+                S_C3.Text = "Increase modifier (300%) for 2 turns to caster (can't be dispelled): Storm Calling";
+                AbilityEffect S_C4 = AbilityEffect.CreateLimitGaugeEffect(true, 30, 0, 0, AbilityTarget.Caster);
+                S_C4.Text = "Increase LB Gauge (30) to caster";
+                UnitAbility S_C = new UnitAbility(7, 105, "Icon-Storm_Calling", "Storm Calling", 88);
+                S_C.AddCompEffect(S_C1);
+                S_C.AddCompEffect(S_C2);
+                S_C.AddCompEffect(S_C3);
+                S_C.AddCompEffect(S_C4);
+                u.AddAbility(S_C);
+            }
+
+            // ---- Bolting Strike
+            {
+                AbilityEffect B_S1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 400, 50, AbilityTarget.AreaOfEffectEnemies, 9);
+                B_S1.Text = "Physical damage (400%) with ignore DEF (50%) to all enemies";
+                List<StatDebuffCoef> statsDebuff = new List<StatDebuffCoef>(); statsDebuff.Add(AbilityEffect.GetDebuffObject(StatsDebuffed.DEF, 60));
+                AbilityEffect B_S2 = AbilityEffect.CreateDebuffEnemyEffect(true, statsDebuff, 5, AbilityTarget.AreaOfEffectEnemies);
+                B_S2.Text = "Decrease DEF (60%) for 5 turns to all enemies";
+                AbilityEffect B_S3 = AbilityEffect.CreateLimitGaugeEffect(true, 20, 0, 0, AbilityTarget.Caster);
+                B_S3.Text = "Increase LB Gauge (20) to caster";
+                UnitAbility B_S = new UnitAbility(7, 110, "Icon-Bolting_Strike", "Bolting Strike", 42);
+                B_S.AddCompEffect(B_S1);
+                B_S.AddCompEffect(B_S2);
+                B_S.AddCompEffect(B_S3);
+                u.AddAbility(B_S);
+            }
+            #endregion
+
+
+            #region Passive
+
+            // ---- Unstoppable Fervor
+            {
+                PassiveEffect U_F1 = PassiveEffect.CreateElementResistanceEffect(true, ElementResistance.Earth, 50);
+                U_F1.Text = "Increase earth resistance (50%)";
+                PassiveEffect U_F2 = PassiveEffect.CreateAilmentResistanceEffect(true, AilmentResistance.Paralysis | AilmentResistance.Petrification, 100);
+                U_F2.Text = "Increase resistance to paralyse and petrify (100%)";
+                PassiveEffect U_F3 = PassiveEffect.CreateAilmentResistanceEffect(true, AilmentResistance.Stop | AilmentResistance.Charm, 100);
+                U_F3.Text = "Increase resistance to stop and charm (100%)";
+                UnitPassive U_F = new UnitPassive(5, 26, "Icon-Unstoppable_Fervor", "Unstoppable Fervor");
+                U_F.AddPassiveEffect(U_F1);
+                U_F.AddPassiveEffect(U_F2);
+                U_F.AddPassiveEffect(U_F3);
+                u.AddPassive(U_F);
+            }
+
             #endregion
 
             return u;
@@ -417,13 +565,13 @@ namespace FFBE_Soft
         }
 
 
-        private void CreateAbilityGridData(List<UnitCompActive> unitComps, DataGridView gridView)
+        private void CreateAbilityGridData(List<UnitAbility> unitComps, DataGridView gridView)
         {/*
             Console.WriteLine(gridView.AutoSizeRowsMode);
             gridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             Console.WriteLine(gridView.AutoSizeRowsMode); */
 
-            foreach (UnitCompActive unitComp in unitComps)
+            foreach (UnitAbility unitComp in unitComps)
             {
                 gridView.Rows.Add(); // On créée une nouvelle ligne vide
                 DataGridViewRow row = (DataGridViewRow)gridView.Rows[gridView.Rows.GetLastRow(DataGridViewElementStates.Visible)]; // On récupère la dernière ligne

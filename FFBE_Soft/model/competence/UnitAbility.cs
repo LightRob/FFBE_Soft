@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FFBE_Soft.model.competence
 {
-    class UnitCompActive
+    class UnitAbility
     {
         #region Attributs
         public byte Star { get; set; }
@@ -17,7 +17,7 @@ namespace FFBE_Soft.model.competence
 
         public string Name { get; set; }
 
-        public List<CompEffect> CompEffect { get; set; }
+        public List<AbilityEffect> CompEffect { get; set; }
 
         /// <summary>
         /// Number of MP needed for the ability
@@ -26,7 +26,7 @@ namespace FFBE_Soft.model.competence
         #endregion
 
         #region Methodes
-        public void AddCompEffect(CompEffect compEffect)
+        public void AddCompEffect(AbilityEffect compEffect)
         {
             if(CompEffect != null)
             {
@@ -37,7 +37,7 @@ namespace FFBE_Soft.model.competence
         public string GetEffectsToString()
         {
             string s = "";
-            foreach (CompEffect comp in CompEffect)
+            foreach (AbilityEffect comp in CompEffect)
             {
                 if (!s.Equals(""))
                     s += Environment.NewLine;
@@ -51,7 +51,7 @@ namespace FFBE_Soft.model.competence
         public string GetHitsToString()
         {
             string s = "";
-            foreach (CompEffect comp in CompEffect)
+            foreach (AbilityEffect comp in CompEffect)
             {
                 if(comp.Hits > 0)
                 { 
@@ -66,10 +66,10 @@ namespace FFBE_Soft.model.competence
         #endregion
 
         #region Constructors
-        public UnitCompActive (byte star, byte level, string imgURL, string name, short mpCost)
+        public UnitAbility (byte star, byte level, string imgURL, string name, short mpCost)
         {
             this.Star = star; this.Level = level; this.ImgURL = imgURL; this.Name = name; this.MPCost = mpCost;
-            this.CompEffect = new List<CompEffect>();
+            this.CompEffect = new List<AbilityEffect>();
         }
         #endregion
     }

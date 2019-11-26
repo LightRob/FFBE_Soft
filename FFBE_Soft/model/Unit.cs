@@ -101,11 +101,16 @@ namespace FFBE_Soft.model
         /// <summary>
         /// Actives abilities of the unit
         /// </summary>
-        public List<UnitCompActive> Abilities { get; set; }
+        public List<UnitAbility> Abilities { get; set; }
+
+        /// <summary>
+        /// Passives of the unit
+        /// </summary>
+        public List<UnitPassive> Passives { get; set; }
         #endregion
 
         #region Constructeurs
-        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitCompActive>(); }
+        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); }
         #endregion
 
         #region Methods
@@ -116,13 +121,12 @@ namespace FFBE_Soft.model
         public void AddStats(UnitStats s) { Stats.Add(s); }
 
         
-
-
         /// <summary>
         /// Add a UnitStatsMaxUp object for a star
         /// </summary>
         /// <param name="s">UnitStatsMaxUp object</param>
         public void AddStatsMaxUp(UnitStatsMaxUp s) { StatsMaxUp.Add(s); }
+
 
         /// <summary>
         /// Return a string of the weapon
@@ -170,6 +174,7 @@ namespace FFBE_Soft.model
             }
         }
 
+
         /// <summary>
         /// Return a list of strings of all weapons in the enum
         /// </summary>
@@ -202,6 +207,7 @@ namespace FFBE_Soft.model
             return list;
         }
 
+
         /// <summary>
         /// Return a string of the armor
         /// </summary>
@@ -231,6 +237,8 @@ namespace FFBE_Soft.model
                     return "---";
             }
         }
+
+
         /// <summary>
         /// Return a list of strings of all armors in the enum
         /// </summary>
@@ -253,14 +261,26 @@ namespace FFBE_Soft.model
             return list;
         }
 
+
         /// <summary>
         /// Add ability to the unit
         /// </summary>
         /// <param name="unitCompActive">Ability</param>
-        public void AddAbility(UnitCompActive unitCompActive)
+        public void AddAbility(UnitAbility unitCompActive)
         {
             if (Abilities != null)
                 Abilities.Add(unitCompActive);
+        }
+
+
+        /// <summary>
+        /// Addd passive to the unit
+        /// </summary>
+        /// <param name="unitPassive">Passive</param>
+        public void AddPassive(UnitPassive unitPassive)
+        {
+            if (Passives != null)
+                Passives.Add(unitPassive);
         }
         #endregion
     }

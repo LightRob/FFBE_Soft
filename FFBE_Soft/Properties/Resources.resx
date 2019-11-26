@@ -212,4 +212,8 @@
   <data name="Icon-Bolting_Strike" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Unit\Esther\Abilities\Icon-Bolting_Strike.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+
+  <data name="Icon-Unstoppable_Fervor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Unit\Esther\Passives\Icon-Unstoppable_Fervor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

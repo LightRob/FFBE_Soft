@@ -353,6 +353,16 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Unstoppable_Fervor {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Unstoppable_Fervor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Water_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Water_Resistance", resourceCulture);

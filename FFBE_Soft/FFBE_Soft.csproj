@@ -155,9 +155,14 @@
     <Content Include="Resources\Element\Resistance\Icon-Light_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Water_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Wind_Resistance.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_273.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_275.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_276.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_277.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_279.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_280.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_76.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_77.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_69.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_63.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_8.png" />

@@ -110,7 +110,7 @@ namespace FFBE_Soft.model
         #endregion
 
         #region Constructeurs
-        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); }
+        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); this.Passives = new List<UnitPassive>(); }
         #endregion
 
         #region Methods

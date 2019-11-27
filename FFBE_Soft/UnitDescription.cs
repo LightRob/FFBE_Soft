@@ -30,6 +30,7 @@ namespace FFBE_Soft
             this.CreateUnitStatMaxUpListView(Esther.Stats, Esther.StatsMaxUp, this.listView_UnitMaxUp);
             this.CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
             this.CreateAbilityGridData(Esther.Abilities, this.dataGridView_Ability);
+            this.CreatePassivesGridData(Esther.Passives, this.dataGridView_Passives);
         }
 
         private Unit SetEstherBDD()
@@ -169,7 +170,7 @@ namespace FFBE_Soft
                 S_F1.Text = "Physical damage (300%) to one enemy";
                 AbilityEffect S_F2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 4, 6, AbilityTarget.Caster);
                 S_F2.Text = "Increase LB Gauge (" + S_F2.MinLimitGauge +"-" + S_F2.MaxLimitGauge + ") to caster";
-                UnitAbility S_F = new UnitAbility(5, 5, "Icon-Shock_Flash", "Shock Flash", 22);
+                UnitAbility S_F = new UnitAbility(5, 5, "Icon-Ability_272", "Shock Flash", 22);
                 S_F.AddCompEffect(S_F1);
                 S_F.AddCompEffect(S_F2);
                 u.AddAbility(S_F);
@@ -183,7 +184,7 @@ namespace FFBE_Soft
                 S_A1.Text = "Decrease ATK/MAG (50%) for 5 turms to one enemy";
                 AbilityEffect S_A2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 6, 8, AbilityTarget.Caster);
                 S_A2.Text = "Increase LB Gauge (6-8) to caster";
-                UnitAbility S_A = new UnitAbility(5, 38, "Icon-Shatter_Arms", "Shatter Arms", 38);
+                UnitAbility S_A = new UnitAbility(5, 38, "Icon-Ability_278", "Shatter Arms", 38);
                 S_A.AddCompEffect(S_A1);
                 S_A.AddCompEffect(S_A2);
                 u.AddAbility(S_A);
@@ -196,7 +197,7 @@ namespace FFBE_Soft
                 S_G1.Text = "Decrease DEF/PSY (50%) for 5 turms to one enemy";
                 AbilityEffect S_G2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 6, 8, AbilityTarget.Caster);
                 S_G2.Text = "Increase LB Gauge (6-8) to caster";
-                UnitAbility S_G = new UnitAbility(5, 38, "Icon-Shatter_Guard", "Shatter Guard", 38);
+                UnitAbility S_G = new UnitAbility(5, 38, "Icon-Ability_278", "Shatter Guard", 38);
                 S_G.AddCompEffect(S_G1);
                 S_G.AddCompEffect(S_G2);
                 u.AddAbility(S_G);
@@ -208,7 +209,7 @@ namespace FFBE_Soft
                 S_R1.Text = "Lightning physical damage (80%) as HP drain (50%) to one enemy";
                 AbilityEffect S_R2 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 160, 50, AbilityTarget.SingleTargetEnemy, 7);
                 S_R2.Text = "Lightning physical damage (160%) with ignore DEF (50%) to one enemy";
-                UnitAbility S_R = new UnitAbility(5, 55, "Icon-Shock_Reflex", "Shock Reflex", 45);
+                UnitAbility S_R = new UnitAbility(5, 55, "Icon-Ability_274", "Shock Reflex", 45);
                 S_R.AddCompEffect(S_R1);
                 S_R.AddCompEffect(S_R2);
                 u.AddAbility(S_R);
@@ -221,7 +222,7 @@ namespace FFBE_Soft
                 List<StatBuffCoef> statBuffs = new List<StatBuffCoef>(); statBuffs.Add(AbilityEffect.GetBuffObject(StatsBuffed.DEF, 150));
                 AbilityEffect C_P2 = AbilityEffect.CreateBuffAlliesEffect(true, statBuffs, 1, AbilityTarget.Caster);
                 C_P2.Text = "Increase DEF (150%) for 1 turn to caster";
-                UnitAbility C_P = new UnitAbility(5, 80, "Icon-Charged_Protection", "Charged Protection", 32);
+                UnitAbility C_P = new UnitAbility(5, 80, "Icon-Ability_69", "Charged Protection", 32);
                 C_P.AddCompEffect(C_P1);
                 C_P.AddCompEffect(C_P2);
                 u.AddAbility(C_P);
@@ -235,7 +236,7 @@ namespace FFBE_Soft
                 S_B2.Text = "Add lightning element to physical attacks for 5 turns to caster";
                 AbilityEffect S_B3 = AbilityEffect.CreateLimitGaugeEffect(true, 15, 0, 0, AbilityTarget.Caster);
                 S_B3.Text = "Increase LB gauge (15) to caster";
-                UnitAbility S_B = new UnitAbility(6, 16, "Icon-Storm_Brand", "Storm Brand", 35);
+                UnitAbility S_B = new UnitAbility(6, 16, "Icon-Ability_271", "Storm Brand", 35);
                 S_B.AddCompEffect(S_B1);
                 S_B.AddCompEffect(S_B2);
                 S_B.AddCompEffect(S_B3);
@@ -251,7 +252,7 @@ namespace FFBE_Soft
                 S_C2.Text = "Restore HP (2500) and MP (65) to caster";
                 AbilityEffect S_C3 = AbilityEffect.CreateLimitGaugeEffect(true, 10, 0, 0, AbilityTarget.Caster);
                 S_C3.Text = "Increase LB gauge (10) to caster";
-                UnitAbility S_C = new UnitAbility(6, 42, "Icon-Storm_Calling", "Storm Calling", 40);
+                UnitAbility S_C = new UnitAbility(6, 42, "Icon-Ability_272", "Storm Calling", 40);
                 S_C.AddCompEffect(S_C1);
                 S_C.AddCompEffect(S_C2);
                 S_C.AddCompEffect(S_C3);
@@ -264,7 +265,7 @@ namespace FFBE_Soft
                 S_B1.Text = "Increase chance of being targeted (100%) for 2 turns to caster";
                 AbilityEffect S_B2 = AbilityEffect.CreateMitigationEffect(true, TypeMitigation.Physical, 20, 2, AbilityTarget.Caster);
                 S_B2.Text = "Mitigate physical damage taken (20%) for 2 turns to caster";
-                UnitAbility S_B = new UnitAbility(6, 65, "Icon-Stasis_Bound", "Stasis Bound", 30);
+                UnitAbility S_B = new UnitAbility(6, 65, "Icon-Ability_94", "Stasis Bound", 30);
                 S_B.AddCompEffect(S_B1);
                 S_B.AddCompEffect(S_B2);
                 u.AddAbility(S_B);
@@ -278,7 +279,7 @@ namespace FFBE_Soft
                 D_S2.Text = "Decrease lightning resistance (75%) for 3 turns to one enemy";
                 AbilityEffect D_S3 = AbilityEffect.CreateLimitGaugeEffect(true, 15, 0, 0, AbilityTarget.Caster);
                 D_S3.Text = "Increase LB gauge (15) to caster";
-                UnitAbility D_S = new UnitAbility(6, 74, "Icon-Demagnetizing_Strike", "Demagnetizing Strike", 38);
+                UnitAbility D_S = new UnitAbility(6, 74, "Icon-Ability_271", "Demagnetizing Strike", 38);
                 D_S.AddCompEffect(D_S1);
                 D_S.AddCompEffect(D_S2);
                 D_S.AddCompEffect(D_S3);
@@ -290,7 +291,7 @@ namespace FFBE_Soft
                 List<UnitAbility> abilities = new List<UnitAbility>();
                 AbilityEffect E_C1 = AbilityEffect.CreateMultipleSkillEffect(true, 2, abilities);
                 E_C1.Text = "Use Bolting Strike, Combat Overdrive, Demagnetizing Strike, Shatter Arms, Shatter Guard, Shock Embrace, Shock Reflex, Storm Brand, Storm Calling, Storm Clouds twice in one turn";
-                UnitAbility E_C = new UnitAbility(6, 100, "Icon-Electric_Charge", "Electric Charge", 0);
+                UnitAbility E_C = new UnitAbility(6, 100, "Icon-Ability_8", "Electric Charge", 0);
                 E_C.AddCompEffect(E_C1);
                 u.AddAbility(E_C);
             }
@@ -306,7 +307,7 @@ namespace FFBE_Soft
                 List<UnitAbility> abilities2 = new List<UnitAbility>();
                 AbilityEffect C_O3 = AbilityEffect.CreateGiveAbilityEffect(true, abilities2, 2, AbilityTarget.Caster);
                 C_O3.Text = "Enable skill for 2 turns to caster : Tempest Charge";
-                UnitAbility C_O = new UnitAbility(6, 100, "Icon-Combat_Overdrive", "Combat Overdrive", 48);
+                UnitAbility C_O = new UnitAbility(6, 100, "Icon-Ability_63", "Combat Overdrive", 48);
                 C_O.AddCompEffect(C_O1);
                 C_O.AddCompEffect(C_O2);
                 C_O.AddCompEffect(C_O3);
@@ -326,7 +327,7 @@ namespace FFBE_Soft
                 List<UnitAbility> abilities = new List<UnitAbility>();
                 AbilityEffect S_E5 = AbilityEffect.CreateGiveAbilityEffect(true, abilities, 4, AbilityTarget.Caster);
                 S_E5.Text = "Enable skill for 4 turns to caster : Tempest Charge";
-                UnitAbility S_E = new UnitAbility(7, 105, "Icon-Shock_Embrace", "Shock Embrace", 100);
+                UnitAbility S_E = new UnitAbility(7, 105, "Icon-Ability_105", "Shock Embrace", 100);
                 S_E.AddCompEffect(S_E1);
                 S_E.AddCompEffect(S_E2);
                 S_E.AddCompEffect(S_E3);
@@ -346,7 +347,7 @@ namespace FFBE_Soft
                 S_C3.Text = "Increase modifier (300%) for 2 turns to caster (can't be dispelled): Storm Calling";
                 AbilityEffect S_C4 = AbilityEffect.CreateLimitGaugeEffect(true, 30, 0, 0, AbilityTarget.Caster);
                 S_C4.Text = "Increase LB Gauge (30) to caster";
-                UnitAbility S_C = new UnitAbility(7, 105, "Icon-Storm_Calling", "Storm Calling", 88);
+                UnitAbility S_C = new UnitAbility(7, 105, "Icon-Ability_105", "Storm Clouds", 88);
                 S_C.AddCompEffect(S_C1);
                 S_C.AddCompEffect(S_C2);
                 S_C.AddCompEffect(S_C3);
@@ -363,7 +364,7 @@ namespace FFBE_Soft
                 B_S2.Text = "Decrease DEF (60%) for 5 turns to all enemies";
                 AbilityEffect B_S3 = AbilityEffect.CreateLimitGaugeEffect(true, 20, 0, 0, AbilityTarget.Caster);
                 B_S3.Text = "Increase LB Gauge (20) to caster";
-                UnitAbility B_S = new UnitAbility(7, 110, "Icon-Bolting_Strike", "Bolting Strike", 42);
+                UnitAbility B_S = new UnitAbility(7, 110, "Icon-Ability_271", "Bolting Strike", 42);
                 B_S.AddCompEffect(B_S1);
                 B_S.AddCompEffect(B_S2);
                 B_S.AddCompEffect(B_S3);
@@ -377,16 +378,39 @@ namespace FFBE_Soft
             // ---- Unstoppable Fervor
             {
                 PassiveEffect U_F1 = PassiveEffect.CreateElementResistanceEffect(true, ElementResistance.Earth, 50);
-                U_F1.Text = "Increase earth resistance (50%)";
                 PassiveEffect U_F2 = PassiveEffect.CreateAilmentResistanceEffect(true, AilmentResistance.Paralysis | AilmentResistance.Petrification, 100);
-                U_F2.Text = "Increase resistance to paralyse and petrify (100%)";
                 PassiveEffect U_F3 = PassiveEffect.CreateAilmentResistanceEffect(true, AilmentResistance.Stop | AilmentResistance.Charm, 100);
-                U_F3.Text = "Increase resistance to stop and charm (100%)";
-                UnitPassive U_F = new UnitPassive(5, 26, "Icon-Unstoppable_Fervor", "Unstoppable Fervor");
+                UnitPassive U_F = new UnitPassive(5, 26, "Icon-Ability_19", "Unstoppable Fervor");
                 U_F.AddPassiveEffect(U_F1);
                 U_F.AddPassiveEffect(U_F2);
                 U_F.AddPassiveEffect(U_F3);
                 u.AddPassive(U_F);
+            }
+
+            // ---- Terra Resonance
+            {
+                PassiveEffect T_R1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP | StatistiquesBuff.DEF, 20);
+                PassiveEffect T_R2 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Physical, 100);
+                UnitPassive T_R = new UnitPassive(5, 42, "Icon-Ability_275", "Terra Resonance");
+                T_R.AddPassiveEffect(T_R1);
+                T_R.AddPassiveEffect(T_R2);
+                u.AddPassive(T_R);
+            }
+
+            // ---- Ionized Fragment
+            {
+                PassiveEffect I_F1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK | StatistiquesBuff.PSY, 30);
+                UnitPassive I_F = new UnitPassive(5, 64, "Icon-Ability_276", "Ionized Fragment");
+                I_F.AddPassiveEffect(I_F1);
+                u.AddPassive(I_F);
+            }
+
+            // ---- Overcharge
+            {
+                PassiveEffect O1 = PassiveEffect.CreateIgnoreFatalDamageEffect(true, 80, 10, 1);
+                UnitPassive O = new UnitPassive(6, 1, "Icon-Ability_277", "Overcharge");
+                O.AddPassiveEffect(O1);
+                u.AddPassive(O);
             }
 
             #endregion
@@ -566,11 +590,7 @@ namespace FFBE_Soft
 
 
         private void CreateAbilityGridData(List<UnitAbility> unitComps, DataGridView gridView)
-        {/*
-            Console.WriteLine(gridView.AutoSizeRowsMode);
-            gridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
-            Console.WriteLine(gridView.AutoSizeRowsMode); */
-
+        {
             foreach (UnitAbility unitComp in unitComps)
             {
                 gridView.Rows.Add(); // On créée une nouvelle ligne vide
@@ -578,7 +598,7 @@ namespace FFBE_Soft
                 row.Cells[0].Value = unitComp.Star;
                 row.Cells[1].Value = unitComp.Level;
                 //row.Cells[2].Value = (Image)rm.GetObject(unitComp.ImgURL);
-                if(unitComp.ImgURL != "icon") { 
+                if(!unitComp.ImgURL.Equals("icon")) { 
                     try
                     {
                         MemoryStream ms = new MemoryStream();
@@ -601,6 +621,35 @@ namespace FFBE_Soft
                 row.Cells[6].Value = unitComp.MPCost;
             }
 
+        }
+
+
+        private void CreatePassivesGridData(List<UnitPassive> unitPassives, DataGridView gridView)
+        {
+            foreach (UnitPassive unitPassive in unitPassives)
+            {
+                gridView.Rows.Add(); // On créée une nouvelle ligne vide
+                DataGridViewRow row = (DataGridViewRow)gridView.Rows[gridView.Rows.GetLastRow(DataGridViewElementStates.Visible)];
+                row.Cells[0].Value = unitPassive.Star;
+                row.Cells[1].Value = unitPassive.Level;
+                if(!unitPassive.ImgURL.Equals("icon"))
+                {
+                    try
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        Image image = (Image)rm.GetObject(unitPassive.ImgURL);
+                        image.Save(ms, image.RawFormat);
+                        byte[] img = ms.ToArray();
+                        row.Cells[2].Value = img;
+                    } catch(Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                }
+
+                row.Cells[3].Value = unitPassive.Name;
+                row.Cells[4].Value = unitPassive.GetEffectsToString();
+            }
         }
 
         private void CreateUnitResTableView(UnitResistance res, TableLayoutPanel table)

@@ -11,7 +11,6 @@ C:\Users\robin\source\repos\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.UnitDescript
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Debug\FFBE_Soft.exe.config
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Debug\FFBE_Soft.exe
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Debug\FFBE_Soft.pdb
-C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csprojAssemblyReference.cache
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.Form1.resources
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.Properties.Resources.resources
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.UnitDescription.resources
@@ -23,3 +22,4 @@ C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.PassifTe
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.StatsTestUserControl.resources
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Debug\WindowsBase.dll
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csproj.CopyComplete
+C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csprojAssemblyReference.cache

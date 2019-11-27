@@ -155,26 +155,24 @@
     <Content Include="Resources\Element\Resistance\Icon-Light_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Water_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Wind_Resistance.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Bolting_Strike.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Charged_Protection.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Combat_Overdrive.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Demagnetizing_Strike.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Electric_Charge.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shatter_Arms.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shatter_Guard.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shock_Embrace.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Shock_Reflex.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Stasis_Bound.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Storm_Brand.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Storm_Calling.png" />
-    <Content Include="Resources\Unit\Esther\Abilities\Icon-Storm_Clouds.png" />
-    <Content Include="Resources\Unit\Esther\Passives\Icon-Unstoppable_Fervor.png" />
-    <None Include="Resources\Unit\Esther\Abilities\Icon-Shock_Flash.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_275.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_276.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_277.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_69.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_63.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_8.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_278.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_105.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_274.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_94.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_271.png" />
+    <Content Include="Resources\Icon-Passives\Icon-Ability_19.png" />
+    <None Include="Resources\Icon_Abilities\Icon-Ability_272.png" />
     <None Include="Resources\Element\Resistance\Icon-Lightning_Resistance.png" />
     <None Include="Resources\Element\Resistance\Icon-Ice_Resistance.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Ability\" />
+    <Folder Include="Resources\Unit\Esther\Passives\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

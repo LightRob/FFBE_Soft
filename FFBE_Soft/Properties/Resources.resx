@@ -170,50 +170,46 @@
     <value>..\Resources\Ailment\Resistance\Icon-Paralysis_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   
-  <data name="Icon-Shock_Flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Shock_Flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_272" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_272.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Shatter_Arms" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Shatter_Arms.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_278" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_278.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Shatter_Guard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Shatter_Guard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_274" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_274.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Shock_Reflex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Shock_Reflex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_69" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_69.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Charged_Protection" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Charged_Protection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_271" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_271.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Storm_Brand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Storm_Brand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_94" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_94.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Storm_Calling" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Storm_Calling.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Stasis_Bound" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Stasis_Bound.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_63" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_63.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Demagnetizing_Strike" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Demagnetizing_Strike.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_105" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_105.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Electric_Charge" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Electric_Charge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  
+  
+    
+  <data name="Icon-Ability_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon-Passives\Icon-Ability_19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Combat_Overdrive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Combat_Overdrive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_275" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon-Passives\Icon-Ability_275.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Shock_Embrace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Shock_Embrace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_276" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon-Passives\Icon-Ability_276.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Storm_Clouds" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Storm_Clouds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-Bolting_Strike" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Abilities\Icon-Bolting_Strike.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-
-  <data name="Icon-Unstoppable_Fervor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Unit\Esther\Passives\Icon-Unstoppable_Fervor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon-Ability_277" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon-Passives\Icon-Ability_277.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

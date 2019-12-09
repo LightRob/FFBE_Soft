@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_UnitName = new System.Windows.Forms.Label();
             this.tabControl_Unit = new System.Windows.Forms.TabControl();
             this.tabPage_UnitStats = new System.Windows.Forms.TabPage();
@@ -46,7 +47,6 @@
             this.Effect_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hits_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox_UnitIdle = new System.Windows.Forms.PictureBox();
             this.tabPage_Passives = new System.Windows.Forms.TabPage();
             this.dataGridView_Passives = new System.Windows.Forms.DataGridView();
             this.MinRariryPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,13 +54,24 @@
             this.IconPassives_Header = new System.Windows.Forms.DataGridViewImageColumn();
             this.NamePassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EffectPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox_UnitIdle = new System.Windows.Forms.PictureBox();
+            this.tabPage_Magic = new System.Windows.Forms.TabPage();
+            this.tabPage_Limit = new System.Windows.Forms.TabPage();
+            this.dataGridView_Limit = new System.Windows.Forms.DataGridView();
+            this.RarityLB_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameLB_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EffectLB_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HitsLB_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostLB_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl_Unit.SuspendLayout();
             this.tabPage_UnitStats.SuspendLayout();
             this.tabPage_Abilities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ability)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UnitIdle)).BeginInit();
             this.tabPage_Passives.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Passives)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UnitIdle)).BeginInit();
+            this.tabPage_Limit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Limit)).BeginInit();
             this.SuspendLayout();
             // 
             // label_UnitName
@@ -79,6 +90,8 @@
             this.tabControl_Unit.Controls.Add(this.tabPage_UnitStats);
             this.tabControl_Unit.Controls.Add(this.tabPage_Abilities);
             this.tabControl_Unit.Controls.Add(this.tabPage_Passives);
+            this.tabControl_Unit.Controls.Add(this.tabPage_Magic);
+            this.tabControl_Unit.Controls.Add(this.tabPage_Limit);
             this.tabControl_Unit.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl_Unit.Location = new System.Drawing.Point(223, 0);
             this.tabControl_Unit.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -114,7 +127,7 @@
             this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel_Resistance.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel_Resistance.Location = new System.Drawing.Point(10, 377);
-            this.tableLayoutPanel_Resistance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel_Resistance.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel_Resistance.Name = "tableLayoutPanel_Resistance";
             this.tableLayoutPanel_Resistance.RowCount = 6;
             this.tableLayoutPanel_Resistance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -273,15 +286,6 @@
             this.Cost_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Cost_Header.Width = 70;
             // 
-            // pictureBox_UnitIdle
-            // 
-            this.pictureBox_UnitIdle.Location = new System.Drawing.Point(17, 75);
-            this.pictureBox_UnitIdle.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pictureBox_UnitIdle.Name = "pictureBox_UnitIdle";
-            this.pictureBox_UnitIdle.Size = new System.Drawing.Size(147, 149);
-            this.pictureBox_UnitIdle.TabIndex = 1;
-            this.pictureBox_UnitIdle.TabStop = false;
-            // 
             // tabPage_Passives
             // 
             this.tabPage_Passives.Controls.Add(this.dataGridView_Passives);
@@ -355,6 +359,97 @@
             this.EffectPassives_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.EffectPassives_Header.Width = 650;
             // 
+            // pictureBox_UnitIdle
+            // 
+            this.pictureBox_UnitIdle.Location = new System.Drawing.Point(17, 75);
+            this.pictureBox_UnitIdle.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox_UnitIdle.Name = "pictureBox_UnitIdle";
+            this.pictureBox_UnitIdle.Size = new System.Drawing.Size(147, 149);
+            this.pictureBox_UnitIdle.TabIndex = 1;
+            this.pictureBox_UnitIdle.TabStop = false;
+            // 
+            // tabPage_Magic
+            // 
+            this.tabPage_Magic.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_Magic.Name = "tabPage_Magic";
+            this.tabPage_Magic.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Magic.Size = new System.Drawing.Size(1034, 640);
+            this.tabPage_Magic.TabIndex = 3;
+            this.tabPage_Magic.Text = "Magies";
+            this.tabPage_Magic.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_Limit
+            // 
+            this.tabPage_Limit.Controls.Add(this.dataGridView_Limit);
+            this.tabPage_Limit.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_Limit.Name = "tabPage_Limit";
+            this.tabPage_Limit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Limit.Size = new System.Drawing.Size(1034, 640);
+            this.tabPage_Limit.TabIndex = 4;
+            this.tabPage_Limit.Text = "Limit Burst";
+            this.tabPage_Limit.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView_Limit
+            // 
+            this.dataGridView_Limit.AllowUserToAddRows = false;
+            this.dataGridView_Limit.AllowUserToDeleteRows = false;
+            this.dataGridView_Limit.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView_Limit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Limit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RarityLB_Header,
+            this.NameLB_Header,
+            this.EffectLB_Header,
+            this.HitsLB_Header,
+            this.CostLB_Header});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Limit.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView_Limit.Location = new System.Drawing.Point(7, 7);
+            this.dataGridView_Limit.Name = "dataGridView_Limit";
+            this.dataGridView_Limit.ReadOnly = true;
+            this.dataGridView_Limit.Size = new System.Drawing.Size(1019, 625);
+            this.dataGridView_Limit.TabIndex = 0;
+            // 
+            // RarityLB_Header
+            // 
+            this.RarityLB_Header.HeaderText = "Rarity";
+            this.RarityLB_Header.Name = "RarityLB_Header";
+            this.RarityLB_Header.ReadOnly = true;
+            this.RarityLB_Header.Width = 50;
+            // 
+            // NameLB_Header
+            // 
+            this.NameLB_Header.HeaderText = "Name";
+            this.NameLB_Header.Name = "NameLB_Header";
+            this.NameLB_Header.ReadOnly = true;
+            this.NameLB_Header.Width = 150;
+            // 
+            // EffectLB_Header
+            // 
+            this.EffectLB_Header.HeaderText = "Effect";
+            this.EffectLB_Header.Name = "EffectLB_Header";
+            this.EffectLB_Header.ReadOnly = true;
+            this.EffectLB_Header.Width = 680;
+            // 
+            // HitsLB_Header
+            // 
+            this.HitsLB_Header.HeaderText = "Hits";
+            this.HitsLB_Header.Name = "HitsLB_Header";
+            this.HitsLB_Header.ReadOnly = true;
+            this.HitsLB_Header.Width = 50;
+            // 
+            // CostLB_Header
+            // 
+            this.CostLB_Header.HeaderText = "Cost";
+            this.CostLB_Header.Name = "CostLB_Header";
+            this.CostLB_Header.ReadOnly = true;
+            this.CostLB_Header.Width = 70;
+            // 
             // UnitDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,9 +465,11 @@
             this.tabPage_UnitStats.ResumeLayout(false);
             this.tabPage_Abilities.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ability)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UnitIdle)).EndInit();
             this.tabPage_Passives.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Passives)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UnitIdle)).EndInit();
+            this.tabPage_Limit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Limit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +501,13 @@
         private System.Windows.Forms.DataGridViewImageColumn IconPassives_Header;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamePassives_Header;
         private System.Windows.Forms.DataGridViewTextBoxColumn EffectPassives_Header;
+        private System.Windows.Forms.TabPage tabPage_Magic;
+        private System.Windows.Forms.TabPage tabPage_Limit;
+        private System.Windows.Forms.DataGridView dataGridView_Limit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RarityLB_Header;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameLB_Header;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectLB_Header;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HitsLB_Header;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostLB_Header;
     }
 }

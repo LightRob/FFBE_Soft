@@ -31,6 +31,7 @@ namespace FFBE_Soft
             this.CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
             this.CreateAbilityGridData(Esther.Abilities, this.dataGridView_Ability);
             this.CreatePassivesGridData(Esther.Passives, this.dataGridView_Passives);
+            this.CreateLimitGridData(Esther.Limits, this.dataGridView_Limit);
         }
 
         private Unit SetEstherBDD()
@@ -471,6 +472,41 @@ namespace FFBE_Soft
 
             #endregion
 
+
+            #region Limit
+
+            // ---- Raikiri 5*
+            {
+                LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 650, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 15, 3, LimitTarget.Caster);
+                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 500, 0, AbilityTarget.Caster, 1);
+                LimitEffect R_B4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
+
+                UnitLimit R_B = new UnitLimit(5, "Raikiri", 20);
+                R_B.AddLimitEffect(R_B1);
+                R_B.AddLimitEffect(R_B2);
+                R_B.AddLimitEffect(R_B3);
+                R_B.AddLimitEffect(R_B4);
+                u.AddLimit(R_B);
+
+                ///////////
+
+                LimitEffect R_M1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 850, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_M2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_M3 = LimitEffect.CreateLimitDamageUpEffect(true, 15, 3, LimitTarget.Caster);
+                LimitEffect R_M4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
+
+                UnitLimit R_M = new UnitLimit(5, "Raikiri", 20);
+                R_M.AddLimitEffect(R_M1);
+                R_M.AddLimitEffect(R_M2);
+                R_M.AddLimitEffect(R_M3);
+                R_M.AddLimitEffect(R_M4);
+                u.AddLimit(R_M);
+            }
+
+            #endregion
+
             return u;
         }
 
@@ -679,7 +715,6 @@ namespace FFBE_Soft
 
         }
 
-
         private void CreatePassivesGridData(List<UnitPassive> unitPassives, DataGridView gridView)
         {
             foreach (UnitPassive unitPassive in unitPassives)
@@ -707,6 +742,21 @@ namespace FFBE_Soft
                 row.Cells[4].Value = unitPassive.GetEffectsToString();
             }
         }
+
+        private void CreateLimitGridData(List<UnitLimit> unitLimits, DataGridView gridView)
+        {
+            foreach (UnitLimit unitLimit in unitLimits)
+            {
+                gridView.Rows.Add(); // On créée une nouvelle ligne vide
+                DataGridViewRow row = (DataGridViewRow)gridView.Rows[gridView.Rows.GetLastRow(DataGridViewElementStates.Visible)];
+                row.Cells[0].Value = unitLimit.Star;
+                row.Cells[1].Value = unitLimit.Name;
+                row.Cells[2].Value = unitLimit.GetEffectsToString();
+                row.Cells[3].Value = unitLimit.GetHitsToString();
+                row.Cells[4].Value = unitLimit.LBCost;
+            }
+        }
+
 
         private void CreateUnitResTableView(UnitResistance res, TableLayoutPanel table)
         {

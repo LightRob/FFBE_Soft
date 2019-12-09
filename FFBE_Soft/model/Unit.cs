@@ -107,10 +107,15 @@ namespace FFBE_Soft.model
         /// Passives of the unit
         /// </summary>
         public List<UnitPassive> Passives { get; set; }
+
+        /// <summary>
+        /// Limits of the unit
+        /// </summary>
+        public List<UnitLimit> Limits { get; set; }
         #endregion
 
         #region Constructeurs
-        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); this.Passives = new List<UnitPassive>(); }
+        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); this.Passives = new List<UnitPassive>(); this.Limits = new List<UnitLimit>(); }
         #endregion
 
         #region Methods
@@ -281,6 +286,16 @@ namespace FFBE_Soft.model
         {
             if (Passives != null)
                 Passives.Add(unitPassive);
+        }
+
+        /// <summary>
+        /// Addd limit to the unit
+        /// </summary>
+        /// <param name="unitLimit">Passive</param>
+        public void AddLimit(UnitLimit unitLimit)
+        {
+            if (Limits != null)
+                Limits.Add(unitLimit);
         }
         #endregion
     }

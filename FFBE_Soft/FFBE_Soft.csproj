@@ -64,8 +64,10 @@
       <DependentUpon>FormDeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="model\competence\AbilityEffect.cs" />
+    <Compile Include="model\competence\LimitEffect.cs" />
     <Compile Include="model\competence\PassiveEffect.cs" />
     <Compile Include="model\competence\UnitAbility.cs" />
+    <Compile Include="model\competence\UnitLimit.cs" />
     <Compile Include="model\competence\UnitPassive.cs" />
     <Compile Include="model\Unit.cs" />
     <Compile Include="model\UnitMagicAffinity.cs" />

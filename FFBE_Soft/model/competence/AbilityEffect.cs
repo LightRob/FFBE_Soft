@@ -128,13 +128,7 @@ namespace FFBE_Soft.model.competence
         /// </summary>
         public string Text { get; set; }
 
-        public void AddHPDrain(byte coeff)
-        {
-            this.IsHPDrain = true;
-            this.CoeffHPDrain = coeff;
-
-            EditTextForDamageAbility();
-        }
+       
 
 
 
@@ -184,6 +178,21 @@ namespace FFBE_Soft.model.competence
         public byte CoeffHPDrain { get; set; }
 
         /// <summary>
+        /// Max time need to max le ability damage
+        /// </summary>
+        public byte TimesMaxConsecutive { get; set; }
+
+        /// <summary>
+        /// Coeff to ad at each ability
+        /// </summary>
+        public short CoeffEachConsecutive { get; set; }
+
+        /// <summary>
+        /// Max coeff to the ability
+        /// </summary>
+        public short MaxCoeffConsecutive { get; set; }
+
+        /// <summary>
         /// Target of the ability
         /// </summary>
         public AbilityTarget AbilityTargetDamage { get; set; }
@@ -227,6 +236,11 @@ namespace FFBE_Soft.model.competence
                 Text += "as HP drain (" + CoeffHPDrain + "%) ";
             }
 
+            if(TimesMaxConsecutive > 0)
+            {
+                Text += "with consecutive increase (" + TimesMaxConsecutive + "times, " + CoeffEachConsecutive + " each, " + MaxCoeffConsecutive + " max) ";
+            }
+
             switch (AbilityTargetDamage)
             {
                 case AbilityTarget.SingleTargetAlly:
@@ -251,6 +265,19 @@ namespace FFBE_Soft.model.competence
                     Text += "to nobody";
                     break;
             }
+        }
+        public void AddHPDrain(byte coeff)
+        {
+            this.IsHPDrain = true;
+            this.CoeffHPDrain = coeff;
+
+            EditTextForDamageAbility();
+        }
+        public void AddConsecutive(byte timesMaxConsecutive, short coeffEachConsecutive, short maxCoeffConsecutive)
+        {
+            this.TimesMaxConsecutive = timesMaxConsecutive; this.CoeffEachConsecutive = coeffEachConsecutive; this.MaxCoeffConsecutive = maxCoeffConsecutive;
+
+            EditTextForDamageAbility();
         }
         #endregion
 

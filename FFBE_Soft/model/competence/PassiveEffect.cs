@@ -61,6 +61,75 @@ namespace FFBE_Soft.model.competence
         Stones = 0x800
     }
 
+    public enum CounterType
+    {
+        Physical,
+        Magical
+    }
+
+    public enum EquipmentStat
+    {
+        HP = 0x01,
+        MP = 0x02,
+        ATK = 0x04,
+        DEF = 0x08,
+        MAG = 0x10,
+        PSY = 0x20
+    }
+
+    public enum EquipmentBuffCondition
+    {
+        DoubleHand,
+        TrueDoubleHand,
+        DualWield
+    }
+
+    public enum EvasionType
+    {
+        Physical = 0x01,
+        Magical = 0x02
+    }
+
+    public enum WeaponBuffCondition
+    {
+        Dagger = 0x0001,
+        Sword = 0x0002,
+        GreatSword = 0x0004,
+        Katana = 0x0008,
+        Staff = 0x0010,
+        Rod = 0x0020,
+        Bow = 0x0040,
+        Axe = 0x0080,
+
+        Hammer = 0x0100,
+        Spear = 0x0200,
+        Instrument = 0x0400,
+        Whip = 0x0800,
+        ThrowingWeapon = 0x1000,
+        Gun = 0x2000,
+        Mace = 0x4000,
+        Fist = 0x8000
+    };
+
+    public enum ArmorBuffCondition
+    {
+        LightShield = 0x01,
+        HeavyShield = 0x02,
+        Hat = 0x04,
+        Helm = 0x08,
+        Clothe = 0x10,
+        LightArmor = 0x20,
+        HeavyArmor = 0x40,
+        Robe = 0x80
+    };
+
+    public enum TMRequirementPassive
+    {
+        TMR,
+        STMR,
+        Both
+    }
+
     class PassiveEffect
     {
         /// <summary>
@@ -381,5 +450,656 @@ namespace FFBE_Soft.model.competence
 
         #endregion
 
+
+
+        #region Spécial Passive - Chance To Counter
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive give a counter
+        /// </summary>
+        public bool IsCounterPassive { get; set; }
+
+        /// <summary>
+        /// Type of the counter
+        /// </summary>
+        public CounterType CounterType { get; set; }
+
+        /// <summary>
+        /// Chance to counter
+        /// </summary>
+        public byte ChanceToCounter { get; set; }
+
+        /// <summary>
+        /// If the counter is a normal attack
+        /// </summary>
+        public bool CounterWithBaseAttack { get; set; }
+
+        /// <summary>
+        /// The ability of the counter
+        /// </summary>
+        public UnitAbility AbilityCounter { get; set; }
+
+        /// <summary>
+        /// Number of counter in a turn
+        /// </summary>
+        public byte MaxCounterInATurn { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isCounterPassive, CounterType type, byte chancetoCounter, bool counterWithNormalAttack, byte maxCounter)
+        {
+            this.IsCounterPassive = IsCounterPassive; CounterType = type; this.ChanceToCounter = chancetoCounter; this.CounterWithBaseAttack = counterWithNormalAttack;
+            this.MaxCounterInATurn = maxCounter;
+
+            EditTextForChanceToCounterPassive();
+        }
+        private PassiveEffect(bool isCounterPassive, CounterType type, byte chancetoCounter, UnitAbility ability, byte maxCounter)
+        {
+            this.IsCounterPassive = IsCounterPassive; CounterType = type; this.ChanceToCounter = chancetoCounter; this.AbilityCounter = ability;
+            this.MaxCounterInATurn = maxCounter;
+
+            EditTextForChanceToCounterPassive();
+        }
+        static public PassiveEffect CreateChanceToCounterEffect(bool isCounterPassive, CounterType type, byte chancetoCounter, bool counterWithNormalAttack, byte maxCounter)
+        {
+            return new PassiveEffect(isCounterPassive, type, chancetoCounter, counterWithNormalAttack, maxCounter);
+        }
+        static public PassiveEffect CreateChanceToCounterEffect(bool isCounterPassive, CounterType type, byte chancetoCounter, UnitAbility ability, byte maxCounter)
+        {
+            return new PassiveEffect(isCounterPassive, type, chancetoCounter, ability, maxCounter);
+        }
+        private void EditTextForChanceToCounterPassive()
+        {
+            Text = "Chance to counter " + CounterType.ToString().ToLower() + " attacks (" + ChanceToCounter + "%) with ";
+
+            if (CounterWithBaseAttack)
+                Text += "normal attack ";
+            else
+            {
+                Text += AbilityCounter.Name + " ";
+            }
+            if (MaxCounterInATurn > 0)
+                Text += "(max " + MaxCounterInATurn + "/turn)";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - Equipment Stats Buff
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive increase stats of equipment
+        /// </summary>
+        public bool IsEquipmentStatsBuff { get; set; }
+
+        /// <summary>
+        /// Stats buff of the equipment
+        /// </summary>
+        public EquipmentStat EquipmentStat { get; set; }
+
+        /// <summary>
+        /// Coeff of the buff
+        /// </summary>
+        public short CoeffEquimentBuff { get; set; }
+
+        /// <summary>
+        /// Coeff of accuracy up
+        /// </summary>
+        public byte CoeffAccuracy { get; set; }
+
+        /// <summary>
+        /// Condition of the passive
+        /// </summary>
+        public EquipmentBuffCondition EquipmentBuffCondition { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isEquipmentBuff, EquipmentStat stats, short coeff, byte accuracy, EquipmentBuffCondition condition)
+        {
+            this.IsEquipmentStatsBuff = isEquipmentBuff; this.EquipmentStat = stats; this.CoeffEquimentBuff = coeff; this.CoeffAccuracy = accuracy; this.EquipmentBuffCondition = condition;
+
+            EditTextForEquipmentBuffPassive();
+        }
+        static public PassiveEffect CreateEquipmentBuffEffect(bool isEquipmentBuff, EquipmentStat stats, short coeff, byte accuracy, EquipmentBuffCondition condition)
+        {
+            return new PassiveEffect(isEquipmentBuff, stats, coeff, accuracy, condition);
+        }
+        private void EditTextForEquipmentBuffPassive()
+        {
+            Text = "Increase equipment ";
+
+            EquipmentStat t = EquipmentStat;
+
+            List<string> lt = new List<string>();
+            if ((t - EquipmentStat.PSY) >= 0) { lt.Add(EquipmentStat.PSY.ToString() + "/"); t -= EquipmentStat.PSY; }
+            if ((t - EquipmentStat.MAG) >= 0) { lt.Add(EquipmentStat.MAG.ToString() + "/"); t -= EquipmentStat.MAG; }
+            if ((t - EquipmentStat.DEF) >= 0) { lt.Add(EquipmentStat.DEF.ToString() + "/"); t -= EquipmentStat.DEF; }
+                                                                                                 
+            if ((t - EquipmentStat.ATK) >= 0) { lt.Add(EquipmentStat.ATK.ToString() + "/"); t -= EquipmentStat.ATK; }
+            if ((t - EquipmentStat.MP) >= 0) { lt.Add(EquipmentStat.MP.ToString() + "/"); t -= EquipmentStat.MP; }
+            if ((t - EquipmentStat.HP) >= 0) { lt.Add(EquipmentStat.HP.ToString() + "/"); t -= EquipmentStat.HP; }
+
+
+            for (int i = 0; i <= lt.Count; i++)
+            {
+                string tt;
+                tt = lt[lt.Count - 1];
+                Text += tt;
+                lt.Remove(tt);
+            }
+
+            Text = Text.Remove(Text.Length - 1) + " (" + CoeffEquimentBuff + "%) when ";
+
+            switch (EquipmentBuffCondition)
+            {
+                case EquipmentBuffCondition.DoubleHand:
+                    Text += "single wielding a one-handed weapon";
+                    break;
+                case EquipmentBuffCondition.TrueDoubleHand:
+                    Text += "single wielding any weapon";
+                    break;
+                case EquipmentBuffCondition.DualWield:
+                    Text += "dual wielding";
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - Evasion
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive give evasion
+        /// </summary>
+        public bool IsEvasionBuff { get; set; }
+
+        /// <summary>
+        /// Type of the evasion
+        /// </summary>
+        public EvasionType EvasionType { get; set; }
+
+        /// <summary>
+        /// Coefficient of the evasion
+        /// </summary>
+        public byte CoeffEvasion { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isEvasion, EvasionType type, byte coeff)
+        {
+            this.IsEvasionBuff = isEvasion; this.EvasionType = type; this.CoeffEvasion = coeff;
+
+            EditTextForEvasionBuffPassive();
+        }
+        static public PassiveEffect CreateEvasionEffect(bool isEvasion, EvasionType type, byte coeff)
+        {
+            return new PassiveEffect(isEvasion, type, coeff);
+        }
+        private void EditTextForEvasionBuffPassive()
+        {
+            Text = "Increase ";
+
+            EvasionType t = EvasionType;
+
+            List<string> lt = new List<string>();
+
+            if ((t - EvasionType.Magical) >= 0) { lt.Add(EvasionType.Magical.ToString().ToLower() + "/"); t -= EvasionType.Magical; }
+            if ((t - EvasionType.Physical) >= 0) { lt.Add(EvasionType.Physical.ToString().ToLower() + "/"); t -= EvasionType.Physical; }
+
+            for (int i = 0; i <= lt.Count; i++)
+            {
+                string tt;
+                tt = lt[lt.Count - 1];
+                Text += tt;
+                lt.Remove(tt);
+            }
+
+            Text = Text.Remove(Text.Length - 1) + " evasion (" + CoeffEvasion + "%)";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - Auto Regen MP
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive auto regen MP
+        /// </summary>
+        public bool IsAutoRegenMP { get; set; }
+
+        /// <summary>
+        /// Percent of the auto regen
+        /// </summary>
+        public byte PercentAutoRegenMP { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isAutoRegenMP, byte percent)
+        {
+            this.IsAutoRegenMP = isAutoRegenMP; this.PercentAutoRegenMP = percent;
+
+            EditTextForAutoRegenMPPassive();
+        }
+        static public PassiveEffect CreateAutoRegenMPEffect(bool isAutoRegenMP, byte percent)
+        {
+            return new PassiveEffect(isAutoRegenMP, percent);
+        }
+        private void EditTextForAutoRegenMPPassive()
+        {
+            Text = "Recover MP (" + PercentAutoRegenMP + "%) per turn";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - Auto Regen HP
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive regen HP
+        /// </summary>
+        public bool IsAutoRegenHP { get; set; }
+
+        /// <summary>
+        /// Base HP of the auto regen
+        /// </summary>
+        public short BaseAutoRegenHP { get; set; }
+
+        /// <summary>
+        /// Coeffcient of the auto regen
+        /// </summary>
+        public short CoeffAutoRegenHP { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isAutoRegenHP, short baseHP, short coeff)
+        {
+            this.IsAutoRegenHP = isAutoRegenHP; this.BaseAutoRegenHP = baseHP; this.CoeffAutoRegenHP = coeff;
+
+            EditTextForAutoRegenHPPassive();
+        }
+        static public PassiveEffect CreateAutoRegenHPEffect(bool isAutoRegenHP, short baseHP, short coeff)
+        {
+            return new PassiveEffect(isAutoRegenHP, baseHP, coeff);
+        }
+        private void EditTextForAutoRegenHPPassive()
+        {
+            Text = "Auto-heal (" + BaseAutoRegenHP + " HP, " + CoeffAutoRegenHP + "%) per turn";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Spécial Passive - Auto Cast Ability
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive auto cast an ability
+        /// </summary>
+        public bool IsAutoCastAbility { get; set; }
+
+        /// <summary>
+        /// Ability to auto cast
+        /// </summary>
+        public UnitAbility AutoCastAbility { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isAutoCastAbility, UnitAbility ability)
+        {
+            this.IsAutoCastAbility = isAutoCastAbility; this.AutoCastAbility = ability;
+
+            EditTextForAutoCastAbilityPassive();
+        }
+        static public PassiveEffect CreateAutoCastAbilityEffect(bool isAutoCastAbility, UnitAbility ability)
+        {
+            return new PassiveEffect(isAutoCastAbility, ability);
+        }
+        private void EditTextForAutoCastAbilityPassive()
+        {
+            Text = "Auto-cast " + AutoCastAbility.Name + " every turn";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - Statistiques Buff With Equipment Condition
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive buff statistiques with a equipment condition
+        /// </summary>
+        public bool IsBuffStatsEquipmentCondition { get; set; }
+
+        /// <summary>
+        /// Statistiques buffed
+        /// </summary>
+        public StatistiquesBuff StatistiquesBuffEquipmentCondition { get; set; }
+
+        /// <summary>
+        /// Coefficient of the buff
+        /// </summary>
+        public short CoefficientBuffEquipmentCondition { get; set; }
+
+        /// <summary>
+        /// Weapon condition to activate the buff
+        /// </summary>
+        public WeaponBuffCondition WeaponCondition { get; set; }
+
+        /// <summary>
+        /// Armor condition to activate the buff
+        /// </summary>
+        public ArmorBuffCondition ArmorCondition { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon, ArmorBuffCondition armor)
+        {
+            this.IsBuffStatsEquipmentCondition = isBuffStatsEquipmentCondition; this.StatistiquesBuffEquipmentCondition = stats;
+            this.CoefficientBuffEquipmentCondition = coeff; this.WeaponCondition = weapon; this.ArmorCondition = armor;
+
+            EditTextForStatistiquesBuffEquipmentConditionPassive();
+        }
+        private PassiveEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon)
+        {
+            this.IsBuffStatsEquipmentCondition = isBuffStatsEquipmentCondition; this.StatistiquesBuffEquipmentCondition = stats;
+            this.CoefficientBuffEquipmentCondition = coeff; this.WeaponCondition = weapon;
+
+            EditTextForStatistiquesBuffEquipmentConditionPassive();
+        }
+        private PassiveEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, ArmorBuffCondition armor)
+        {
+            this.IsBuffStatsEquipmentCondition = isBuffStatsEquipmentCondition; this.StatistiquesBuffEquipmentCondition = stats;
+            this.CoefficientBuffEquipmentCondition = coeff; this.ArmorCondition = armor;
+
+            EditTextForStatistiquesBuffEquipmentConditionPassive();
+        }
+
+        static public PassiveEffect CreateStatistiquesBuffEquipmentConditionEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon, ArmorBuffCondition armor)
+        {
+            return new PassiveEffect(isBuffStatsEquipmentCondition, stats, coeff, weapon, armor);
+        }
+        static public PassiveEffect CreateStatistiquesBuffWeaponConditionEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon)
+        {
+            return new PassiveEffect(isBuffStatsEquipmentCondition, stats, coeff, weapon);
+        }
+        static public PassiveEffect CreateStatistiquesBuffArmorConditionEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, ArmorBuffCondition armor)
+        {
+            return new PassiveEffect(isBuffStatsEquipmentCondition, stats, coeff, armor);
+        }
+
+        private void EditTextForStatistiquesBuffEquipmentConditionPassive()
+        {
+            Text = "Increase ";
+
+            {
+                StatistiquesBuff t = StatistiquesBuffEquipmentCondition;
+
+                List<string> lt = new List<string>();
+                if ((t - StatistiquesBuff.PSY) >= 0) { lt.Add(StatistiquesBuff.PSY.ToString() + "/"); t -= StatistiquesBuff.PSY; }
+                if ((t - StatistiquesBuff.MAG) >= 0) { lt.Add(StatistiquesBuff.MAG.ToString() + "/"); t -= StatistiquesBuff.MAG; }
+                if ((t - StatistiquesBuff.DEF) >= 0) { lt.Add(StatistiquesBuff.DEF.ToString() + "/"); t -= StatistiquesBuff.DEF; }
+
+                if ((t - StatistiquesBuff.ATK) >= 0) { lt.Add(StatistiquesBuff.ATK.ToString() + "/"); t -= StatistiquesBuff.ATK; }
+                if ((t - StatistiquesBuff.MP) >= 0) { lt.Add(StatistiquesBuff.MP.ToString() + "/"); t -= StatistiquesBuff.MP; }
+                if ((t - StatistiquesBuff.HP) >= 0) { lt.Add(StatistiquesBuff.HP.ToString() + "/"); t -= StatistiquesBuff.HP; }
+
+
+                for (int i = 0; i <= lt.Count; i++)
+                {
+                    string tt;
+                    tt = lt[lt.Count - 1];
+                    Text += tt;
+                    lt.Remove(tt);
+                }
+            }
+
+            Text = Text.Remove(Text.Length - 1) + " (" + CoefficientBuffEquipmentCondition + "%) when equiped with ";
+
+            {
+                WeaponBuffCondition t = WeaponCondition;
+
+                List<string> lt = new List<string>();
+                if ((t - WeaponBuffCondition.Fist) >= 0) { lt.Add(WeaponBuffCondition.Fist.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Fist; }
+                if ((t - WeaponBuffCondition.Mace) >= 0) { lt.Add(WeaponBuffCondition.Mace.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Mace; }
+                if ((t - WeaponBuffCondition.Gun) >= 0) { lt.Add(WeaponBuffCondition.Gun.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Gun; }
+                if ((t - WeaponBuffCondition.ThrowingWeapon) >= 0) { lt.Add(WeaponBuffCondition.ThrowingWeapon.ToString().ToLower() + "/"); t -= WeaponBuffCondition.ThrowingWeapon; }
+
+                if ((t - WeaponBuffCondition.Whip) >= 0) { lt.Add(WeaponBuffCondition.Whip.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Whip; }
+                if ((t - WeaponBuffCondition.Instrument) >= 0) { lt.Add(WeaponBuffCondition.Instrument.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Instrument; }
+                if ((t - WeaponBuffCondition.Spear) >= 0) { lt.Add(WeaponBuffCondition.Spear.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Spear; }
+                if ((t - WeaponBuffCondition.Hammer) >= 0) { lt.Add(WeaponBuffCondition.Hammer.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Hammer; }
+
+                if ((t - WeaponBuffCondition.Axe) >= 0) { lt.Add(WeaponBuffCondition.Axe.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Axe; }
+                if ((t - WeaponBuffCondition.Bow) >= 0) { lt.Add(WeaponBuffCondition.Bow.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Bow; }
+                if ((t - WeaponBuffCondition.Rod) >= 0) { lt.Add(WeaponBuffCondition.Rod.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Rod; }
+                if ((t - WeaponBuffCondition.Staff) >= 0) { lt.Add(WeaponBuffCondition.Staff.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Staff; }
+
+                if ((t - WeaponBuffCondition.Katana) >= 0) { lt.Add(WeaponBuffCondition.Katana.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Katana; }
+                if ((t - WeaponBuffCondition.GreatSword) >= 0) { lt.Add(WeaponBuffCondition.GreatSword.ToString().ToLower() + "/"); t -= WeaponBuffCondition.GreatSword; }
+                if ((t - WeaponBuffCondition.Sword) >= 0) { lt.Add(WeaponBuffCondition.Sword.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Sword; }
+                if ((t - WeaponBuffCondition.Dagger) >= 0) { lt.Add(WeaponBuffCondition.Dagger.ToString().ToLower() + "/"); t -= WeaponBuffCondition.Dagger; }
+
+                if(lt.Count > 0)
+                {
+                    for (int i = 0; i <= lt.Count; i++)
+                    {
+                        string tt;
+                        tt = lt[lt.Count - 1];
+                        Text += tt;
+                        lt.Remove(tt);
+                    }
+                }
+                
+            }
+
+
+            {
+                ArmorBuffCondition t = ArmorCondition;
+
+                List<string> lt = new List<string>();
+                if ((t - ArmorBuffCondition.Robe) >= 0) { lt.Add(ArmorBuffCondition.Robe.ToString().ToLower() + "/"); t -= ArmorBuffCondition.Robe; }
+                if ((t - ArmorBuffCondition.HeavyArmor) >= 0) { lt.Add(ArmorBuffCondition.HeavyArmor.ToString().ToLower() + "/"); t -= ArmorBuffCondition.HeavyArmor; }
+                if ((t - ArmorBuffCondition.LightArmor) >= 0) { lt.Add(ArmorBuffCondition.LightArmor.ToString().ToLower() + "/"); t -= ArmorBuffCondition.LightArmor; }
+                if ((t - ArmorBuffCondition.Clothe) >= 0) { lt.Add(ArmorBuffCondition.Clothe.ToString().ToLower() + "/"); t -= ArmorBuffCondition.Clothe; }
+                         
+                if ((t - ArmorBuffCondition.Helm) >= 0) { lt.Add(ArmorBuffCondition.Helm.ToString().ToLower() + "/"); t -= ArmorBuffCondition.Helm; }
+                if ((t - ArmorBuffCondition.Hat) >= 0) { lt.Add(ArmorBuffCondition.Hat.ToString().ToLower() + "/"); t -= ArmorBuffCondition.Hat; }
+                if ((t - ArmorBuffCondition.HeavyShield) >= 0) { lt.Add(ArmorBuffCondition.HeavyShield.ToString().ToLower() + "/"); t -= ArmorBuffCondition.HeavyShield; }
+                if ((t - ArmorBuffCondition.LightShield) >= 0) { lt.Add(ArmorBuffCondition.LightShield.ToString().ToLower() + "/"); t -= ArmorBuffCondition.LightShield; }
+
+                if(lt.Count > 0)
+                {
+                    for (int i = 0; i <= lt.Count; i++)
+                    {
+                        string tt;
+                        tt = lt[lt.Count - 1];
+                        Text += tt;
+                        lt.Remove(tt);
+                    }
+                }
+                
+            }
+
+            Text = Text.Remove(Text.Length - 1);
+
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Spécial Passive - TM Requirement
+
+        #region Propriétés
+        /// <summary>
+        /// If is a TM Requirement passive
+        /// </summary>
+        public bool IsTMRequirement { get; set; }
+
+        /// <summary>
+        /// Type of the requirement
+        /// </summary>
+        public TMRequirementPassive TMRequirementPassive { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isTMRequirement, TMRequirementPassive tm)
+        {
+            this.IsTMRequirement = isTMRequirement; this.TMRequirementPassive = tm;
+
+            EditTextForTMRequirementPassive();
+        }
+        static public PassiveEffect CreateTMRequirementEffect(bool isTMRequirement, TMRequirementPassive tm)
+        {
+            return new PassiveEffect(isTMRequirement, tm);
+        }
+        private void EditTextForTMRequirementPassive()
+        {
+            Text = "[Requirement: ";
+
+            switch (TMRequirementPassive)
+            {
+                case TMRequirementPassive.TMR:
+                    Text += "TMR ";
+                    break;
+                case TMRequirementPassive.STMR:
+                    Text += "STMR ";
+                    break;
+                case TMRequirementPassive.Both:
+                    Text += "TMR or STMR ";
+                    break;
+                default:
+                    Text += "nothing :";
+                    break;
+            }
+
+            Text += "equipped]";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - LB Gauge Fill Rate
+
+        #region Propriétés
+        /// <summary>
+        /// If the ability up the lg fill rate
+        /// </summary>
+        public bool IsLBGaugeFillRate { get; set; }
+
+        /// <summary>
+        /// Coefficient of the buff
+        /// </summary>
+        public short CoefficientLBGaugeFillRate { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isLBGaugeFillRate, short coeff)
+        {
+            this.IsLBGaugeFillRate = isLBGaugeFillRate; this.CoefficientLBGaugeFillRate = coeff;
+
+            EditTextForLBGaugeFillRatePassive();
+        }
+        static public PassiveEffect CreateLBGaugeFillRateEffect(bool isLBGaugeFillRate, short coeff)
+        {
+            return new PassiveEffect(isLBGaugeFillRate, coeff);
+        }
+        private void EditTextForLBGaugeFillRatePassive()
+        {
+            Text = "Increase LB gauge fill rate (" + CoefficientLBGaugeFillRate + "%)";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - LB Damage
+
+        #region Propriétés
+        /// <summary>
+        /// If the ability increase the damage of the limit
+        /// </summary>
+        public bool IsLBDamage { get; set; }
+
+        /// <summary>
+        /// Coefficient of the buff
+        /// </summary>
+        public short CoefficientLBDamage { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isLBDamage, short coeff, bool truc)
+        {
+            this.IsLBDamage = isLBDamage; this.CoefficientLBDamage = coeff;
+
+            EditTextForLBDamagePassive();
+        }
+        static public PassiveEffect CreateLBDamageEffect(bool isLBDamage, short coeff)
+        {
+            return new PassiveEffect(isLBDamage, coeff, true);
+        }
+        private void EditTextForLBDamagePassive()
+        {
+            Text = "Increase LB damage (" + CoefficientLBDamage + "%)";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Spécial Passive - LB Upgrade
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive upgrade the LB
+        /// </summary>
+        public bool IsLBUpgrade { get; set; }
+
+        //TODO New Limit
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(bool isLBUpgrade)
+        {
+            this.IsLBUpgrade = isLBUpgrade;
+
+            EditTextForLBUpgradePassive();
+        }
+        static public PassiveEffect CreateLBUpgradeEffect(bool isLBUpgrade)
+        {
+            return new PassiveEffect(isLBUpgrade);
+        }
+        private void EditTextForLBUpgradePassive()
+        {
+            Text = "LB Upgrade";
+        }
+        #endregion
+
+        #endregion
     }
 }

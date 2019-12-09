@@ -371,6 +371,104 @@ namespace FFBE_Soft
                 u.AddPassive(O);
             }
 
+            // ---- Reverse Polarity
+            {
+                AbilityEffect S_B1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 250, 0, AbilityTarget.SingleTargetEnemy, 7);
+                S_B1.AddConsecutive(4, 50, 450);
+                AbilityEffect S_B2 = AbilityEffect.CreateDebuffEnemyEffect(true, StatsDebuffed.ATK | StatsDebuffed.DEF | StatsDebuffed.MAG | StatsDebuffed.PSY, 50, 1, AbilityTarget.SingleTargetEnemy);
+                UnitAbility S_B = new UnitAbility(0, 0, "icon", "Static Barrage", 0);
+                S_B.AddCompEffect(S_B1);
+                S_B.AddCompEffect(S_B2);
+
+                PassiveEffect R_P1 = PassiveEffect.CreateChanceToCounterEffect(true, CounterType.Physical, 40, S_B, 4);
+                PassiveEffect R_P2 = PassiveEffect.CreateChanceToCounterEffect(true, CounterType.Magical, 40, S_B, 4);
+                UnitPassive R_P = new UnitPassive(6, 24, "Icon-Ability_279", "Reverse Polarity");
+                R_P.AddPassiveEffect(R_P1);
+                R_P.AddPassiveEffect(R_P2);
+                u.AddPassive(R_P);
+            }
+
+            // ---- Magnetic Grip
+            {
+                PassiveEffect M_G1 = PassiveEffect.CreateEquipmentBuffEffect(true, EquipmentStat.ATK, 100, 25, EquipmentBuffCondition.TrueDoubleHand);
+                UnitPassive M_G = new UnitPassive(6, 38, "Icon-Ability_76", "Magnetic Grip");
+                M_G.AddPassiveEffect(M_G1);
+                u.AddPassive(M_G);
+            }
+
+            // ---- Phase Shift
+            {
+                PassiveEffect P_S1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP | StatistiquesBuff.MP | StatistiquesBuff.ATK | StatistiquesBuff.DEF, 20);
+                PassiveEffect P_S2 = PassiveEffect.CreateEvasionEffect(true, EvasionType.Physical, 30);
+                PassiveEffect P_S3 = PassiveEffect.CreateAutoRegenMPEffect(true, 7);
+
+                AbilityEffect S_S1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 500, 0, AbilityTarget.Caster, 1);
+                UnitAbility S_S = new UnitAbility(0, 0, "icon", "Static Shift", 0);
+                S_S.AddCompEffect(S_S1);
+
+                PassiveEffect P_S4 = PassiveEffect.CreateAutoCastAbilityEffect(true, S_S);
+                UnitPassive P_S = new UnitPassive(6, 56, "Icon-Ability_273", "Phase Shift");
+                P_S.AddPassiveEffect(P_S1);
+                P_S.AddPassiveEffect(P_S2);
+                P_S.AddPassiveEffect(P_S3);
+                P_S.AddPassiveEffect(P_S4);
+                u.AddPassive(P_S);
+            }
+
+            // ---- Stasis Field
+            {
+                PassiveEffect S_F1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 20);
+                PassiveEffect S_F2 = PassiveEffect.CreateStatistiquesBuffArmorConditionEffect(true, StatistiquesBuff.ATK | StatistiquesBuff.DEF, 40, ArmorBuffCondition.Clothe);
+
+                UnitPassive S_F = new UnitPassive(6, 86, "Icon-Ability_276", "Stasis Field");
+                S_F.AddPassiveEffect(S_F1);
+                S_F.AddPassiveEffect(S_F2);
+                u.AddPassive(S_F);
+            }
+
+            // ---- Ancient Figure
+            {
+                PassiveEffect A_F1 = PassiveEffect.CreateTMRequirementEffect(true, TMRequirementPassive.Both);
+                PassiveEffect A_F2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK | StatistiquesBuff.HP, 30);
+                PassiveEffect A_F3 = PassiveEffect.CreateLBGaugeFillRateEffect(true, 100);
+                PassiveEffect A_F4 = PassiveEffect.CreateLBDamageEffect(true, 30);
+                PassiveEffect A_F5 = PassiveEffect.CreateEquipmentBuffEffect(true, EquipmentStat.ATK, 100, 25, EquipmentBuffCondition.DoubleHand);
+
+                UnitPassive A_F = new UnitPassive(7, 101, "Icon-Ability_280", "Ancient Figure");
+                A_F.AddPassiveEffect(A_F1);
+                A_F.AddPassiveEffect(A_F2);
+                A_F.AddPassiveEffect(A_F3);
+                A_F.AddPassiveEffect(A_F4);
+                A_F.AddPassiveEffect(A_F5);
+                u.AddPassive(A_F);
+            }
+
+            // ---- MP +20%
+            {
+                PassiveEffect MP1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.MP, 20);
+
+                UnitPassive MP = new UnitPassive(7, 115, "Icon-Ability_77", "MP +20%");
+                MP.AddPassiveEffect(MP1);
+                u.AddPassive(MP);
+            }
+
+            // ---- Precursor of the Storm
+            {
+                PassiveEffect P_S1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP | StatistiquesBuff.ATK, 30);
+                PassiveEffect P_S2 = PassiveEffect.CreateStatistiquesBuffWeaponConditionEffect(true, StatistiquesBuff.ATK, 60, WeaponBuffCondition.GreatSword);
+                PassiveEffect P_S3 = PassiveEffect.CreateLBUpgradeEffect(true);
+                PassiveEffect P_S4 = PassiveEffect.CreateEquipmentBuffEffect(true, EquipmentStat.ATK, 50, 25, EquipmentBuffCondition.TrueDoubleHand);
+                PassiveEffect P_S5 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Physical, 50);
+
+                UnitPassive P_S = new UnitPassive(7, 120, "Icon-Ability_275", "Precursor of the Storm");
+                P_S.AddPassiveEffect(P_S1);
+                P_S.AddPassiveEffect(P_S2);
+                P_S.AddPassiveEffect(P_S3);
+                P_S.AddPassiveEffect(P_S4);
+                P_S.AddPassiveEffect(P_S5);
+                u.AddPassive(P_S);
+            }
+
             #endregion
 
             return u;

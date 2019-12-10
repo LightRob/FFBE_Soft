@@ -1,5 +1,6 @@
 ﻿using FFBE_Soft.model;
 using FFBE_Soft.model.competence;
+using FFBE_Soft.model.equipment;
 using FFBE_Soft.Properties;
 using System;
 using System.Collections.Generic;
@@ -20,18 +21,16 @@ namespace FFBE_Soft
 
             Unit Esther = this.SetEstherBDD();
 
-            this.label_UnitName.Text = Esther.Name;
-            Console.WriteLine("Liste d'armes : " + Unit.GetWeaponsString(Esther.Weapon).Count);
-            Console.WriteLine("Liste d'armures : " + Unit.GetArmorsString(Esther.Armor).Count);
-            this.pictureBox_UnitIdle = this.SetImgByURL(Esther.ImgURL, this.pictureBox_UnitIdle);
 
-            this.CreateUnitStatListView(Esther.Stats, this.listView_UnitStats);
-            this.CreateUnitStatUpListView(Esther.StatsMaxUp, this.listView_UnitStatUp);
-            this.CreateUnitStatMaxUpListView(Esther.Stats, Esther.StatsMaxUp, this.listView_UnitMaxUp);
-            this.CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
-            this.CreateAbilityGridData(Esther.Abilities, this.dataGridView_Ability);
-            this.CreatePassivesGridData(Esther.Passives, this.dataGridView_Passives);
-            this.CreateLimitGridData(Esther.Limits, this.dataGridView_Limit);
+            CreateLeftPanel(Esther);
+            CreateUnitStatListView(Esther.Stats, this.listView_UnitStats);
+            CreateUnitStatUpListView(Esther.StatsMaxUp, this.listView_UnitStatUp);
+            CreateUnitStatMaxUpListView(Esther.Stats, Esther.StatsMaxUp, this.listView_UnitMaxUp);
+            CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
+            CreateAbilityGridData(Esther.Abilities, this.dataGridView_Ability);
+            CreatePassivesGridData(Esther.Passives, this.dataGridView_Passives);
+            CreateLimitGridData(Esther.Limits, this.dataGridView_Limit);
+            CreateEquipExcluGridData(Esther.ExclusiveEquipments, dataGridView_EquipmentExclusive);
         }
 
         private Unit SetEstherBDD()
@@ -39,6 +38,8 @@ namespace FFBE_Soft
             Unit u = new Unit();
 
             #region Esther Stats
+
+            
 
             UnitStats s5 = new UnitStats
             {
@@ -147,6 +148,8 @@ namespace FFBE_Soft
 
             u.Name = "Esther";
             u.ImgURL = "Esther_Idle";
+            u.Gender = Gender.Female;
+            u.Race = UnitRace.Human;
             u.AddStats(s5);
             u.AddStats(s6);
             u.AddStats(s7);
@@ -505,6 +508,145 @@ namespace FFBE_Soft
                 u.AddLimit(R_M);
             }
 
+            // ---- Raikiri 6*
+            {
+                LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 850, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 20, 3, LimitTarget.Caster);
+                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1000, 0, AbilityTarget.Caster, 1);
+                LimitEffect R_B4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
+
+                UnitLimit R_B = new UnitLimit(6, "Raikiri", 40);
+                R_B.AddLimitEffect(R_B1);
+                R_B.AddLimitEffect(R_B2);
+                R_B.AddLimitEffect(R_B3);
+                R_B.AddLimitEffect(R_B4);
+                u.AddLimit(R_B);
+
+                ///////////
+
+                LimitEffect R_M1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_M2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_M3 = LimitEffect.CreateLimitDamageUpEffect(true, 20, 3, LimitTarget.Caster);
+                LimitEffect R_M4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
+
+                UnitLimit R_M = new UnitLimit(6, "Raikiri", 40);
+                R_M.AddLimitEffect(R_M1);
+                R_M.AddLimitEffect(R_M2);
+                R_M.AddLimitEffect(R_M3);
+                R_M.AddLimitEffect(R_M4);
+                u.AddLimit(R_M);
+            }
+
+            // ---- Raikiri 7*
+            {
+                LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 25, 3, LimitTarget.Caster);
+                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1500, 0, AbilityTarget.Caster, 1);
+                LimitEffect R_B4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
+
+                UnitLimit R_B = new UnitLimit(7, "Raikiri", 60);
+                R_B.AddLimitEffect(R_B1);
+                R_B.AddLimitEffect(R_B2);
+                R_B.AddLimitEffect(R_B3);
+                R_B.AddLimitEffect(R_B4);
+                u.AddLimit(R_B);
+
+                ///////////
+
+                LimitEffect R_M1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1400, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_M2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_M3 = LimitEffect.CreateLimitDamageUpEffect(true, 25, 3, LimitTarget.Caster);
+                LimitEffect R_M4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
+
+                UnitLimit R_M = new UnitLimit(7, "Raikiri", 60);
+                R_M.AddLimitEffect(R_M1);
+                R_M.AddLimitEffect(R_M2);
+                R_M.AddLimitEffect(R_M3);
+                R_M.AddLimitEffect(R_M4);
+                u.AddLimit(R_M);
+            }
+
+            // ---- Raikiri 7* Upgraded
+            {
+                LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 35, 3, LimitTarget.Caster);
+                LimitEffect R_B4 = LimitEffect.CreateBuffAlliesEffect(StatsBuffed.ATK, 100, 3, LimitTarget.Caster);
+                AbilityEffect R_B5_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1500, 0, AbilityTarget.Caster, 1);
+                LimitEffect R_B5 = LimitEffect.CreateAutoCastEffect(false, 1, R_B5_1);
+
+                UnitLimit R_B = new UnitLimit(7, "Abolute Raikiri (Upgraded)", 60);
+                R_B.AddLimitEffect(R_B1);
+                R_B.AddLimitEffect(R_B2);
+                R_B.AddLimitEffect(R_B3);
+                R_B.AddLimitEffect(R_B4);
+                R_B.AddLimitEffect(R_B5);
+                u.AddLimit(R_B);
+
+                ///////////
+
+                LimitEffect R_M1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1400, 50, LimitTarget.AreaOfEffectEnemies, 30);
+                LimitEffect R_M2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
+                LimitEffect R_M3 = LimitEffect.CreateLimitDamageUpEffect(true, 35, 3, LimitTarget.Caster);
+                LimitEffect R_M4 = LimitEffect.CreateBuffAlliesEffect(StatsBuffed.ATK, 250, 3, LimitTarget.Caster);
+                LimitEffect R_M5 = LimitEffect.CreateAutoCastEffect(false, 1, R_B5_1);
+
+                UnitLimit R_M = new UnitLimit(7, "Abolute Raikiri (Upgraded)", 60);
+                R_M.AddLimitEffect(R_M1);
+                R_M.AddLimitEffect(R_M2);
+                R_M.AddLimitEffect(R_M3);
+                R_M.AddLimitEffect(R_M4);
+                R_M.AddLimitEffect(R_M5);
+                u.AddLimit(R_M);
+            }
+
+            #endregion
+
+
+            #region Equipment Exclusive
+            // ---- Storm Kickers
+            {
+                Equipment S_K = Equipment.CreateEquipment("Storm Kickers", "A pair of sneackers said to have belonged to a warrior of legend. On the right set of feet these stylish shoes are capable of granting its wearer the power to withstand lightning."
+                    , "Icon-Storm_Kickers", EquipmentType.Accesory, "TMR Esther");
+                S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
+
+                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
+                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(true, 15);
+                UnitPassive S_K1 = new UnitPassive(0, 0, "Icon-Ability_276", "Inner Limit");
+                S_K1.AddPassiveEffect(S_K1_1);
+                S_K1.AddPassiveEffect(S_K1_2);
+                S_K.AddEquipmentEffectPassive(S_K1);
+
+                PassiveEffect S_K2_1 = PassiveEffect.CreateAbsorbDamageEffect(ElementDamage.Lightning, TypeDamage.Hybrid);
+                UnitPassive S_K2 = new UnitPassive(0, 0, "Icon-Ability_280", "Stormborne"); S_K2.UsableWitheList = true; S_K2.AddUnitToWhiteList("Esther");
+                S_K2.AddPassiveEffect(S_K2_1);
+                S_K.AddEquipmentEffectPassive(S_K2);
+
+                u.AddExclusiveEquipment(S_K);
+            }
+
+            // ---- Storm Bunny Jacket
+            {
+                Equipment SBJ = Equipment.CreateEquipment("Storm Bunny Jacket", "A unique jacket with a hood that ressembles rabbit ears. It fills its wearer with the instincts of a swift killer, and adds to their endurance and strength as well. Woven with the finest fabric of a distant world, it was exclusively made for a certain warrior of legend.",
+                    "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STM Esther");
+                SBJ.AddFixedStat(StatBuffed.HP, 800); SBJ.AddFixedStat(StatBuffed.ATK, 40); SBJ.AddFixedStat(StatBuffed.DEF, 10);
+
+                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
+                UnitPassive SBJ1 = new UnitPassive(0, 0, "Icon-Ability_275", "Killer Instincts");
+                SBJ1.AddPassiveEffect(SBJ1_1);
+                SBJ.AddEquipmentEffectPassive(SBJ1);
+
+                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
+                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 30);
+                UnitPassive SBJ2 = new UnitPassive(0, 0, "Icon-Ability_276", "Exquisite Weaving"); SBJ2.UsableWitheList = true; SBJ2.AddUnitToWhiteList("Esther");
+                SBJ2.AddPassiveEffect(SBJ2_1);
+                SBJ2.AddPassiveEffect(SBJ2_2);
+                SBJ.AddEquipmentEffectPassive(SBJ2);
+
+                u.AddExclusiveEquipment(SBJ);
+            }
             #endregion
 
             return u;
@@ -515,6 +657,14 @@ namespace FFBE_Soft
             pictureBox.Image = (Image)rm.GetObject(url);
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             return pictureBox;
+        }
+
+        private void CreateLeftPanel(Unit u)
+        {
+            label_UnitName.Text = u.Name;
+            pictureBox_UnitIdle = SetImgByURL(u.ImgURL, pictureBox_UnitIdle);
+            label_GenderUnit.Text = "Gender : " + u.Gender.ToString();
+            label_RaceUnit.Text = "Race : " + u.Race.ToString();
         }
 
         private void CreateUnitStatListView(List<UnitStats> stats, ListView listView)
@@ -681,6 +831,7 @@ namespace FFBE_Soft
         }
 
 
+
         private void CreateAbilityGridData(List<UnitAbility> unitComps, DataGridView gridView)
         {
             foreach (UnitAbility unitComp in unitComps)
@@ -756,6 +907,35 @@ namespace FFBE_Soft
                 row.Cells[4].Value = unitLimit.LBCost;
             }
         }
+
+        private void CreateEquipExcluGridData(List<Equipment> equipments, DataGridView gridView)
+        {
+            foreach (Equipment equipment in equipments)
+            {
+                gridView.Rows.Add(); // On créée une nouvelle ligne vide
+                DataGridViewRow row = (DataGridViewRow)gridView.Rows[gridView.Rows.GetLastRow(DataGridViewElementStates.Visible)];
+                if (!equipment.ImgURL.Equals("icon"))
+                {
+                    try
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        Image image = (Image)rm.GetObject(equipment.ImgURL);
+                        image.Save(ms, image.RawFormat);
+                        byte[] img = ms.ToArray();
+                        row.Cells[0].Value = img;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                }
+
+                row.Cells[1].Value = equipment.Name;
+                row.Cells[2].Value = equipment.EquipmentType;
+                row.Cells[3].Value = equipment.Text;
+            }
+        }
+
 
 
         private void CreateUnitResTableView(UnitResistance res, TableLayoutPanel table)
@@ -891,9 +1071,5 @@ namespace FFBE_Soft
 
         }
 
-        private void listView_UnitStats_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

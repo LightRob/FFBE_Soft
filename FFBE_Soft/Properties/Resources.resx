@@ -227,4 +227,15 @@
   <data name="Icon-Ability_77" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon-Passives\Icon-Ability_77.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+
+
+
+
+  <data name="Icon-Storm_Kickers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Storm_Kickers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Storm_Bunny_Jacket" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Storm_Bunny_Jacket.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+
 </root>

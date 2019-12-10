@@ -393,6 +393,26 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Storm_Bunny_Jacket {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Storm_Bunny_Jacket", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Storm_Kickers {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Storm_Kickers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Water_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Water_Resistance", resourceCulture);

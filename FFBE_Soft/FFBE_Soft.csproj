@@ -69,6 +69,7 @@
     <Compile Include="model\competence\UnitAbility.cs" />
     <Compile Include="model\competence\UnitLimit.cs" />
     <Compile Include="model\competence\UnitPassive.cs" />
+    <Compile Include="model\equipment\Equipment.cs" />
     <Compile Include="model\Unit.cs" />
     <Compile Include="model\UnitMagicAffinity.cs" />
     <Compile Include="model\UnitResistance.cs" />
@@ -157,6 +158,8 @@
     <Content Include="Resources\Element\Resistance\Icon-Light_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Water_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Wind_Resistance.png" />
+    <Content Include="Resources\Equipment\Icon-Storm_Bunny_Jacket.png" />
+    <Content Include="Resources\Equipment\Icon-Storm_Kickers.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_273.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_275.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_276.png" />

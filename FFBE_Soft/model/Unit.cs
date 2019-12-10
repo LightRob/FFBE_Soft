@@ -1,4 +1,5 @@
 ﻿using FFBE_Soft.model.competence;
+using FFBE_Soft.model.equipment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,12 @@ namespace FFBE_Soft.model
         Robe = 0x80
     };
 
-
+    public enum Gender
+    {
+        Female,
+        Male,
+        Other
+    }
 
     class Unit
     {
@@ -57,6 +63,15 @@ namespace FFBE_Soft.model
         /// </summary>
         public string ImgURL { get; set; }
 
+        /// <summary>
+        /// Race of the unit
+        /// </summary>
+        public UnitRace Race { get; set; }
+
+        /// <summary>
+        /// Gender of the unit
+        /// </summary>
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// List of unit's stats, one object for one star
@@ -112,10 +127,15 @@ namespace FFBE_Soft.model
         /// Limits of the unit
         /// </summary>
         public List<UnitLimit> Limits { get; set; }
+
+        /// <summary>
+        /// List of equipment with a exclusive effect
+        /// </summary>
+        public List<Equipment> ExclusiveEquipments { get; set; }
         #endregion
 
         #region Constructeurs
-        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); this.Passives = new List<UnitPassive>(); this.Limits = new List<UnitLimit>(); }
+        public Unit() { this.Stats = new List<UnitStats>(); this.StatsMaxUp = new List<UnitStatsMaxUp>(); this.Abilities = new List<UnitAbility>(); this.Passives = new List<UnitPassive>(); this.Limits = new List<UnitLimit>(); ExclusiveEquipments = new List<Equipment>(); }
         #endregion
 
         #region Methods
@@ -296,6 +316,16 @@ namespace FFBE_Soft.model
         {
             if (Limits != null)
                 Limits.Add(unitLimit);
+        }
+
+        /// <summary>
+        /// Add equipment to the unit
+        /// </summary>
+        /// <param name="equipment"></param>
+        public void AddExclusiveEquipment(Equipment equipment)
+        {
+            if(ExclusiveEquipments != null)
+                ExclusiveEquipments.Add(equipment);
         }
         #endregion
     }

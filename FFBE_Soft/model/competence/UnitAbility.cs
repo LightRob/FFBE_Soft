@@ -23,6 +23,17 @@ namespace FFBE_Soft.model.competence
         /// Number of MP needed for the ability
         /// </summary>
         public short MPCost { get; set; }
+
+        /// <summary>
+        /// If the ability is usable only by certains units
+        /// </summary>
+        public bool UsableWitheList { get; set; }
+
+        /// <summary>
+        /// WhiteList of the ability
+        /// </summary>
+        public List<string> WhiteList { get; set; }
+        
         #endregion
 
         #region Methodes
@@ -53,15 +64,33 @@ namespace FFBE_Soft.model.competence
             string s = "";
             foreach (AbilityEffect comp in CompEffect)
             {
-                if(comp.Hits > 0)
-                { 
-                    if(!s.Equals(""))
+                if (comp.Hits > 0)
+                {
+                    if (!s.Equals(""))
                         s += Environment.NewLine;
 
                     s += comp.Hits;
                 }
             }
             return s;
+        }
+
+        public void AddUnitToWhiteList(string s)
+        {
+            if (WhiteList != null)
+                WhiteList.Add(s);
+        }
+        public string GetWhiteListString()
+        {
+            string r = "";
+            foreach (string s in WhiteList)
+            {
+                r += s + ", ";
+            }
+            if (r != null && r.Length > 2)
+                r = r.Remove(r.Length - 2);
+
+            return r;
         }
         #endregion
 

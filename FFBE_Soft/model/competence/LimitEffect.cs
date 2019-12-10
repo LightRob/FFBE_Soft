@@ -400,5 +400,107 @@ namespace FFBE_Soft.model.competence
         #endregion
 
         #endregion
+
+
+
+        #region Support Ability - Buff Stats
+
+        #region Propriétés
+        /// <summary>
+        /// If the limit buff stats
+        /// </summary>
+        public bool IsBuffStats { get; set; }
+
+        /// <summary>
+        /// Stats buffed
+        /// </summary>
+        public StatsBuffed StatsBuffed { get; set; }
+
+        /// <summary>
+        /// Coefficient of the buffs
+        /// </summary>
+        public short CoefficientBuffedStats { get; set; }
+
+        /// <summary>
+        /// Number of turn for the buff
+        /// </summary>
+        public byte BuffStatsTurns { get; set; }
+
+        /// <summary>
+        /// Target of the limit
+        /// </summary>
+        public LimitTarget LimitTargetBuffStats { get; set; }
+        #endregion
+
+        #region Methodes
+        private LimitEffect(StatsBuffed statBuffCoeff, short coefficientBuffedStats, byte buffTurn, LimitTarget target)
+        {
+            this.IsBuffStats = true; this.StatsBuffed = statBuffCoeff; this.CoefficientBuffedStats = coefficientBuffedStats; this.BuffStatsTurns = buffTurn; this.LimitTargetBuffStats = target;
+
+            EditTextForBuffStatsLimit();
+        }
+        static public LimitEffect CreateBuffAlliesEffect(StatsBuffed statBuffCoeff, short coefficientBuffedStats, byte buffTurn, LimitTarget target)
+        {
+            return new LimitEffect(statBuffCoeff, coefficientBuffedStats, buffTurn, target);
+        }
+
+        private void EditTextForBuffStatsLimit()
+        {
+            // Text initialisation
+            Text = "Increase ";
+
+            StatsBuffed t = this.StatsBuffed;
+
+            List<string> lt = new List<string>();
+
+            if ((t - StatsBuffed.PSY) >= 0) { lt.Add(StatsBuffed.PSY.ToString() + "/"); t -= StatsBuffed.PSY; }
+            if ((t - StatsBuffed.MAG) >= 0) { lt.Add(StatsBuffed.MAG.ToString() + "/"); t -= StatsBuffed.MAG; }
+            if ((t - StatsBuffed.DEF) >= 0) { lt.Add(StatsBuffed.DEF.ToString() + "/"); t -= StatsBuffed.DEF; }
+            if ((t - StatsBuffed.ATK) >= 0) { lt.Add(StatsBuffed.ATK.ToString() + "/"); t -= StatsBuffed.ATK; }
+
+            for (int i = 0; i <= lt.Count; i++)
+            {
+                string tt;
+                tt = lt[lt.Count - 1];
+                Text += tt;
+                lt.Remove(tt);
+            }
+
+            Text = Text.Remove(Text.Length - 1);
+
+            Text += " (" + CoefficientBuffedStats + "%) for " + BuffStatsTurns;
+            if (BuffStatsTurns == 1)
+                Text += " turn ";
+            else
+                Text += " turns ";
+
+            switch (LimitTargetBuffStats)
+            {
+                case LimitTarget.SingleTargetAlly:
+                    Text += "to one ally";
+                    break;
+                case LimitTarget.SingleTargetEnemy:
+                    Text += "to one enemy";
+                    break;
+                case LimitTarget.AreaOfEffectAllies:
+                    Text += "to all allies";
+                    break;
+                case LimitTarget.AreaOfEffectEnemies:
+                    Text += "to all enemies";
+                    break;
+                case LimitTarget.AreaOfEffectAlliesExceptCaster:
+                    Text += "to all allies except caster";
+                    break;
+                case LimitTarget.Caster:
+                    Text += "to caster";
+                    break;
+                default:
+                    Text += "to nobody";
+                    break;
+            }
+        }
+        #endregion
+
+        #endregion
     }
 }

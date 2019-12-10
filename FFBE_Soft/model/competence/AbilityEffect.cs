@@ -53,7 +53,6 @@ namespace FFBE_Soft.model.competence
         PSY
     }
 
-
     enum ElementDamage
     {
         Fire = 0x01,
@@ -127,9 +126,6 @@ namespace FFBE_Soft.model.competence
         /// Text of the ability
         /// </summary>
         public string Text { get; set; }
-
-       
-
 
 
 

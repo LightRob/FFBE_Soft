@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FFBE_Soft.model.competence
 {
@@ -59,6 +55,22 @@ namespace FFBE_Soft.model.competence
         Plants = 0x200,
         Reapers = 0x400,
         Stones = 0x800
+    }
+
+    public enum UnitRace
+    {
+        Aquatic = 0x01,
+        Beast = 0x02,
+        Demon = 0x04,
+
+        Dragon = 0x08,
+        Fairy = 0x10,
+        Human = 0x20,
+        Machina = 0x40,
+        Plant = 0x80,
+
+        Reaper = 0x100,
+        Stone = 0x200
     }
 
     public enum CounterType
@@ -136,6 +148,10 @@ namespace FFBE_Soft.model.competence
         /// Text of the passive effect
         /// </summary>
         public string Text { get; set; }
+
+
+
+
 
 
         #region Support Passive - Element Buff
@@ -1097,6 +1113,50 @@ namespace FFBE_Soft.model.competence
         private void EditTextForLBUpgradePassive()
         {
             Text = "LB Upgrade";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Spécial Passive - Absorb Element Damage
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive absord element damage
+        /// </summary>
+        public bool IsAbsorbDamage { get; set; }
+
+        /// <summary>
+        /// Element to absorb
+        /// </summary>
+        public ElementDamage ElementAbsorb { get; set; }
+
+        /// <summary>
+        /// Type of damage to absorb
+        /// </summary>
+        public TypeDamage TypeDamageAbsorb { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(ElementDamage element, TypeDamage type)
+        {
+            IsAbsorbDamage = true; ElementAbsorb = element; TypeDamageAbsorb = type;
+            EditTextForAbsorbDamagePassive();
+        }
+        static public PassiveEffect CreateAbsorbDamageEffect(ElementDamage element, TypeDamage type)
+        {
+            return new PassiveEffect(element, type);
+        }
+        private void EditTextForAbsorbDamagePassive()
+        {
+            Text = "Absorb ";
+            if (ElementAbsorb != ElementDamage.Neutral)
+                Text += ElementAbsorb.ToString().ToLower();
+            if (TypeDamageAbsorb != TypeDamage.Hybrid)
+                Text += TypeDamageAbsorb.ToString().ToLower();
+            Text += " damage taken";
         }
         #endregion
 

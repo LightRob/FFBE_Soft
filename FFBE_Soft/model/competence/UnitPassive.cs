@@ -18,6 +18,17 @@ namespace FFBE_Soft.model.competence
         public string Name { get; set; }
 
         public List<PassiveEffect> PassiveEffect { get; set; }
+
+        /// <summary>
+        /// If the passive is usable only by certains units
+        /// </summary>
+        public bool UsableWitheList { get; set; }
+
+        /// <summary>
+        /// WhiteList of the passive
+        /// </summary>
+        public List<string> WhiteList { get; set; }
+        
         #endregion
 
 
@@ -43,6 +54,23 @@ namespace FFBE_Soft.model.competence
             return s;
         }
 
+        public void AddUnitToWhiteList(string s)
+        {
+            if (WhiteList != null)
+                WhiteList.Add(s);
+        }
+        public string GetWhiteListString()
+        {
+            string r = "";
+            foreach (string s in WhiteList)
+            {
+                r += s + ", ";
+            }
+            if (r != null && r.Length > 2)
+                r = r.Remove(r.Length - 2);
+
+            return r;
+        }
         #endregion
 
         #region Constructors
@@ -50,6 +78,7 @@ namespace FFBE_Soft.model.competence
         {
             this.Star = star; this.Level = level; this.ImgURL = imgURL; this.Name = name;
             this.PassiveEffect = new List<PassiveEffect>();
+            WhiteList = new List<string>();
         }
         #endregion
     }

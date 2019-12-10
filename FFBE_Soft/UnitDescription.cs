@@ -1083,13 +1083,31 @@ namespace FFBE_Soft
             table.Update();
 
 
-            table.Controls.Add(new Label() { Text = "Element Resistance" }, 0, 0);
-            table.SetColumnSpan(table.GetControlFromPosition(0, 0), 8);
-            table.SetRowSpan(table.GetControlFromPosition(0, 0), 1);
+            TextBox tbElement = new TextBox();
+            tbElement.Multiline = true;
+            tbElement.Dock = DockStyle.Fill;
+            tbElement.Text = "Element Resistance";
+            tbElement.TextAlign = HorizontalAlignment.Center;
+            tbElement.BackColor = (Color)new ColorConverter().ConvertFromString("#4D627F");
+            tbElement.Font = new Font("Franklin Gothic Medium", 10, FontStyle.Bold);
+            tbElement.ForeColor = Color.GhostWhite;
+            table.Controls.Add(tbElement, 0, 0);
+            table.SetColumnSpan(tbElement, 8);
 
-            table.Controls.Add(new Label() { Text = "Statut Ailment Resistance" }, 0, 3);
-            table.SetColumnSpan(table.GetControlFromPosition(0, 3), 8);
-            table.SetRowSpan(table.GetControlFromPosition(0, 3), 1);
+
+
+            TextBox tbAilment = new TextBox();
+            tbAilment.Multiline = true;
+            tbAilment.Dock = DockStyle.Fill;
+            tbAilment.Text = "Element Resistance";
+            tbAilment.TextAlign = HorizontalAlignment.Center;
+            tbAilment.BackColor = (Color)new ColorConverter().ConvertFromString("#4D627F");
+            tbAilment.Font = new Font("Franklin Gothic Medium", 10, FontStyle.Bold);
+            tbAilment.ForeColor = Color.GhostWhite;
+            table.Controls.Add(tbAilment, 0, 3);
+            table.SetColumnSpan(tbAilment, 8);
+
+
 
             // Element
             table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Fire_Resistance") }, 0, 1);
@@ -1147,6 +1165,7 @@ namespace FFBE_Soft
 
         private void tableRes_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
+            /*
             Control c = this.tableLayoutPanel_Resistance.GetControlFromPosition(e.Column, e.Row);
             if (c != null)
             {
@@ -1194,6 +1213,7 @@ namespace FFBE_Soft
                     e.Graphics.DrawString(c.Text, new Font("Franklin Gothic Medium", 10, FontStyle.Bold), new SolidBrush(Color.Black), rectangle, sf);
                 }
             }
+            */
         }
 
         private void listView_UnitStats_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)

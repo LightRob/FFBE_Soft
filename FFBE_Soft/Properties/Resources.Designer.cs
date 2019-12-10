@@ -253,6 +253,16 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Asterisk {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Asterisk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Blind_Resistance {
             get {
                 object obj = ResourceManager.GetObject("Icon-Blind_Resistance", resourceCulture);
@@ -393,6 +403,26 @@ namespace FFBE_Soft.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Stone_Crown {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Stone_Crown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Stone_Vest {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Stone_Vest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Storm_Bunny_Jacket {
             get {
                 object obj = ResourceManager.GetObject("Icon-Storm_Bunny_Jacket", resourceCulture);
@@ -406,6 +436,36 @@ namespace FFBE_Soft.Properties {
         internal static System.Drawing.Bitmap Icon_Storm_Kickers {
             get {
                 object obj = ResourceManager.GetObject("Icon-Storm_Kickers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Tectonic_Bracer {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Tectonic_Bracer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Tectonic_Crown {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Tectonic_Crown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Tectonic_Vest {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Tectonic_Vest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

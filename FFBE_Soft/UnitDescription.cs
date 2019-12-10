@@ -647,6 +647,142 @@ namespace FFBE_Soft
 
                 u.AddExclusiveEquipment(SBJ);
             }
+
+            // ---- Stone Crown
+            {
+                Equipment S_C = Equipment.CreateEquipment("Stone Crown", "A crown made of stone. It is rumored to have been made by legendary blacksmith seeking for methods to make armor lighter regardless of the equipment's material. Apparently, it is a prototype for something far stronger.",
+                    "Icon-Stone_Crown", EquipmentType.Hat, "Recipe Event");
+                S_C.AddFixedStat(StatBuffed.ATK, 5); S_C.AddFixedStat(StatBuffed.DEF, 10); S_C.AddFixedStat(StatBuffed.PSY, 5); S_C.AddElementResistance(Element.Earth, 10);
+
+                PassiveEffect S_C1_1 = PassiveEffect.CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 10, "Stone Vest");
+                UnitPassive S_C1 = new UnitPassive(0, 0, "Icon-Ability_77", "Stone Set");
+                S_C1.AddPassiveEffect(S_C1_1);
+                S_C.AddEquipmentEffectPassive(S_C1);
+
+                PassiveEffect S_C2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                UnitPassive S_C2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); S_C2.UsableWitheList = true; S_C2.AddUnitToWhiteList("Esther");
+                S_C2.AddPassiveEffect(S_C2_1);
+                S_C.AddEquipmentEffectPassive(S_C2);
+
+                PassiveEffect S_C3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                UnitPassive S_C3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); S_C3.UsableWitheList = true; S_C3.AddUnitToWhiteList("Sylvie");
+                S_C3.AddPassiveEffect(S_C3_1);
+                S_C.AddEquipmentEffectPassive(S_C3);
+
+                u.AddExclusiveEquipment(S_C);
+            }
+
+            // ---- Stone Vest
+            {
+                Equipment S_V = Equipment.CreateEquipment("Stone Vest", "A vest made of stone. It is one of many pieces of armor made by a legendary blacksmith who sought methods to make armor lighter regardless of the equipment's material. Apparently, it is a prototype for something far stronger.",
+                    "Icon-Stone_Vest", EquipmentType.LightArmor, "Recipe Event");
+                S_V.AddFixedStat(StatBuffed.ATK, 5); S_V.AddFixedStat(StatBuffed.DEF, 10); S_V.AddFixedStat(StatBuffed.PSY, 5); S_V.AddElementResistance(Element.Earth, 10);
+
+                PassiveEffect S_V1_1 = PassiveEffect.CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 10, "Stone Bracer");
+                UnitPassive S_V1 = new UnitPassive(0, 0, "Icon-Ability_77", "Stone Set");
+                S_V1.AddPassiveEffect(S_V1_1);
+                S_V.AddEquipmentEffectPassive(S_V1);
+
+                PassiveEffect S_V2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                UnitPassive S_V2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); S_V2.UsableWitheList = true; S_V2.AddUnitToWhiteList("Esther");
+                S_V2.AddPassiveEffect(S_V2_1);
+                S_V.AddEquipmentEffectPassive(S_V2);
+
+                PassiveEffect S_V3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                UnitPassive S_V3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); S_V3.UsableWitheList = true; S_V3.AddUnitToWhiteList("Sylvie");
+                S_V3.AddPassiveEffect(S_V3_1);
+                S_V.AddEquipmentEffectPassive(S_V3);
+
+                u.AddExclusiveEquipment(S_V);
+            }
+
+            // ---- Tectonic Bracer
+            {
+                Equipment T_B = Equipment.CreateEquipment("Tectonic Bracer", "A bracer made of stone. For being made from such a hefty material, it is actually surprisingly light. It is rummored to have been made by a legendary blacksmith who made a number of curious and durable pieces out of stone. This is usually considered his most well-known piece.",
+                    "Icon-Tectonic_Bracer", EquipmentType.Accesory, "Recipe Event");
+                T_B.AddFixedStat(StatBuffed.ATK, 5); T_B.AddFixedStat(StatBuffed.DEF, 15); T_B.AddPercentStat(StatBuffed.HP, 5); T_B.AddElementResistance(Element.Earth, 10);
+
+                PassiveEffect T_B1_1 = PassiveEffect.CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 10, "Tectonic Crown");
+                UnitPassive T_B1 = new UnitPassive(0, 0, "Icon-Ability_77", "Tectonic Set");
+                T_B1.AddPassiveEffect(T_B1_1);
+                T_B.AddEquipmentEffectPassive(T_B1);
+
+                PassiveEffect T_B2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                UnitPassive T_B2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); T_B2.UsableWitheList = true; T_B2.AddUnitToWhiteList("Esther");
+                T_B2.AddPassiveEffect(T_B2_1);
+                T_B.AddEquipmentEffectPassive(T_B2);
+
+                PassiveEffect T_B3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                UnitPassive T_B3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); T_B3.UsableWitheList = true; T_B3.AddUnitToWhiteList("Sylvie");
+                T_B3.AddPassiveEffect(T_B3_1);
+                T_B.AddEquipmentEffectPassive(T_B3);
+
+                u.AddExclusiveEquipment(T_B);
+            }
+
+            // ---- Tectonic Crown
+            {
+                Equipment T_C = Equipment.CreateEquipment("Tectonic Crown", "A crown made of magical earth gems. It is rumored to have been made by a legendary blacksmith seeking for methods to make armor lighter regardless of the equipment's material. This is usually considered his most beautiful piece.",
+                    "Icon-Tectonic_Crown", EquipmentType.Hat, "Recipe Event");
+                T_C.AddFixedStat(StatBuffed.ATK, 10); T_C.AddFixedStat(StatBuffed.DEF, 20); T_C.AddFixedStat(StatBuffed.PSY, 10); T_C.AddPercentStat(StatBuffed.HP, 10); T_C.AddElementResistance(Element.Earth, 20); T_C.AddAilmentResistance(Ailment.Petrification, 50);
+
+                PassiveEffect T_C1_1 = PassiveEffect.CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 15, "Tectonic Vest");
+                UnitPassive T_C1 = new UnitPassive(0, 0, "Icon-Ability_77", "Tectonic Set");
+                T_C1.AddPassiveEffect(T_C1_1);
+                T_C.AddEquipmentEffectPassive(T_C1);
+
+                PassiveEffect T_C2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                UnitPassive T_C2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); T_C2.UsableWitheList = true; T_C2.AddUnitToWhiteList("Esther");
+                T_C2.AddPassiveEffect(T_C2_1);
+                T_C.AddEquipmentEffectPassive(T_C2);
+
+                PassiveEffect T_C3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                UnitPassive T_C3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); T_C3.UsableWitheList = true; T_C3.AddUnitToWhiteList("Sylvie");
+                T_C3.AddPassiveEffect(T_C3_1);
+                T_C.AddEquipmentEffectPassive(T_C3);
+
+                u.AddExclusiveEquipment(T_C);
+            }
+
+            // ---- Tectonic Vest
+            {
+                Equipment T_V = Equipment.CreateEquipment("Tectonic Vest", "A vest made of rocks gathered from a magical realm. It is one of many pieces of armor made by a legendary blacksmith who sought methods to make armor lighter regardless of the equipment's material. This is usually considered his strongest piece.",
+                    "Icon-Tectonic_Vest", EquipmentType.LightArmor, "Recipe Event");
+                T_V.AddFixedStat(StatBuffed.ATK, 10); T_V.AddFixedStat(StatBuffed.DEF, 25); T_V.AddFixedStat(StatBuffed.PSY, 10); T_V.AddPercentStat(StatBuffed.HP, 10); T_V.AddElementResistance(Element.Earth, 20); T_V.AddAilmentResistance(Ailment.Petrification, 50);
+
+                PassiveEffect T_V1_1 = PassiveEffect.CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 15, "Tectonic Bracer");
+                UnitPassive T_V1 = new UnitPassive(0, 0, "Icon-Ability_77", "Tectonic Set");
+                T_V1.AddPassiveEffect(T_V1_1);
+                T_V.AddEquipmentEffectPassive(T_V1);
+
+                PassiveEffect T_V2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                UnitPassive T_V2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); T_V2.UsableWitheList = true; T_V2.AddUnitToWhiteList("Esther");
+                T_V2.AddPassiveEffect(T_V2_1);
+                T_V.AddEquipmentEffectPassive(T_V2);
+
+                PassiveEffect T_V3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                UnitPassive T_V3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); T_V3.UsableWitheList = true; T_V3.AddUnitToWhiteList("Sylvie");
+                T_V3.AddPassiveEffect(T_V3_1);
+                T_V.AddEquipmentEffectPassive(T_V3);
+
+                u.AddExclusiveEquipment(T_V);
+            }
+
+            // ---- Asterisk
+            {
+                Equipment A = Equipment.CreateEquipment("Asterisk", "A large blade favored by Esther. It was forged by a legendary blacksmith known for his mastery of rare techniques that could make the heaviest equipment lighter. It is imbued with the power of lightning, and it electrocutes any foes upon contact.",
+                    "Icon-Asterisk", EquipmentType.GreatSword, "Reward Event");
+                A.AddFixedStat(StatBuffed.ATK, 125); A.ElementDamage = Element.Lightning;
+
+                PassiveEffect A1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 15);
+                UnitPassive A1 = new UnitPassive(0, 0, "Icon-Ability_77", "Static Body"); A1.UsableWitheList = true; A1.AddUnitToWhiteList("Esther");
+                A1.AddPassiveEffect(A1_1);
+                A.AddEquipmentEffectPassive(A1);
+
+                A.AddTwoHandedWeapon(100, 160, 50);
+
+                u.AddExclusiveEquipment(A);
+            }
             #endregion
 
             return u;

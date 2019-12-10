@@ -118,7 +118,15 @@ namespace FFBE_Soft.model.competence
             else
                 Text = TypeDamage.ToString();
 
-            Text += " damage (" + this.CoeffDamage.ToString() + "%) ";
+            Text += " damage (" + this.CoeffDamage.ToString();
+
+            if(TypeDamage == TypeDamage.Fixed)
+            {
+                Text += ") ";
+            }
+            else
+                Text += "%) ";
+
             if (this.IgnoreDefense > 0)
             {
                 Text += "with ignore DEF (" + IgnoreDefense + "%) ";
@@ -299,7 +307,7 @@ namespace FFBE_Soft.model.competence
         private void EditTextForLimitDamageUp()
         {
             // Text initialisation
-            Text = "Increase LB damage (" + PercentLimitDamageUp.ToString() + "%) ";
+            Text = "Increase LB damage (" + PercentLimitDamageUp.ToString() + "%) for " + LimitDamageUpTurns;
 
             if (LimitDamageUpTurns == 1)
                 Text += " turn ";

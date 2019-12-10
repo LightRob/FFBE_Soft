@@ -138,6 +138,10 @@ namespace FFBE_Soft.model.equipment
             StatBuffed = s;
             Coefficient = c;
         }
+        public override string ToString()
+        {
+            return StatBuffed.ToString() + "+" + Coefficient + "%";
+        }
     }
 
     public struct ElementResistanceEquipment
@@ -150,6 +154,10 @@ namespace FFBE_Soft.model.equipment
             Element = e;
             Resistance = r;
         }
+        public override string ToString()
+        {
+            return Element.ToString() + " (+" + Resistance + "%)";
+        }
     }
 
     public struct AilmentResistanceEquipment
@@ -161,6 +169,10 @@ namespace FFBE_Soft.model.equipment
         {
             Ailment = a;
             Resistance = r;
+        }
+        public override string ToString()
+        {
+            return Ailment.ToString() + " (+" + Resistance + "%)";
         }
     }
     #endregion
@@ -193,6 +205,26 @@ namespace FFBE_Soft.model.equipment
         /// Type of the equipment
         /// </summary>
         public EquipmentType EquipmentType { get; set; }
+
+        /// <summary>
+        /// If the weapon is Two-Handed
+        /// </summary>
+        public bool TwoHandedWeapon { get; set; }
+
+        /// <summary>
+        /// Minimum of damage range
+        /// </summary>
+        public short MinDamageRange { get; set; }
+
+        /// <summary>
+        /// Maximum of damage range
+        /// </summary>
+        public short MaxDamageRange { get; set; }
+
+        /// <summary>
+        /// Accuracy of the weapon
+        /// </summary>
+        public byte Accuracy { get; set; }
 
         /// <summary>
         /// List of stats fixed type buff
@@ -245,58 +277,149 @@ namespace FFBE_Soft.model.equipment
         private void EditText()
         {
             Text = "";
-            if(FixedStatEquipment.Count > 0)
+
+            ///////////////////////////// ----------------------------------------------------------------- Statistiques Fixe / Percent
+
+
+            if (FixedStatEquipment.Count > 0 || PercentStatEquipment.Count > 0)
             {
-                for (int i = 0; i < FixedStatEquipment.Count; i++)
-                    Text += FixedStatEquipment[i].ToString() + ", ";
-            }
-            if(PercentStatEquipment.Count > 0)
-            {
-                for (int i = 0; i < PercentStatEquipment.Count; i++)
-                    Text += PercentStatEquipment[i].ToString() + ", ";
-            }
-            if(Text != null && Text.Length > 2)
+                if (FixedStatEquipment.Count > 0)
+                {
+                    for (int i = 0; i < FixedStatEquipment.Count; i++)
+                        Text += FixedStatEquipment[i].ToString() + ", ";
+                }
+                if (PercentStatEquipment.Count > 0)
+                {
+                    for (int i = 0; i < PercentStatEquipment.Count; i++)
+                        Text += PercentStatEquipment[i].ToString() + ", ";
+                }
+
                 Text = Text.Remove(Text.Length - 2);
+            }
+                
 
-            ///////////////////////////// -----------------------------------------------------------------
+            ///////////////////////////// ----------------------------------------------------------------- Resistances Element / Ailment
+            
 
-            if(EquipmentEffectsPassives.Count > 0)
+            if(ElementDamage != Element.Neutral)
             {
-                if (FixedStatEquipment.Count > 0 || PercentStatEquipment.Count > 0)
+                if (!Text.Equals(""))
+                    Text += Environment.NewLine;
+                Text += "Element: ";
+
+                Element t = this.ElementDamage;
+
+                List<string> lt = new List<string>();
+
+                if ((t - Element.Dark) >= 0) { lt.Add(Element.Dark.ToString() + "/"); t -= Element.Dark; }
+                if ((t - Element.Light) >= 0) { lt.Add(Element.Light.ToString() + "/"); t -= Element.Light; }
+                if ((t - Element.Earth) >= 0) { lt.Add(Element.Earth.ToString() + "/"); t -= Element.Earth; }
+                if ((t - Element.Wind) >= 0) { lt.Add(Element.Wind.ToString() + "/"); t -= Element.Wind; }
+                         
+                if ((t - Element.Water) >= 0) { lt.Add(Element.Water.ToString() + "/"); t -= Element.Water; }
+                if ((t - Element.Lightning) >= 0) { lt.Add(Element.Lightning.ToString() + "/"); t -= Element.Lightning; }
+                if ((t - Element.Ice) >= 0) { lt.Add(Element.Ice.ToString() + "/"); t -= Element.Ice; }
+                if ((t - Element.Fire) >= 0) { lt.Add(Element.Fire.ToString()+ "/"); t -= Element.Fire; }
+
+                for (int i = 0; i <= lt.Count; i++)
+                {
+                    string tt;
+                    tt = lt[lt.Count - 1];
+                    Text += tt;
+                    lt.Remove(tt);
+                }
+
+                Text = Text.Remove(Text.Length - 1);
+            }
+
+            
+            ///////////////////////////// ----------------------------------------------------------------- Resistances Element / Ailment
+
+
+            if(ElementResistances.Count > 0 || AilmentResistances.Count > 0)
+            {
+                if (!Text.Equals(""))
+                    Text += Environment.NewLine;
+                Text += "Resistance: ";
+
+                if(ElementResistances.Count > 0)
+                {
+                    foreach (ElementResistanceEquipment res in ElementResistances)
+                    {
+                        Text += res.ToString();
+                        Text += ", ";
+                    }
+                }
+                if(AilmentResistances.Count > 0)
+                {
+                    foreach (AilmentResistanceEquipment res in AilmentResistances)
+                    {
+                        Text += res.ToString();
+                        Text += ", ";
+                    }
+                }
+
+                Text = Text.Remove(Text.Length - 2);
+            }
+
+
+            ///////////////////////////// ----------------------------------------------------------------- Effect Passive / Ability / Damage Range / Accuracy
+
+
+            if(EquipmentEffectsPassives.Count > 0 || EquipmentEffectsAbilities.Count > 0 || MinDamageRange > 0 || Accuracy > 0)
+            {
+                if (!Text.Equals(""))
                     Text += Environment.NewLine;
                 Text += "Effect: ";
 
-                foreach (UnitPassive passive in EquipmentEffectsPassives)
+                if(EquipmentEffectsPassives.Count > 0)
                 {
-                    Text += passive.Name;
-                    if (passive.UsableWitheList)
-                        Text += " (" + passive.GetWhiteListString() + " only)";
-                    Text += ", ";
+                    foreach (UnitPassive passive in EquipmentEffectsPassives)
+                    {
+                        Text += passive.Name;
+                        if (passive.UsableWitheList)
+                            Text += " (" + passive.GetWhiteListString() + " only)";
+                        Text += ", ";
+                    }
                 }
+                if(EquipmentEffectsAbilities.Count > 0)
+                {
+                    foreach (UnitAbility ability in EquipmentEffectsAbilities)
+                    {
+                        Text += ability.Name;
+                        if (ability.UsableWitheList)
+                            Text += " (" + ability.GetWhiteListString() + " only)";
+                        Text += ", ";
+                    }
+                }
+                if(MinDamageRange > 0)
+                {
+                    Text += "Damage range " + MinDamageRange + "% - " + MaxDamageRange + "%, ";
+                }
+                if(Accuracy > 0)
+                {
+                    Text += "Accuracy +" + Accuracy + "%, ";
+                }
+
+                Text = Text.Remove(Text.Length - 2);
             }
 
-            if(EquipmentEffectsAbilities.Count > 0)
+
+            ///////////////////////////// ----------------------------------------------------------------- Two-Handed / Single-Handed Weapon
+
+
+            if (IsWeaponEquipment(EquipmentType))
             {
-                if (FixedStatEquipment.Count > 0 || PercentStatEquipment.Count > 0)
+                if (!Text.Equals(""))
                     Text += Environment.NewLine;
-                if (EquipmentEffectsPassives.Count == 0)
-                    Text += "Effect: ";
 
-                foreach (UnitAbility ability in EquipmentEffectsAbilities)
-                {
-                    Text += ability.Name;
-                    if (ability.UsableWitheList)
-                        Text += " (" + ability.GetWhiteListString() + " only)";
-                    Text += ", ";
-                }
+                if (TwoHandedWeapon)
+                    Text += "Two-Handed";
+                else
+                    Text += "Single-Handed";
+                Text += " weapon";
             }
 
-            if (EquipmentEffectsPassives.Count > 0 || EquipmentEffectsAbilities.Count > 0)
-            {
-                if (Text != null && Text.Length > 2)
-                    Text = Text.Remove(Text.Length - 2);
-            }
-                
         }
         public void AddFixedStat(StatBuffed stat, short coeff)
         {
@@ -328,6 +451,38 @@ namespace FFBE_Soft.model.equipment
             EquipmentEffectsAbilities.Add(effect);
             EditText();
         }
+        public void AddTwoHandedWeapon(short minRange, short maxRange, byte accuracy)
+        {
+            TwoHandedWeapon = true; MinDamageRange = minRange; MaxDamageRange = maxRange; Accuracy = accuracy;
+
+            EditText();
+        }
+        private bool IsWeaponEquipment(EquipmentType type)
+        {
+            switch (EquipmentType)
+            {
+                case EquipmentType.LightShield:
+                    return false;
+                case EquipmentType.HeavyShield:
+                    return false;
+                case EquipmentType.Hat:
+                    return false;
+                case EquipmentType.Helm:
+                    return false;
+                case EquipmentType.Clothe:
+                    return false;
+                case EquipmentType.LightArmor:
+                    return false;
+                case EquipmentType.HeavyArmor:
+                    return false;
+                case EquipmentType.Robe:
+                    return false;
+                case EquipmentType.Accesory:
+                    return false;
+                default:
+                    return true;
+            }
+        }
         #endregion
 
 
@@ -335,7 +490,7 @@ namespace FFBE_Soft.model.equipment
         #region Constructors
         private Equipment(string name, string descritpion, string url, EquipmentType type, string howToObtain)
         {
-            Name = name; Description = descritpion; ImgURL = url; EquipmentType = type; HowToObtain = howToObtain;
+            Name = name; Description = descritpion; ImgURL = url; EquipmentType = type; HowToObtain = howToObtain; ElementDamage = Element.Neutral;
             FixedStatEquipment = new List<FixedStatEquipment>();
             PercentStatEquipment = new List<PercentStatEquipment>();
             ElementResistances = new List<ElementResistanceEquipment>();

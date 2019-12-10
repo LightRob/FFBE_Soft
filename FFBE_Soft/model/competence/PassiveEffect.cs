@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FFBE_Soft.model.equipment;
+using System.Collections.Generic;
 
 namespace FFBE_Soft.model.competence
 {
@@ -1157,6 +1158,80 @@ namespace FFBE_Soft.model.competence
             if (TypeDamageAbsorb != TypeDamage.Hybrid)
                 Text += TypeDamageAbsorb.ToString().ToLower();
             Text += " damage taken";
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - Statistiques Buff With Spécial Condition
+
+        #region Propriétés
+        /// <summary>
+        /// If the passive buff statistiques with a spécial condition
+        /// </summary>
+        public bool IsBuffStatsSpecialCondition { get; set; }
+
+        /// <summary>
+        /// Statistiques buffed
+        /// </summary>
+        public StatistiquesBuff StatistiquesBuffSpecialCondition { get; set; }
+
+        /// <summary>
+        /// Coefficient of the buff
+        /// </summary>
+        public short CoefficientBuffSpecialCondition { get; set; }
+
+        /// <summary>
+        /// If the passive need a certain equipment to activate
+        /// </summary>
+        public string EquipmentSpecialCondition { get; set; }
+        #endregion
+
+        #region Méthodes
+        private PassiveEffect(StatistiquesBuff stat, short coeff, string equipment)
+        {
+            IsBuffStatsSpecialCondition = true; StatistiquesBuffSpecialCondition = stat; CoefficientBuffSpecialCondition = coeff;
+            EquipmentSpecialCondition = equipment;
+
+            EditTextForStatistiquesBuffSpecialConditionPassive();
+        }
+        public static PassiveEffect CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff stat, short coeff, string equipment)
+        {
+            return new PassiveEffect(stat, coeff, equipment);
+        }
+        private void EditTextForStatistiquesBuffSpecialConditionPassive()
+        {
+            Text = "Increase ";
+
+            {
+                StatistiquesBuff t = StatistiquesBuffSpecialCondition;
+
+                List<string> lt = new List<string>();
+                if ((t - StatistiquesBuff.PSY) >= 0) { lt.Add(StatistiquesBuff.PSY.ToString() + "/"); t -= StatistiquesBuff.PSY; }
+                if ((t - StatistiquesBuff.MAG) >= 0) { lt.Add(StatistiquesBuff.MAG.ToString() + "/"); t -= StatistiquesBuff.MAG; }
+                if ((t - StatistiquesBuff.DEF) >= 0) { lt.Add(StatistiquesBuff.DEF.ToString() + "/"); t -= StatistiquesBuff.DEF; }
+
+                if ((t - StatistiquesBuff.ATK) >= 0) { lt.Add(StatistiquesBuff.ATK.ToString() + "/"); t -= StatistiquesBuff.ATK; }
+                if ((t - StatistiquesBuff.MP) >= 0) { lt.Add(StatistiquesBuff.MP.ToString() + "/"); t -= StatistiquesBuff.MP; }
+                if ((t - StatistiquesBuff.HP) >= 0) { lt.Add(StatistiquesBuff.HP.ToString() + "/"); t -= StatistiquesBuff.HP; }
+
+
+                for (int i = 0; i <= lt.Count; i++)
+                {
+                    string tt;
+                    tt = lt[lt.Count - 1];
+                    Text += tt;
+                    lt.Remove(tt);
+                }
+            }
+
+            Text = Text.Remove(Text.Length - 1) + " (" + CoefficientBuffSpecialCondition + "%) when equiped with ";
+
+            if (!EquipmentSpecialCondition.Equals(""))
+                Text += EquipmentSpecialCondition;
+
         }
         #endregion
 

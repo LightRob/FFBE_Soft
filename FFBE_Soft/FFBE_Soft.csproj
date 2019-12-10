@@ -158,8 +158,14 @@
     <Content Include="Resources\Element\Resistance\Icon-Light_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Water_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Wind_Resistance.png" />
+    <Content Include="Resources\Equipment\Icon-Asterisk.png" />
+    <Content Include="Resources\Equipment\Icon-Stone_Crown.png" />
+    <Content Include="Resources\Equipment\Icon-Stone_Vest.png" />
     <Content Include="Resources\Equipment\Icon-Storm_Bunny_Jacket.png" />
     <Content Include="Resources\Equipment\Icon-Storm_Kickers.png" />
+    <Content Include="Resources\Equipment\Icon-Tectonic_Bracer.png" />
+    <Content Include="Resources\Equipment\Icon-Tectonic_Crown.png" />
+    <Content Include="Resources\Equipment\Icon-Tectonic_Vest.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_273.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_275.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_276.png" />

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_UnitName = new System.Windows.Forms.Label();
             this.tabControl_Unit = new System.Windows.Forms.TabControl();
             this.tabPage_UnitStats = new System.Windows.Forms.TabPage();
@@ -41,8 +41,20 @@
             this.listView_UnitStats = new System.Windows.Forms.ListView();
             this.tabPage_Abilities = new System.Windows.Forms.TabPage();
             this.dataGridView_Ability = new System.Windows.Forms.DataGridView();
+            this.MinRariry_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Level_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Icon_Header = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Effect_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hits_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_Passives = new System.Windows.Forms.TabPage();
             this.dataGridView_Passives = new System.Windows.Forms.DataGridView();
+            this.MinRariryPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LevelPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IconPassives_Header = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NamePassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EffectPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_Magic = new System.Windows.Forms.TabPage();
             this.tabPage_Limit = new System.Windows.Forms.TabPage();
             this.dataGridView_Limit = new System.Windows.Forms.DataGridView();
@@ -60,18 +72,6 @@
             this.label_RaceUnit = new System.Windows.Forms.Label();
             this.label_GenderUnit = new System.Windows.Forms.Label();
             this.pictureBox_UnitIdle = new System.Windows.Forms.PictureBox();
-            this.MinRariryPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LevelPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IconPassives_Header = new System.Windows.Forms.DataGridViewImageColumn();
-            this.NamePassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EffectPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MinRariry_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Level_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Icon_Header = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Effect_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hits_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl_Unit.SuspendLayout();
             this.tabPage_UnitStats.SuspendLayout();
             this.tabPage_Abilities.SuspendLayout();
@@ -214,14 +214,14 @@
             this.Effect_Header,
             this.Hits_Header,
             this.Cost_Header});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Ability.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Ability.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_Ability.Location = new System.Drawing.Point(8, 8);
             this.dataGridView_Ability.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView_Ability.Name = "dataGridView_Ability";
@@ -231,6 +231,72 @@
             this.dataGridView_Ability.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView_Ability.Size = new System.Drawing.Size(1364, 775);
             this.dataGridView_Ability.TabIndex = 0;
+            // 
+            // MinRariry_Header
+            // 
+            this.MinRariry_Header.HeaderText = "Min Rarity";
+            this.MinRariry_Header.MinimumWidth = 8;
+            this.MinRariry_Header.Name = "MinRariry_Header";
+            this.MinRariry_Header.ReadOnly = true;
+            this.MinRariry_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MinRariry_Header.Width = 77;
+            // 
+            // Level_Header
+            // 
+            this.Level_Header.HeaderText = "Level";
+            this.Level_Header.MinimumWidth = 8;
+            this.Level_Header.Name = "Level_Header";
+            this.Level_Header.ReadOnly = true;
+            this.Level_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Level_Header.Width = 60;
+            // 
+            // Icon_Header
+            // 
+            this.Icon_Header.HeaderText = "Icon";
+            this.Icon_Header.MinimumWidth = 72;
+            this.Icon_Header.Name = "Icon_Header";
+            this.Icon_Header.ReadOnly = true;
+            this.Icon_Header.Width = 72;
+            // 
+            // Name_Header
+            // 
+            this.Name_Header.HeaderText = "Name";
+            this.Name_Header.MinimumWidth = 8;
+            this.Name_Header.Name = "Name_Header";
+            this.Name_Header.ReadOnly = true;
+            this.Name_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Name_Header.Width = 150;
+            // 
+            // Effect_Header
+            // 
+            this.Effect_Header.HeaderText = "Effect";
+            this.Effect_Header.MinimumWidth = 8;
+            this.Effect_Header.Name = "Effect_Header";
+            this.Effect_Header.ReadOnly = true;
+            this.Effect_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Effect_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Effect_Header.Width = 528;
+            // 
+            // Hits_Header
+            // 
+            this.Hits_Header.HeaderText = "Hits";
+            this.Hits_Header.MinimumWidth = 8;
+            this.Hits_Header.Name = "Hits_Header";
+            this.Hits_Header.ReadOnly = true;
+            this.Hits_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Hits_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Hits_Header.Width = 50;
+            // 
+            // Cost_Header
+            // 
+            this.Cost_Header.HeaderText = "Cost";
+            this.Cost_Header.MinimumWidth = 8;
+            this.Cost_Header.Name = "Cost_Header";
+            this.Cost_Header.ReadOnly = true;
+            this.Cost_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Cost_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cost_Header.Width = 70;
             // 
             // tabPage_Passives
             // 
@@ -256,14 +322,14 @@
             this.IconPassives_Header,
             this.NamePassives_Header,
             this.EffectPassives_Header});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Passives.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Passives.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_Passives.Location = new System.Drawing.Point(8, 8);
             this.dataGridView_Passives.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView_Passives.Name = "dataGridView_Passives";
@@ -273,6 +339,47 @@
             this.dataGridView_Passives.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView_Passives.Size = new System.Drawing.Size(1364, 775);
             this.dataGridView_Passives.TabIndex = 0;
+            // 
+            // MinRariryPassives_Header
+            // 
+            this.MinRariryPassives_Header.HeaderText = "Min Rarity";
+            this.MinRariryPassives_Header.MinimumWidth = 8;
+            this.MinRariryPassives_Header.Name = "MinRariryPassives_Header";
+            this.MinRariryPassives_Header.ReadOnly = true;
+            this.MinRariryPassives_Header.Width = 77;
+            // 
+            // LevelPassives_Header
+            // 
+            this.LevelPassives_Header.HeaderText = "Level";
+            this.LevelPassives_Header.MinimumWidth = 6;
+            this.LevelPassives_Header.Name = "LevelPassives_Header";
+            this.LevelPassives_Header.ReadOnly = true;
+            this.LevelPassives_Header.Width = 60;
+            // 
+            // IconPassives_Header
+            // 
+            this.IconPassives_Header.HeaderText = "Icon";
+            this.IconPassives_Header.MinimumWidth = 6;
+            this.IconPassives_Header.Name = "IconPassives_Header";
+            this.IconPassives_Header.ReadOnly = true;
+            this.IconPassives_Header.Width = 72;
+            // 
+            // NamePassives_Header
+            // 
+            this.NamePassives_Header.HeaderText = "Name";
+            this.NamePassives_Header.MinimumWidth = 6;
+            this.NamePassives_Header.Name = "NamePassives_Header";
+            this.NamePassives_Header.ReadOnly = true;
+            this.NamePassives_Header.Width = 150;
+            // 
+            // EffectPassives_Header
+            // 
+            this.EffectPassives_Header.HeaderText = "Effect";
+            this.EffectPassives_Header.MinimumWidth = 6;
+            this.EffectPassives_Header.Name = "EffectPassives_Header";
+            this.EffectPassives_Header.ReadOnly = true;
+            this.EffectPassives_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.EffectPassives_Header.Width = 630;
             // 
             // tabPage_Magic
             // 
@@ -309,14 +416,14 @@
             this.EffectLB_Header,
             this.HitsLB_Header,
             this.CostLB_Header});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Limit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Limit.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView_Limit.Location = new System.Drawing.Point(8, 8);
             this.dataGridView_Limit.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView_Limit.Name = "dataGridView_Limit";
@@ -389,14 +496,14 @@
             this.NameEquipExclu_Header,
             this.TypeEquipExclu_Header,
             this.EffectEquipExclu_Header});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_EquipmentExclusive.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_EquipmentExclusive.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView_EquipmentExclusive.Location = new System.Drawing.Point(8, 8);
             this.dataGridView_EquipmentExclusive.Name = "dataGridView_EquipmentExclusive";
             this.dataGridView_EquipmentExclusive.ReadOnly = true;
@@ -467,113 +574,6 @@
             this.pictureBox_UnitIdle.TabIndex = 1;
             this.pictureBox_UnitIdle.TabStop = false;
             // 
-            // MinRariryPassives_Header
-            // 
-            this.MinRariryPassives_Header.HeaderText = "Min Rarity";
-            this.MinRariryPassives_Header.MinimumWidth = 8;
-            this.MinRariryPassives_Header.Name = "MinRariryPassives_Header";
-            this.MinRariryPassives_Header.ReadOnly = true;
-            this.MinRariryPassives_Header.Width = 77;
-            // 
-            // LevelPassives_Header
-            // 
-            this.LevelPassives_Header.HeaderText = "Level";
-            this.LevelPassives_Header.MinimumWidth = 6;
-            this.LevelPassives_Header.Name = "LevelPassives_Header";
-            this.LevelPassives_Header.ReadOnly = true;
-            this.LevelPassives_Header.Width = 60;
-            // 
-            // IconPassives_Header
-            // 
-            this.IconPassives_Header.HeaderText = "Icon";
-            this.IconPassives_Header.MinimumWidth = 6;
-            this.IconPassives_Header.Name = "IconPassives_Header";
-            this.IconPassives_Header.ReadOnly = true;
-            this.IconPassives_Header.Width = 72;
-            // 
-            // NamePassives_Header
-            // 
-            this.NamePassives_Header.HeaderText = "Name";
-            this.NamePassives_Header.MinimumWidth = 6;
-            this.NamePassives_Header.Name = "NamePassives_Header";
-            this.NamePassives_Header.ReadOnly = true;
-            this.NamePassives_Header.Width = 150;
-            // 
-            // EffectPassives_Header
-            // 
-            this.EffectPassives_Header.HeaderText = "Effect";
-            this.EffectPassives_Header.MinimumWidth = 6;
-            this.EffectPassives_Header.Name = "EffectPassives_Header";
-            this.EffectPassives_Header.ReadOnly = true;
-            this.EffectPassives_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.EffectPassives_Header.Width = 630;
-            // 
-            // MinRariry_Header
-            // 
-            this.MinRariry_Header.HeaderText = "Min Rarity";
-            this.MinRariry_Header.MinimumWidth = 8;
-            this.MinRariry_Header.Name = "MinRariry_Header";
-            this.MinRariry_Header.ReadOnly = true;
-            this.MinRariry_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MinRariry_Header.Width = 77;
-            // 
-            // Level_Header
-            // 
-            this.Level_Header.HeaderText = "Level";
-            this.Level_Header.MinimumWidth = 8;
-            this.Level_Header.Name = "Level_Header";
-            this.Level_Header.ReadOnly = true;
-            this.Level_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Level_Header.Width = 60;
-            // 
-            // Icon_Header
-            // 
-            this.Icon_Header.HeaderText = "Icon";
-            this.Icon_Header.MinimumWidth = 72;
-            this.Icon_Header.Name = "Icon_Header";
-            this.Icon_Header.ReadOnly = true;
-            this.Icon_Header.Width = 72;
-            // 
-            // Name_Header
-            // 
-            this.Name_Header.HeaderText = "Name";
-            this.Name_Header.MinimumWidth = 8;
-            this.Name_Header.Name = "Name_Header";
-            this.Name_Header.ReadOnly = true;
-            this.Name_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Name_Header.Width = 150;
-            // 
-            // Effect_Header
-            // 
-            this.Effect_Header.HeaderText = "Effect";
-            this.Effect_Header.MinimumWidth = 8;
-            this.Effect_Header.Name = "Effect_Header";
-            this.Effect_Header.ReadOnly = true;
-            this.Effect_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Effect_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Effect_Header.Width = 528;
-            // 
-            // Hits_Header
-            // 
-            this.Hits_Header.HeaderText = "Hits";
-            this.Hits_Header.MinimumWidth = 8;
-            this.Hits_Header.Name = "Hits_Header";
-            this.Hits_Header.ReadOnly = true;
-            this.Hits_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Hits_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Hits_Header.Width = 50;
-            // 
-            // Cost_Header
-            // 
-            this.Cost_Header.HeaderText = "Cost";
-            this.Cost_Header.MinimumWidth = 8;
-            this.Cost_Header.Name = "Cost_Header";
-            this.Cost_Header.ReadOnly = true;
-            this.Cost_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Cost_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cost_Header.Width = 70;
-            // 
             // UnitDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -586,7 +586,7 @@
             this.Controls.Add(this.label_UnitName);
             this.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.Name = "UnitDescription";
-            this.Text = "UnitDescriptionEr";
+            this.Text = "Rien";
             this.tabControl_Unit.ResumeLayout(false);
             this.tabPage_UnitStats.ResumeLayout(false);
             this.tabPage_Abilities.ResumeLayout(false);

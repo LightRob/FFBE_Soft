@@ -237,5 +237,22 @@
   <data name="Icon-Storm_Bunny_Jacket" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Equipment\Icon-Storm_Bunny_Jacket.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-
+  <data name="Icon-Asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Stone_Crown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Stone_Crown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Stone_Vest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Stone_Vest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Tectonic_Bracer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Tectonic_Bracer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Tectonic_Crown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Tectonic_Crown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Tectonic_Vest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Tectonic_Vest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Resources;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace FFBE_Soft
@@ -21,6 +22,7 @@ namespace FFBE_Soft
 
             Unit Esther = this.SetEstherBDD();
 
+            
 
             CreateLeftPanel(Esther);
             CreateUnitStatListView(Esther.Stats, this.listView_UnitStats);
@@ -162,6 +164,48 @@ namespace FFBE_Soft
             u.Accessory = true;
             u.AbilitySlots = 4;
             u.MagicAffinity = ma;
+
+            // ---- TMR
+            {
+                Equipment S_K = Equipment.CreateEquipment("Storm Kickers", "A pair of sneackers said to have belonged to a warrior of legend. On the right set of feet these stylish shoes are capable of granting its wearer the power to withstand lightning."
+                    , "Icon-Storm_Kickers", EquipmentType.Accesory, "TMR Esther");
+                S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
+
+                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
+                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(true, 15);
+                UnitPassive S_K1 = new UnitPassive(0, 0, "Icon-Ability_276", "Inner Limit");
+                S_K1.AddPassiveEffect(S_K1_1);
+                S_K1.AddPassiveEffect(S_K1_2);
+                S_K.AddEquipmentEffectPassive(S_K1);
+
+                PassiveEffect S_K2_1 = PassiveEffect.CreateAbsorbDamageEffect(ElementDamage.Lightning, TypeDamage.Hybrid);
+                UnitPassive S_K2 = new UnitPassive(0, 0, "Icon-Ability_280", "Stormborne"); S_K2.UsableWitheList = true; S_K2.AddUnitToWhiteList("Esther");
+                S_K2.AddPassiveEffect(S_K2_1);
+                S_K.AddEquipmentEffectPassive(S_K2);
+
+                u.AddTMR(S_K);
+            }
+
+            // ---- STMR
+            {
+                Equipment SBJ = Equipment.CreateEquipment("Storm Bunny Jacket", "A unique jacket with a hood that ressembles rabbit ears. It fills its wearer with the instincts of a swift killer, and adds to their endurance and strength as well. Woven with the finest fabric of a distant world, it was exclusively made for a certain warrior of legend.",
+                    "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STM Esther");
+                SBJ.AddFixedStat(StatBuffed.HP, 800); SBJ.AddFixedStat(StatBuffed.ATK, 40); SBJ.AddFixedStat(StatBuffed.DEF, 10);
+
+                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
+                UnitPassive SBJ1 = new UnitPassive(0, 0, "Icon-Ability_275", "Killer Instincts");
+                SBJ1.AddPassiveEffect(SBJ1_1);
+                SBJ.AddEquipmentEffectPassive(SBJ1);
+
+                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
+                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 30);
+                UnitPassive SBJ2 = new UnitPassive(0, 0, "Icon-Ability_276", "Exquisite Weaving"); SBJ2.UsableWitheList = true; SBJ2.AddUnitToWhiteList("Esther");
+                SBJ2.AddPassiveEffect(SBJ2_1);
+                SBJ2.AddPassiveEffect(SBJ2_2);
+                SBJ.AddEquipmentEffectPassive(SBJ2);
+
+                u.AddSTMR(SBJ);
+            }
 
             #endregion
 
@@ -801,6 +845,39 @@ namespace FFBE_Soft
             pictureBox_UnitIdle = SetImgByURL(u.ImgURL, pictureBox_UnitIdle);
             label_GenderUnit.Text = "Gender : " + u.Gender.ToString();
             label_RaceUnit.Text = "Race : " + u.Race.ToString();
+
+            TableLayoutPanel tableTMR = tableLayoutPanel_TMR;
+
+            TextBox tbTMTitle = new TextBox
+            {
+                Dock = DockStyle.Fill,
+                Text = "Trust Master",
+                TextAlign = HorizontalAlignment.Center,
+                BackColor = (Color)new ColorConverter().ConvertFromString("#4D627F"),
+                Font = new Font("Franklin Gothic Medium", 10, FontStyle.Bold),
+                ForeColor = Color.GhostWhite,
+                ReadOnly = true
+            };
+            tableTMR.Controls.Add(tbTMTitle, 0, 0);
+            tableTMR.Controls.Add(new TextBox() { Text = u.GetTMRName(), TextAlign = HorizontalAlignment.Center, ReadOnly = true, Dock = DockStyle.Fill }, 0, 1);
+            tableTMR.Controls.Add(new Button() { Image = (Image)rm.GetObject(u.GetTMRImgUrl()), Dock = DockStyle.Fill }, 0, 2);
+
+
+            TableLayoutPanel tableSTMR = tableLayoutPanel_STMR;
+
+            TextBox tbSTMRTitle = new TextBox
+            {
+                Dock = DockStyle.Fill,
+                Text = "Super Trust Master",
+                TextAlign = HorizontalAlignment.Center,
+                BackColor = (Color)new ColorConverter().ConvertFromString("#4D627F"),
+                Font = new Font("Franklin Gothic Medium", 10, FontStyle.Bold),
+                ForeColor = Color.GhostWhite,
+                ReadOnly = true
+            };
+            tableSTMR.Controls.Add(tbSTMRTitle, 0, 0);
+            tableSTMR.Controls.Add(new TextBox() { Text = u.GetSTMRName(), TextAlign = HorizontalAlignment.Center, ReadOnly = true, Dock = DockStyle.Fill }, 0, 1);
+            tableSTMR.Controls.Add(new Button() { Image = (Image)rm.GetObject(u.GetSTMRImgUrl()), Dock = DockStyle.Fill}, 0, 2);
         }
 
         private void CreateUnitStatListView(List<UnitStats> stats, ListView listView)
@@ -996,6 +1073,27 @@ namespace FFBE_Soft
 
                 row.Cells[3].Value = unitComp.Name;
                 row.Cells[4].Value = unitComp.GetEffectsToString();
+
+                /*
+                RichTextBox b = new RichTextBox
+                {
+                    Location = new Point(157, 25),
+                    Size = new Size(135, 50)
+                };
+                b.SelectionStart = b.TextLength;
+                b.SelectionColor = Color.Yellow;
+                b.AppendText("Texte en jaune");
+                b.SelectionLength = b.TextLength;
+
+                b.SelectionStart = b.TextLength;
+                b.SelectionColor = Color.Red;
+                b.AppendText("Texte en rouge");
+                b.SelectionLength = b.TextLength;
+
+                Controls.Add(b);
+                */
+
+                //row.Con = b.Text;
                 row.Cells[5].Value = unitComp.GetHitsToString();
                 row.Cells[6].Value = unitComp.MPCost;
             }
@@ -1091,6 +1189,7 @@ namespace FFBE_Soft
             tbElement.BackColor = (Color)new ColorConverter().ConvertFromString("#4D627F");
             tbElement.Font = new Font("Franklin Gothic Medium", 10, FontStyle.Bold);
             tbElement.ForeColor = Color.GhostWhite;
+            tbElement.ReadOnly = true;
             table.Controls.Add(tbElement, 0, 0);
             table.SetColumnSpan(tbElement, 8);
 
@@ -1104,50 +1203,52 @@ namespace FFBE_Soft
             tbAilment.BackColor = (Color)new ColorConverter().ConvertFromString("#4D627F");
             tbAilment.Font = new Font("Franklin Gothic Medium", 10, FontStyle.Bold);
             tbAilment.ForeColor = Color.GhostWhite;
+            tbAilment.ReadOnly = true;
             table.Controls.Add(tbAilment, 0, 3);
             table.SetColumnSpan(tbAilment, 8);
 
 
 
             // Element
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Fire_Resistance") }, 0, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Ice_Resistance") }, 1, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Lightning_Resistance") }, 2, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Water_Resistance") }, 3, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Wind_Resistance") }, 4, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Earth_Resistance") }, 5, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Light_Resistance") }, 6, 1);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Dark_Resistance") }, 7, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Fire_Resistance") }, 0, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Ice_Resistance") }, 1, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Lightning_Resistance") }, 2, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Water_Resistance") }, 3, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Wind_Resistance") }, 4, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Earth_Resistance") }, 5, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Light_Resistance") }, 6, 1);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Dark_Resistance") }, 7, 1);
+
             // Number
-            table.Controls.Add(new Label() { Text = res.Fire.ToString() }, 0, 2);
-            table.Controls.Add(new Label() { Text = res.Ice.ToString() }, 1, 2);
-            table.Controls.Add(new Label() { Text = res.Lightning.ToString() }, 2, 2);
-            table.Controls.Add(new Label() { Text = res.Water.ToString() }, 3, 2);
-            table.Controls.Add(new Label() { Text = res.Wind.ToString() }, 4, 2);
-            table.Controls.Add(new Label() { Text = res.Earth.ToString() }, 5, 2);
-            table.Controls.Add(new Label() { Text = res.Light.ToString() }, 6, 2);
-            table.Controls.Add(new Label() { Text = res.Dark.ToString() }, 7, 2);
+            table.Controls.Add(new TextBox() { Text = res.Fire.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 0, 2);
+            table.Controls.Add(new TextBox() { Text = res.Ice.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 1, 2);
+            table.Controls.Add(new TextBox() { Text = res.Lightning.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 2, 2);
+            table.Controls.Add(new TextBox() { Text = res.Water.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 3, 2);
+            table.Controls.Add(new TextBox() { Text = res.Wind.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 4, 2);
+            table.Controls.Add(new TextBox() { Text = res.Earth.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 5, 2);
+            table.Controls.Add(new TextBox() { Text = res.Light.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 6, 2);
+            table.Controls.Add(new TextBox() { Text = res.Dark.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 7, 2);
 
 
 
             // Ailment
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Poison_Resistance") }, 0, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Blind_Resistance") }, 1, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Sleep_Resistance") }, 2, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Silence_Resistance") }, 3, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Paralysis_Resistance") }, 4, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Confuse_Resistance") }, 5, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Disease_Resistance") }, 6, 4);
-            table.Controls.Add(new Label() { Image = (Image)rm.GetObject("Icon-Petrification_Resistance") }, 7, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Poison_Resistance") }, 0, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Blind_Resistance") }, 1, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Sleep_Resistance") }, 2, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Silence_Resistance") }, 3, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Paralysis_Resistance") }, 4, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Confuse_Resistance") }, 5, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Disease_Resistance") }, 6, 4);
+            table.Controls.Add(new PictureBox() { Image = (Image)rm.GetObject("Icon-Petrification_Resistance") }, 7, 4);
             // Number
-            table.Controls.Add(new Label() { Text = res.Poison.ToString() }, 0, 5);
-            table.Controls.Add(new Label() { Text = res.Blind.ToString() }, 1, 5);
-            table.Controls.Add(new Label() { Text = res.Sleep.ToString() }, 2, 5);
-            table.Controls.Add(new Label() { Text = res.Silence.ToString() }, 3, 5);
-            table.Controls.Add(new Label() { Text = res.Paralysis.ToString() }, 4, 5);
-            table.Controls.Add(new Label() { Text = res.Confuse.ToString() }, 5, 5);
-            table.Controls.Add(new Label() { Text = res.Disease.ToString() }, 6, 5);
-            table.Controls.Add(new Label() { Text = res.Petrification.ToString() }, 7, 5);
+            table.Controls.Add(new TextBox() { Text = res.Poison.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 0, 5);
+            table.Controls.Add(new TextBox() { Text = res.Blind.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 1, 5);
+            table.Controls.Add(new TextBox() { Text = res.Sleep.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 2, 5);
+            table.Controls.Add(new TextBox() { Text = res.Silence.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 3, 5);
+            table.Controls.Add(new TextBox() { Text = res.Paralysis.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 4, 5);
+            table.Controls.Add(new TextBox() { Text = res.Confuse.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 5, 5);
+            table.Controls.Add(new TextBox() { Text = res.Disease.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 6, 5);
+            table.Controls.Add(new TextBox() { Text = res.Petrification.ToString(), TextAlign = HorizontalAlignment.Center, ReadOnly = true }, 7, 5);
 
 
         }

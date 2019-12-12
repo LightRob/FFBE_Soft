@@ -488,6 +488,10 @@ namespace FFBE_Soft.model.equipment
 
 
         #region Constructors
+        public Equipment()
+        {
+
+        }
         private Equipment(string name, string descritpion, string url, EquipmentType type, string howToObtain)
         {
             Name = name; Description = descritpion; ImgURL = url; EquipmentType = type; HowToObtain = howToObtain; ElementDamage = Element.Neutral;

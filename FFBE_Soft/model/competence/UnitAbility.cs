@@ -95,6 +95,10 @@ namespace FFBE_Soft.model.competence
         #endregion
 
         #region Constructors
+        public UnitAbility()
+        {
+
+        }
         public UnitAbility (byte star, byte level, string imgURL, string name, short mpCost)
         {
             this.Star = star; this.Level = level; this.ImgURL = imgURL; this.Name = name; this.MPCost = mpCost;

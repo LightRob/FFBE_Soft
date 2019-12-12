@@ -132,6 +132,70 @@ namespace FFBE_Soft.model
         /// List of equipment with a exclusive effect
         /// </summary>
         public List<Equipment> ExclusiveEquipments { get; set; }
+
+
+
+        /// <summary>
+        /// If the TMR is a equipment
+        /// </summary>
+        public bool TMRIsEquipment { get; set; }
+
+        /// <summary>
+        /// TMR
+        /// </summary>
+        public Equipment TMREquipment { get; set; }
+
+        /// <summary>
+        /// If the STMR is a Equipment
+        /// </summary>
+        public bool STMRIsEquipment { get; set; }
+
+        /// <summary>
+        /// STMR
+        /// </summary>
+        public Equipment STMREquipment { get; set; }
+
+
+        /// <summary>
+        /// If the TMR is a passive materia
+        /// </summary>
+        public bool TMRIsPassive { get; set; }
+
+        /// <summary>
+        /// TMR
+        /// </summary>
+        public UnitPassive TMRPassive { get; set; }
+
+        /// <summary>
+        /// If the STMR is a Passive materia
+        /// </summary>
+        public bool STMRIsPassive { get; set; }
+
+        /// <summary>
+        /// STMR
+        /// </summary>
+        public UnitPassive STMRPassive { get; set; }
+
+
+        /// <summary>
+        /// If the TMR is a ability
+        /// </summary>
+        public bool TMRIsAbility { get; set; }
+
+        /// <summary>
+        /// TMR
+        /// </summary>
+        public UnitAbility TMRAbility { get; set; }
+
+        /// <summary>
+        /// If the STMR is a ability materia
+        /// </summary>
+        public bool STMRIsAbility { get; set; }
+
+        /// <summary>
+        /// STMR
+        /// </summary>
+        public UnitAbility STMRAbility { get; set; }
         #endregion
 
         #region Constructeurs
@@ -308,6 +372,7 @@ namespace FFBE_Soft.model
                 Passives.Add(unitPassive);
         }
 
+
         /// <summary>
         /// Addd limit to the unit
         /// </summary>
@@ -318,6 +383,7 @@ namespace FFBE_Soft.model
                 Limits.Add(unitLimit);
         }
 
+
         /// <summary>
         /// Add equipment to the unit
         /// </summary>
@@ -327,6 +393,119 @@ namespace FFBE_Soft.model
             if(ExclusiveEquipments != null)
                 ExclusiveEquipments.Add(equipment);
         }
+
+
+        /// <summary>
+        /// Add a TMR object to the unit
+        /// </summary>
+        /// <param name="tmr">Equipment, UnitPassive or UnitAbility</param>
+        public void AddTMR(Object tmr)
+        {
+            Equipment e = new Equipment();
+            UnitPassive p = new UnitPassive();
+            UnitAbility a = new UnitAbility();
+
+            if(tmr.GetType().Equals(e.GetType()))
+            {
+                TMRIsEquipment = true;
+                TMREquipment = (Equipment)tmr;
+            }
+            if (tmr.GetType().Equals(p.GetType()))
+            {
+                TMRIsPassive = true;
+                TMRPassive = (UnitPassive)tmr;
+            }
+            if (tmr.GetType().Equals(a.GetType()))
+            {
+                TMRIsAbility = true;
+                TMRAbility = (UnitAbility)tmr;
+            }
+        }
+        /// <summary>
+        /// Add a STMR object to the unit
+        /// </summary>
+        /// <param name="tmr">Equipment, UnitPassive or UnitAbility</param>
+        public void AddSTMR(Object stmr)
+        {
+            Equipment e = new Equipment();
+            UnitPassive p = new UnitPassive();
+            UnitAbility a = new UnitAbility();
+
+            if (stmr.GetType().Equals(e.GetType()))
+            {
+                STMRIsEquipment = true;
+                STMREquipment = (Equipment)stmr;
+            }
+            if (stmr.GetType().Equals(p.GetType()))
+            {
+                STMRIsPassive = true;
+                STMRPassive = (UnitPassive)stmr;
+            }
+            if (stmr.GetType().Equals(a.GetType()))
+            {
+                STMRIsAbility = true;
+                STMRAbility = (UnitAbility)stmr;
+            }
+        }
+
+        /// <summary>
+        /// Return the name of the TMR
+        /// </summary>
+        /// <returns>Name of the TMR</returns>
+        public string GetTMRName()
+        {
+            if (TMRIsEquipment)
+                return TMREquipment.Name;
+            if (TMRIsPassive)
+                return TMRPassive.Name;
+            if (TMRIsAbility)
+                return TMRAbility.Name;
+            return "Error TMR";
+        }
+        /// <summary>
+        /// Return the name of the STMR
+        /// </summary>
+        /// <returns>Name of the STMR</returns>
+        public string GetSTMRName()
+        {
+            if (STMRIsEquipment)
+                return STMREquipment.Name;
+            if (STMRIsPassive)
+                return STMRPassive.Name;
+            if (STMRIsAbility)
+                return STMRAbility.Name;
+            return "Error STMR";
+        }
+
+        /// <summary>
+        /// Return the url of the image's TMR
+        /// </summary>
+        /// <returns>URL of the image</returns>
+        public string GetTMRImgUrl()
+        {
+            if (TMRIsEquipment)
+                return TMREquipment.ImgURL;
+            if (TMRIsPassive)
+                return TMRPassive.ImgURL;
+            if (TMRIsAbility)
+                return TMRAbility.ImgURL;
+            return "Error TMR Image";
+        }
+        /// <summary>
+        /// Return the url of the image's STMR
+        /// </summary>
+        /// <returns>URL of the image</returns>
+        public string GetSTMRImgUrl()
+        {
+            if (STMRIsEquipment)
+                return STMREquipment.ImgURL;
+            if (STMRIsPassive)
+                return STMRPassive.ImgURL;
+            if (STMRIsAbility)
+                return STMRAbility.ImgURL;
+            return "Error TMR Image";
+        }
+
         #endregion
     }
 }

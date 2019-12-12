@@ -48,6 +48,8 @@ namespace FFBE_Soft
 
             //this.CreateUnitResTableView(u.Resistance, this.tableRes);
             //this.InitializeResizingListView();
+
+
         }
 
         private ListView resizingListView = new ListView();

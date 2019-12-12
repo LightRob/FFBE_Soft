@@ -80,6 +80,10 @@ namespace FFBE_Soft.model.competence
             this.PassiveEffect = new List<PassiveEffect>();
             WhiteList = new List<string>();
         }
+        public UnitPassive()
+        {
+
+        }
         #endregion
     }
 }

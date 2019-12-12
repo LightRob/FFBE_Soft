@@ -41,13 +41,6 @@
             this.listView_UnitStats = new System.Windows.Forms.ListView();
             this.tabPage_Abilities = new System.Windows.Forms.TabPage();
             this.dataGridView_Ability = new System.Windows.Forms.DataGridView();
-            this.MinRariry_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Level_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Icon_Header = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Effect_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hits_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_Passives = new System.Windows.Forms.TabPage();
             this.dataGridView_Passives = new System.Windows.Forms.DataGridView();
             this.MinRariryPassives_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +69,13 @@
             this.tableLayoutPanel_TMR = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel_STMR = new System.Windows.Forms.TableLayoutPanel();
+            this.MinRariry_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Level_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Icon_Header = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Effect_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hits_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost_Header = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl_Unit.SuspendLayout();
             this.tabPage_UnitStats.SuspendLayout();
             this.tabPage_Abilities.SuspendLayout();
@@ -236,72 +236,6 @@
             this.dataGridView_Ability.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView_Ability.Size = new System.Drawing.Size(1364, 775);
             this.dataGridView_Ability.TabIndex = 0;
-            // 
-            // MinRariry_Header
-            // 
-            this.MinRariry_Header.HeaderText = "Min Rarity";
-            this.MinRariry_Header.MinimumWidth = 8;
-            this.MinRariry_Header.Name = "MinRariry_Header";
-            this.MinRariry_Header.ReadOnly = true;
-            this.MinRariry_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MinRariry_Header.Width = 77;
-            // 
-            // Level_Header
-            // 
-            this.Level_Header.HeaderText = "Level";
-            this.Level_Header.MinimumWidth = 8;
-            this.Level_Header.Name = "Level_Header";
-            this.Level_Header.ReadOnly = true;
-            this.Level_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Level_Header.Width = 60;
-            // 
-            // Icon_Header
-            // 
-            this.Icon_Header.HeaderText = "Icon";
-            this.Icon_Header.MinimumWidth = 72;
-            this.Icon_Header.Name = "Icon_Header";
-            this.Icon_Header.ReadOnly = true;
-            this.Icon_Header.Width = 72;
-            // 
-            // Name_Header
-            // 
-            this.Name_Header.HeaderText = "Name";
-            this.Name_Header.MinimumWidth = 8;
-            this.Name_Header.Name = "Name_Header";
-            this.Name_Header.ReadOnly = true;
-            this.Name_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Name_Header.Width = 150;
-            // 
-            // Effect_Header
-            // 
-            this.Effect_Header.HeaderText = "Effect";
-            this.Effect_Header.MinimumWidth = 8;
-            this.Effect_Header.Name = "Effect_Header";
-            this.Effect_Header.ReadOnly = true;
-            this.Effect_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Effect_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Effect_Header.Width = 528;
-            // 
-            // Hits_Header
-            // 
-            this.Hits_Header.HeaderText = "Hits";
-            this.Hits_Header.MinimumWidth = 8;
-            this.Hits_Header.Name = "Hits_Header";
-            this.Hits_Header.ReadOnly = true;
-            this.Hits_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Hits_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Hits_Header.Width = 40;
-            // 
-            // Cost_Header
-            // 
-            this.Cost_Header.HeaderText = "Cost";
-            this.Cost_Header.MinimumWidth = 8;
-            this.Cost_Header.Name = "Cost_Header";
-            this.Cost_Header.ReadOnly = true;
-            this.Cost_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Cost_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cost_Header.Width = 70;
             // 
             // tabPage_Passives
             // 
@@ -622,6 +556,73 @@
             this.tableLayoutPanel_STMR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59F));
             this.tableLayoutPanel_STMR.Size = new System.Drawing.Size(208, 161);
             this.tableLayoutPanel_STMR.TabIndex = 0;
+            // 
+            // MinRariry_Header
+            // 
+            this.MinRariry_Header.HeaderText = "Min Rarity";
+            this.MinRariry_Header.MinimumWidth = 8;
+            this.MinRariry_Header.Name = "MinRariry_Header";
+            this.MinRariry_Header.ReadOnly = true;
+            this.MinRariry_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MinRariry_Header.Width = 77;
+            // 
+            // Level_Header
+            // 
+            this.Level_Header.HeaderText = "Level";
+            this.Level_Header.MinimumWidth = 8;
+            this.Level_Header.Name = "Level_Header";
+            this.Level_Header.ReadOnly = true;
+            this.Level_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Level_Header.Width = 60;
+            // 
+            // Icon_Header
+            // 
+            this.Icon_Header.HeaderText = "Icon";
+            this.Icon_Header.MinimumWidth = 72;
+            this.Icon_Header.Name = "Icon_Header";
+            this.Icon_Header.ReadOnly = true;
+            this.Icon_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Icon_Header.Width = 72;
+            // 
+            // Name_Header
+            // 
+            this.Name_Header.HeaderText = "Name";
+            this.Name_Header.MinimumWidth = 8;
+            this.Name_Header.Name = "Name_Header";
+            this.Name_Header.ReadOnly = true;
+            this.Name_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Name_Header.Width = 150;
+            // 
+            // Effect_Header
+            // 
+            this.Effect_Header.HeaderText = "Effect";
+            this.Effect_Header.MinimumWidth = 8;
+            this.Effect_Header.Name = "Effect_Header";
+            this.Effect_Header.ReadOnly = true;
+            this.Effect_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Effect_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Effect_Header.Width = 528;
+            // 
+            // Hits_Header
+            // 
+            this.Hits_Header.HeaderText = "Hits";
+            this.Hits_Header.MinimumWidth = 8;
+            this.Hits_Header.Name = "Hits_Header";
+            this.Hits_Header.ReadOnly = true;
+            this.Hits_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Hits_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Hits_Header.Width = 40;
+            // 
+            // Cost_Header
+            // 
+            this.Cost_Header.HeaderText = "Cost";
+            this.Cost_Header.MinimumWidth = 8;
+            this.Cost_Header.Name = "Cost_Header";
+            this.Cost_Header.ReadOnly = true;
+            this.Cost_Header.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Cost_Header.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cost_Header.Width = 70;
             // 
             // UnitDescription
             // 

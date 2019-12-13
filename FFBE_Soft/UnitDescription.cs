@@ -15,24 +15,44 @@ namespace FFBE_Soft
     public partial class UnitDescription : Form
     {
         ResourceManager rm = Resources.ResourceManager;
+
+        Unit unit;
         public UnitDescription()
         {
             InitializeComponent();
             //this.WindowState = FormWindowState.Maximized;
 
-            Unit Esther = this.SetEstherBDD();
-
             
 
-            CreateLeftPanel(Esther);
-            CreateUnitStatListView(Esther.Stats, this.listView_UnitStats);
-            CreateUnitStatUpListView(Esther.StatsMaxUp, this.listView_UnitStatUp);
-            CreateUnitStatMaxUpListView(Esther.Stats, Esther.StatsMaxUp, this.listView_UnitMaxUp);
-            CreateUnitResTableView(Esther.Resistance, this.tableLayoutPanel_Resistance);
-            CreateAbilityGridData(Esther.Abilities, this.dataGridView_Ability);
-            CreatePassivesGridData(Esther.Passives, this.dataGridView_Passives);
-            CreateLimitGridData(Esther.Limits, this.dataGridView_Limit);
-            CreateEquipExcluGridData(Esther.ExclusiveEquipments, dataGridView_EquipmentExclusive);
+            CreateLeftPanel(unit);
+            CreateUnitStatListView(unit.Stats, this.listView_UnitStats);
+            CreateUnitStatUpListView(unit.StatsMaxUp, this.listView_UnitStatUp);
+            CreateUnitStatMaxUpListView(unit.Stats, unit.StatsMaxUp, this.listView_UnitMaxUp);
+            CreateUnitResTableView(unit.Resistance, this.tableLayoutPanel_Resistance);
+            CreateAbilityGridData(unit.Abilities, this.dataGridView_Ability);
+            CreatePassivesGridData(unit.Passives, this.dataGridView_Passives);
+            CreateLimitGridData(unit.Limits, this.dataGridView_Limit);
+            CreateEquipExcluGridData(unit.ExclusiveEquipments, dataGridView_EquipmentExclusive);
+        }
+
+        public UnitDescription(string name)
+        {
+            unit = this.SetEstherBDD();
+
+            InitializeComponent();
+            //this.WindowState = FormWindowState.Maximized;
+
+
+
+            CreateLeftPanel(unit);
+            CreateUnitStatListView(unit.Stats, this.listView_UnitStats);
+            CreateUnitStatUpListView(unit.StatsMaxUp, this.listView_UnitStatUp);
+            CreateUnitStatMaxUpListView(unit.Stats, unit.StatsMaxUp, this.listView_UnitMaxUp);
+            CreateUnitResTableView(unit.Resistance, this.tableLayoutPanel_Resistance);
+            CreateAbilityGridData(unit.Abilities, this.dataGridView_Ability);
+            CreatePassivesGridData(unit.Passives, this.dataGridView_Passives);
+            CreateLimitGridData(unit.Limits, this.dataGridView_Limit);
+            CreateEquipExcluGridData(unit.ExclusiveEquipments, dataGridView_EquipmentExclusive);
         }
 
         private Unit SetEstherBDD()
@@ -860,7 +880,14 @@ namespace FFBE_Soft
             };
             tableTMR.Controls.Add(tbTMTitle, 0, 0);
             tableTMR.Controls.Add(new TextBox() { Text = u.GetTMRName(), TextAlign = HorizontalAlignment.Center, ReadOnly = true, Dock = DockStyle.Fill }, 0, 1);
-            tableTMR.Controls.Add(new Button() { Image = (Image)rm.GetObject(u.GetTMRImgUrl()), Dock = DockStyle.Fill }, 0, 2);
+
+            Button btnTM = new Button() 
+            { 
+                Image = (Image)rm.GetObject(u.GetTMRImgUrl()), 
+                Dock = DockStyle.Fill
+            };
+            btnTM.Click += ShowEquipmentPage;
+            tableTMR.Controls.Add(btnTM, 0, 2);
 
 
             TableLayoutPanel tableSTMR = tableLayoutPanel_STMR;
@@ -1328,5 +1355,18 @@ namespace FFBE_Soft
 
         }
 
+
+        #region ButtonClick Event
+        public void ShowEquipmentPage(object sender, EventArgs e)
+        {
+            if(unit.TMRIsEquipment)
+            {
+                EquipmentDescription dialogTest = new EquipmentDescription(unit.TMREquipment.Name);
+
+                dialogTest.ShowDialog();
+                dialogTest.Dispose();
+            }
+        }
+        #endregion
     }
 }

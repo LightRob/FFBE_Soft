@@ -16,7 +16,7 @@ namespace FFBE_Soft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UnitDescription());
+            Application.Run(new UnitDescription("Esther"));
             //Application.Run(new FormDeTest());
             //Application.Run(new Form1());
         }

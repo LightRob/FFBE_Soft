@@ -23,3 +23,4 @@ C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.StatsTes
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Debug\WindowsBase.dll
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csproj.CopyComplete
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csprojAssemblyReference.cache
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.EquipmentDescription.resources

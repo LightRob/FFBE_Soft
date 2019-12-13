@@ -17,6 +17,8 @@ namespace FFBE_Soft
             InitializeComponent();
             //this.WindowState = FormWindowState.Maximized;
 
+            this.CenterToParent();
+
             RichTextBox b = new RichTextBox
             {
                 //Location = new Point(157, 25),

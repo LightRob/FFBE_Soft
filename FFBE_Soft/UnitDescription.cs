@@ -188,7 +188,7 @@ namespace FFBE_Soft
             // ---- TMR
             {
                 Equipment S_K = Equipment.CreateEquipment("Storm Kickers", "A pair of sneackers said to have belonged to a warrior of legend. On the right set of feet these stylish shoes are capable of granting its wearer the power to withstand lightning."
-                    , "Icon-Storm_Kickers", EquipmentType.Accesory, "TMR Esther");
+                    , "Icon-Storm_Kickers", EquipmentType.Accessory, "TMR Esther");
                 S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
 
                 PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
@@ -673,7 +673,7 @@ namespace FFBE_Soft
             // ---- Storm Kickers
             {
                 Equipment S_K = Equipment.CreateEquipment("Storm Kickers", "A pair of sneackers said to have belonged to a warrior of legend. On the right set of feet these stylish shoes are capable of granting its wearer the power to withstand lightning."
-                    , "Icon-Storm_Kickers", EquipmentType.Accesory, "TMR Esther");
+                    , "Icon-Storm_Kickers", EquipmentType.Accessory, "TMR Esther");
                 S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
 
                 PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
@@ -763,7 +763,7 @@ namespace FFBE_Soft
             // ---- Tectonic Bracer
             {
                 Equipment T_B = Equipment.CreateEquipment("Tectonic Bracer", "A bracer made of stone. For being made from such a hefty material, it is actually surprisingly light. It is rummored to have been made by a legendary blacksmith who made a number of curious and durable pieces out of stone. This is usually considered his most well-known piece.",
-                    "Icon-Tectonic_Bracer", EquipmentType.Accesory, "Recipe Event");
+                    "Icon-Tectonic_Bracer", EquipmentType.Accessory, "Recipe Event");
                 T_B.AddFixedStat(StatBuffed.ATK, 5); T_B.AddFixedStat(StatBuffed.DEF, 15); T_B.AddPercentStat(StatBuffed.HP, 5); T_B.AddElementResistance(Element.Earth, 10);
 
                 PassiveEffect T_B1_1 = PassiveEffect.CreateStatistiquesBuffSpecialConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 10, "Tectonic Crown");
@@ -883,10 +883,11 @@ namespace FFBE_Soft
 
             Button btnTM = new Button() 
             { 
+                Name = "TMR_Button",
                 Image = (Image)rm.GetObject(u.GetTMRImgUrl()), 
                 Dock = DockStyle.Fill
             };
-            btnTM.Click += ShowEquipmentPage;
+            btnTM.Click += ShowTMRPage;
             tableTMR.Controls.Add(btnTM, 0, 2);
 
 
@@ -904,7 +905,14 @@ namespace FFBE_Soft
             };
             tableSTMR.Controls.Add(tbSTMRTitle, 0, 0);
             tableSTMR.Controls.Add(new TextBox() { Text = u.GetSTMRName(), TextAlign = HorizontalAlignment.Center, ReadOnly = true, Dock = DockStyle.Fill }, 0, 1);
-            tableSTMR.Controls.Add(new Button() { Image = (Image)rm.GetObject(u.GetSTMRImgUrl()), Dock = DockStyle.Fill}, 0, 2);
+            Button btnSTM = new Button() 
+            {
+                Name = "STMR_Button", 
+                Image = (Image)rm.GetObject(u.GetSTMRImgUrl()), 
+                Dock = DockStyle.Fill
+            };
+            btnSTM.Click += ShowSTMRPage;
+            tableSTMR.Controls.Add(btnSTM, 0, 2);
         }
 
         private void CreateUnitStatListView(List<UnitStats> stats, ListView listView)
@@ -1357,15 +1365,25 @@ namespace FFBE_Soft
 
 
         #region ButtonClick Event
-        public void ShowEquipmentPage(object sender, EventArgs e)
+        public void ShowTMRPage(object sender, EventArgs e)
         {
             if(unit.TMRIsEquipment)
             {
                 EquipmentDescription dialogTest = new EquipmentDescription(unit.TMREquipment.Name);
 
-                dialogTest.ShowDialog();
-                dialogTest.Dispose();
+                dialogTest.Show();
             }
+            
+        }
+        public void ShowSTMRPage(object sender, EventArgs e)
+        {
+            if (unit.STMRIsEquipment)
+            {
+                EquipmentDescription dialogTest = new EquipmentDescription(unit.STMREquipment.Name);
+
+                dialogTest.Show();
+            }
+
         }
         #endregion
     }

@@ -70,7 +70,7 @@ namespace FFBE_Soft.model.equipment
         HeavyArmor,
         Robe,
 
-        Accesory
+        Accessory
     }
 
     public enum StatBuffed
@@ -298,7 +298,7 @@ namespace FFBE_Soft.model.equipment
             }
                 
 
-            ///////////////////////////// ----------------------------------------------------------------- Resistances Element / Ailment
+            ///////////////////////////// ----------------------------------------------------------------- Element Damage
             
 
             if(ElementDamage != Element.Neutral)
@@ -421,6 +421,141 @@ namespace FFBE_Soft.model.equipment
             }
 
         }
+        public string GetStatsText()
+        {
+            string result = "";
+            if (FixedStatEquipment.Count > 0 || PercentStatEquipment.Count > 0)
+            {
+                if (FixedStatEquipment.Count > 0)
+                {
+                    for (int i = 0; i < FixedStatEquipment.Count; i++)
+                        result += FixedStatEquipment[i].ToString() + ", ";
+                }
+                if (PercentStatEquipment.Count > 0)
+                {
+                    for (int i = 0; i < PercentStatEquipment.Count; i++)
+                        result += PercentStatEquipment[i].ToString() + ", ";
+                }
+
+                result = result.Remove(result.Length - 2);
+            }
+            return result;
+        }
+        public string GetElementText()
+        {
+            string result = "";
+
+            if (ElementDamage != Element.Neutral)
+            {
+                result += "Element: ";
+
+                Element t = ElementDamage;
+
+                List<string> lt = new List<string>();
+
+                if ((t - Element.Dark) >= 0) { lt.Add(Element.Dark.ToString() + "/"); t -= Element.Dark; }
+                if ((t - Element.Light) >= 0) { lt.Add(Element.Light.ToString() + "/"); t -= Element.Light; }
+                if ((t - Element.Earth) >= 0) { lt.Add(Element.Earth.ToString() + "/"); t -= Element.Earth; }
+                if ((t - Element.Wind) >= 0) { lt.Add(Element.Wind.ToString() + "/"); t -= Element.Wind; }
+
+                if ((t - Element.Water) >= 0) { lt.Add(Element.Water.ToString() + "/"); t -= Element.Water; }
+                if ((t - Element.Lightning) >= 0) { lt.Add(Element.Lightning.ToString() + "/"); t -= Element.Lightning; }
+                if ((t - Element.Ice) >= 0) { lt.Add(Element.Ice.ToString() + "/"); t -= Element.Ice; }
+                if ((t - Element.Fire) >= 0) { lt.Add(Element.Fire.ToString() + "/"); t -= Element.Fire; }
+
+                for (int i = 0; i <= lt.Count; i++)
+                {
+                    string tt;
+                    tt = lt[lt.Count - 1];
+                    result += tt;
+                    lt.Remove(tt);
+                }
+
+                result = result.Remove(result.Length - 1);
+            }
+
+            return result;
+        }
+        public string GetResistanceText()
+        {
+            string result = "";
+
+            if (ElementResistances.Count > 0 || AilmentResistances.Count > 0)
+            {
+                result += "Resistance: ";
+
+                if (ElementResistances.Count > 0)
+                {
+                    foreach (ElementResistanceEquipment res in ElementResistances)
+                    {
+                        result += res.ToString();
+                        result += ", ";
+                    }
+                }
+                if (AilmentResistances.Count > 0)
+                {
+                    foreach (AilmentResistanceEquipment res in AilmentResistances)
+                    {
+                        result += res.ToString();
+                        result += ", ";
+                    }
+                }
+
+                result = result.Remove(result.Length - 2);
+            }
+
+            return result;
+        }
+        public string GetEffectsText()
+        {
+            string result = "";
+
+            if (EquipmentEffectsPassives.Count > 0 || EquipmentEffectsAbilities.Count > 0 || MinDamageRange > 0 || Accuracy > 0 || IsWeaponEquipment(EquipmentType))
+            {
+                result += "";
+
+                if (EquipmentEffectsPassives.Count > 0)
+                {
+                    foreach (UnitPassive passive in EquipmentEffectsPassives)
+                    {
+                        result += passive.Name;
+                        if (passive.UsableWitheList)
+                            result += " (" + passive.GetWhiteListString() + " only)";
+                        result += ", ";
+                    }
+                }
+                if (EquipmentEffectsAbilities.Count > 0)
+                {
+                    foreach (UnitAbility ability in EquipmentEffectsAbilities)
+                    {
+                        result += ability.Name;
+                        if (ability.UsableWitheList)
+                            result += " (" + ability.GetWhiteListString() + " only)";
+                        result += ", ";
+                    }
+                }
+                if (MinDamageRange > 0)
+                {
+                    result += "Damage range " + MinDamageRange + "% - " + MaxDamageRange + "%, ";
+                }
+                if (Accuracy > 0)
+                {
+                    result += "Accuracy +" + Accuracy + "%, ";
+                }
+                if (IsWeaponEquipment(EquipmentType))
+                {
+                    if (TwoHandedWeapon)
+                        result += "Two-Handed";
+                    else
+                        result += "Single-Handed";
+                    result += " weapon, ";
+                }
+
+                result = result.Remove(result.Length - 2);
+            }
+
+            return result;
+        }
         public void AddFixedStat(StatBuffed stat, short coeff)
         {
             FixedStatEquipment.Add(new FixedStatEquipment(stat, coeff));
@@ -477,7 +612,7 @@ namespace FFBE_Soft.model.equipment
                     return false;
                 case EquipmentType.Robe:
                     return false;
-                case EquipmentType.Accesory:
+                case EquipmentType.Accessory:
                     return false;
                 default:
                     return true;

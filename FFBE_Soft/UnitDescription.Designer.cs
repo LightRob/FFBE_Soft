@@ -577,6 +577,7 @@
             this.pictureBox_UnitIdle.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox_UnitIdle.Name = "pictureBox_UnitIdle";
             this.pictureBox_UnitIdle.Size = new System.Drawing.Size(196, 183);
+            this.pictureBox_UnitIdle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_UnitIdle.TabIndex = 1;
             this.pictureBox_UnitIdle.TabStop = false;
             // 

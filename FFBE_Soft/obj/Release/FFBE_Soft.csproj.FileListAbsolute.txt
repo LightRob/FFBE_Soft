@@ -1,0 +1,16 @@
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Release\FFBE_Soft.exe.config
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Release\FFBE_Soft.exe
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Release\FFBE_Soft.pdb
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Release\WindowsBase.dll
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.csprojAssemblyReference.cache
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.EquipmentDescription.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.Form1.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.FormDeTest.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.PassifTestUserControl.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.Properties.Resources.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.StatsTestUserControl.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.UnitDescription.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.csproj.GenerateResource.cache
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.csproj.CopyComplete
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.exe
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Release\FFBE_Soft.pdb

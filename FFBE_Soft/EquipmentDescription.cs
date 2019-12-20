@@ -136,14 +136,25 @@ namespace FFBE_Soft
             };
             table.Controls.Add(tbHeaderEffect, 2, 0);
 
-            int i = 0;
+            int i = 1;
 
+            /*
+            table.RowCount++;
+            Button b2 = new Button
+            {
+                Image = (Image)rm.GetObject("Icon-Ability_19"),
+                Size = new Size(72, 72),
+                ImageAlign = ContentAlignment.MiddleCenter,
+            };
+            table.Controls.Add(b2, 0, 2);
+            Console.WriteLine(table.RowCount);
+            */
+            
             foreach (UnitPassive passive in equipment.EquipmentEffectsPassives)
             {
-                i++;
-                table.RowCount += 1;
-                table.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
-                table.Update();
+                table.RowCount++;
+                
+
                 Button b = new Button
                 {
                     Image = (Image)rm.GetObject(passive.ImgURL),
@@ -151,8 +162,48 @@ namespace FFBE_Soft
                     ImageAlign = ContentAlignment.MiddleCenter,
                 };
                 table.Controls.Add(b, 0, i);
+
+
+
+                
+                TextBox nameBox = new TextBox
+                {
+                    Text = passive.Name,
+                    TextAlign = HorizontalAlignment.Center,
+                    Multiline = true,
+                    MaximumSize = new Size(200, 72),
+                    BorderStyle = BorderStyle.None,
+                    Font = new Font("Franklin Gothic Book", 10, FontStyle.Regular),
+                    Dock = DockStyle.Fill,
+                };
+                if (passive.UsableWitheList)
+                {
+                    foreach (string nameWhiteList in passive.WhiteList)
+                    {
+                        nameBox.Text += Environment.NewLine + nameWhiteList;
+                    }
+                }
+                table.Controls.Add(nameBox, 1, i);
+
+
+                TextBox effectBox = new TextBox
+                {
+                    Text = passive.GetEffectsToString(),
+                    TextAlign = HorizontalAlignment.Left,
+                    MaximumSize = new Size(634, 72),
+                    Dock = DockStyle.Fill,
+                    Multiline = true,
+                    WordWrap = true,
+                    BorderStyle = BorderStyle.None,
+                };
+                table.Controls.Add(effectBox, 2, i);
+                
+
+
+                i++;
             }
             
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

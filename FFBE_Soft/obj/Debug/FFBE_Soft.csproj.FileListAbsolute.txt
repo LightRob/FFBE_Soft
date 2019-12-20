@@ -22,5 +22,5 @@ C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.PassifTe
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.StatsTestUserControl.resources
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\bin\Debug\WindowsBase.dll
 C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csproj.CopyComplete
-C:\Users\robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.csprojAssemblyReference.cache
 C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.EquipmentDescription.resources
+C:\Users\Robin\Documents\GitHub\FFBE_Soft\FFBE_Soft\obj\Debug\FFBE_Soft.model.equipment.EquipmentPassiveTextBoxEffects.resources

@@ -209,7 +209,7 @@ namespace FFBE_Soft
             // ---- STMR
             {
                 Equipment SBJ = Equipment.CreateEquipment("Storm Bunny Jacket", "A unique jacket with a hood that ressembles rabbit ears. It fills its wearer with the instincts of a swift killer, and adds to their endurance and strength as well. Woven with the finest fabric of a distant world, it was exclusively made for a certain warrior of legend.",
-                    "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STM Esther");
+                    "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STMR Esther");
                 SBJ.AddFixedStat(StatBuffed.HP, 800); SBJ.AddFixedStat(StatBuffed.ATK, 40); SBJ.AddFixedStat(StatBuffed.DEF, 10);
 
                 PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);

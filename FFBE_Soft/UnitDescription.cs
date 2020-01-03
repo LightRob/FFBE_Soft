@@ -37,7 +37,8 @@ namespace FFBE_Soft
 
         public UnitDescription(string name)
         {
-            unit = this.SetEstherBDD();
+            //unit = this.SetEstherBDD();
+            unit = SetWoLCGIBDD();
 
             InitializeComponent();
             //this.WindowState = FormWindowState.Maximized;
@@ -53,6 +54,172 @@ namespace FFBE_Soft
             CreatePassivesGridData(unit.Passives, this.dataGridView_Passives);
             CreateLimitGridData(unit.Limits, this.dataGridView_Limit);
             CreateEquipExcluGridData(unit.ExclusiveEquipments, dataGridView_EquipmentExclusive);
+        }
+
+        private Unit SetWoLCGIBDD()
+        {
+            Unit u = new Unit();
+
+            #region WoL Stats
+            UnitStats s5 = new UnitStats
+            {
+                Star = 5,
+                HP = 2950,
+                MP = 127,
+                ATK = 99,
+                DEF = 124,
+                MAG = 89,
+                SPR = 117,
+                AttackHits = 5,
+                LimitDrop = 2,
+                ExpPattern = 6
+            };
+            UnitStats s6 = new UnitStats
+            {
+                Star = 6,
+                HP = 3836,
+                MP = 166,
+                ATK = 129,
+                DEF = 162,
+                MAG = 116,
+                SPR = 153,
+                AttackHits = 5,
+                LimitDrop = 3,
+                ExpPattern = 6
+            };
+            UnitStats s7 = new UnitStats
+            {
+                Star = 7,
+                HP = 4987,
+                MP = 216,
+                ATK = 168,
+                DEF = 211,
+                MAG = 151,
+                SPR = 200,
+                AttackHits = 5,
+                LimitDrop = 3,
+                ExpPattern = 6
+            };
+
+            UnitStatsMaxUp su5 = new UnitStatsMaxUp
+            {
+                Star = 5,
+                HP = 240,
+                MP = 40,
+                ATK = 16,
+                DEF = 24,
+                MAG = 16,
+                SPR = 16
+            };
+            UnitStatsMaxUp su6 = new UnitStatsMaxUp
+            {
+                Star = 6,
+                HP = 390,
+                MP = 65,
+                ATK = 26,
+                DEF = 34,
+                MAG = 26,
+                SPR = 26
+            };
+            UnitStatsMaxUp su7 = new UnitStatsMaxUp
+            {
+                Star = 7,
+                HP = 540,
+                MP = 90,
+                ATK = 40,
+                DEF = 65,
+                MAG = 40,
+                SPR = 40
+            };
+
+            UnitResistance r = new UnitResistance()
+            {
+                Fire = 0,
+                Ice = 0,
+                Lightning = 0,
+                Water = 0,
+                Wind = 0,
+                Earth = 0,
+                Light = 100,
+                Dark = 0,
+
+                Poison = 0,
+                Blind = 0,
+                Sleep = 0,
+                Silence = 0,
+                Paralysis = 0,
+                Confuse = 0,
+                Disease = 0,
+                Petrification = 0,
+            };
+
+            UnitMagicAffinity ma = new UnitMagicAffinity()
+            {
+                WhiteMagicLvl = 8,
+                BlackMagicLvl = 0,
+                GreenMagicLvl = 0,
+                BlueMagicLvl = 0
+            };
+            // -------------------------------------------------------------
+
+            u.Name = "Awakened Warrior of Light";
+            u.ImgURL = "WoL_Img";
+            u.Gender = Gender.Male;
+            u.Race = UnitRace.Human;
+            u.AddStats(s5);
+            u.AddStats(s6);
+            u.AddStats(s7);
+            u.AddStatsMaxUp(su5);
+            u.AddStatsMaxUp(su6);
+            u.AddStatsMaxUp(su7);
+            u.Resistance = r;
+            u.Weapon = Weapon.Dagger | Weapon.Sword | Weapon.GreatSword | Weapon.Katana | Weapon.Staff | Weapon.Rod | Weapon.Bow | Weapon.Axe | Weapon.Hammer | Weapon.Spear | Weapon.Mace | Weapon.Fist;
+            u.Armor = Armor.LightShield | Armor.HeavyShield | Armor.Hat | Armor.Helm | Armor.Clothe | Armor.LightArmor | Armor.HeavyArmor | Armor.Robe;
+            u.Accessory = true;
+            u.AbilitySlots = 4;
+            u.MagicAffinity = ma;
+
+            // TMR
+            {
+                Equipment S_L = Equipment.CreateEquipment("Sword of Light", "A sword that came from a faraway world.The center of the sword's guard is inlaid with a beautiful jewel. It is said that a legendary warrior journeyed all across the world with this sword in order to restore the Crystal's light."
+                    , "Icon-Sword_of_Light", EquipmentType.Sword, "Awakened Warrior of Light TMR");
+                S_L.AddFixedStat(StatBuffed.ATK, 72); S_L.AddFixedStat(StatBuffed.DEF, 46); S_L.AddPercentStat(StatBuffed.DEF, 20);
+
+                PassiveEffect GL_1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
+                PassiveEffect GL_1_2 = PassiveEffect.CreateAutoRegenMPEffect(true, 5);
+                UnitPassive GL_1 = new UnitPassive(0, 0, "Icon-Ability_77", "Guiding Light"); GL_1.UsableWitheList = true; GL_1.AddUnitToWhiteList("Warrior of Light"); GL_1.AddUnitToWhiteList("Awakened Warrior of Light");
+                GL_1.AddPassiveEffect(GL_1_1);
+                GL_1.AddPassiveEffect(GL_1_2);
+
+                S_L.AddEquipmentEffectPassive(GL_1);
+
+                u.AddTMR(S_L);
+            }
+
+            // STMR
+            {
+                Equipment S_L = Equipment.CreateEquipment("Shield of Light", "A heavy shield that came from a faraway world. Although it has a relatively simple and subdued design, its hidden potential makes it exceed that of many shields. It is said that a legendary warrior who attempted to fight against entities that tried to plunge the world into darkness once wielded this shield."
+                    , "Icon-Shield_of_Light", EquipmentType.HeavyShield, "Awakened Warrior of Light STMR");
+                S_L.AddFixedStat(StatBuffed.DEF, 108); S_L.AddFixedStat(StatBuffed.PSY, 52);
+                S_L.AddElementResistance(Element.Water, 30);
+                S_L.AddElementResistance(Element.Wind, 30);
+                S_L.AddElementResistance(Element.Earth, 30);
+                S_L.AddElementResistance(Element.Dark, 30);
+
+                AbilityEffect S1_1 = AbilityEffect.CreateMitigationEffect(true, TypeMitigation.Physical, 10, 1, AbilityTarget.Caster);
+                UnitAbility S1 = new UnitAbility(0, 0, "Icon-Ability_43", "Sentinel", 0);
+
+                PassiveEffect S_L1_1 = PassiveEffect.CreateAutoCastAbilityEffect(true, S1);
+                UnitPassive S_L1 = new UnitPassive(0, 0, "Icon-Ability_43", "Sentinel");
+                S_L1.AddPassiveEffect(S_L1_1);
+
+                S_L.AddEquipmentEffectPassive(S_L1);
+
+                u.AddSTMR(S_L);
+            }
+            #endregion
+
+            return u;
         }
 
         private Unit SetEstherBDD()

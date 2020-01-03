@@ -148,9 +148,17 @@
   <data name="Icon-Poison_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ailment\Resistance\Icon-Poison_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  
+    
+  
   <data name="Esther_Idle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Esther_Idle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Unit\Idle_GIF\Esther_Idle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="WoL_Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Unit\Idle_PNG\Unit-Awakened_Warrior_of_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+    
+  
   <data name="Icon-Light_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Element\Resistance\Icon-Light_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -169,6 +177,8 @@
   <data name="Icon-Paralysis_Resistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ailment\Resistance\Icon-Paralysis_Resistance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  
+  
   
   <data name="Icon-Ability_272" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_Abilities\Icon-Ability_272.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -197,9 +207,12 @@
   <data name="Icon-Ability_105" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_Abilities\Icon-Ability_105.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon-Ability_43" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Abilities\Icon-Ability_43.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   
   
-    
+  
   <data name="Icon-Ability_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon-Passives\Icon-Ability_19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -227,6 +240,7 @@
   <data name="Icon-Ability_77" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon-Passives\Icon-Ability_77.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  
 
 
 
@@ -254,5 +268,11 @@
   </data>
   <data name="Icon-Tectonic_Vest" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Equipment\Icon-Tectonic_Vest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Sword_of_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Sword_of_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Shield_of_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Equipment\Icon-Shield_of_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -151,7 +151,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="StatsTestUserControl.resx">
       <DependentUpon>StatsTestUserControl.cs</DependentUpon>
@@ -174,7 +174,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Esther_Idle.gif" />
+    <None Include="Resources\Unit\Idle_GIF\Esther_Idle.gif" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Ailment\Resistance\Icon-Blind_Resistance.png" />
@@ -192,10 +192,12 @@
     <Content Include="Resources\Element\Resistance\Icon-Water_Resistance.png" />
     <Content Include="Resources\Element\Resistance\Icon-Wind_Resistance.png" />
     <Content Include="Resources\Equipment\Icon-Asterisk.png" />
+    <Content Include="Resources\Equipment\Icon-Shield_of_Light.png" />
     <Content Include="Resources\Equipment\Icon-Stone_Crown.png" />
     <Content Include="Resources\Equipment\Icon-Stone_Vest.png" />
     <Content Include="Resources\Equipment\Icon-Storm_Bunny_Jacket.png" />
     <Content Include="Resources\Equipment\Icon-Storm_Kickers.png" />
+    <Content Include="Resources\Equipment\Icon-Sword_of_Light.png" />
     <Content Include="Resources\Equipment\Icon-Tectonic_Bracer.png" />
     <Content Include="Resources\Equipment\Icon-Tectonic_Crown.png" />
     <Content Include="Resources\Equipment\Icon-Tectonic_Vest.png" />
@@ -207,6 +209,7 @@
     <Content Include="Resources\Icon-Passives\Icon-Ability_280.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_76.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_77.png" />
+    <Content Include="Resources\Icon_Abilities\Icon-Ability_43.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_69.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_63.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_8.png" />
@@ -216,13 +219,12 @@
     <Content Include="Resources\Icon_Abilities\Icon-Ability_94.png" />
     <Content Include="Resources\Icon_Abilities\Icon-Ability_271.png" />
     <Content Include="Resources\Icon-Passives\Icon-Ability_19.png" />
+    <Content Include="Resources\Unit\Idle_PNG\Unit-Awakened_Warrior_of_Light.png" />
     <None Include="Resources\Icon_Abilities\Icon-Ability_272.png" />
     <None Include="Resources\Element\Resistance\Icon-Lightning_Resistance.png" />
     <None Include="Resources\Element\Resistance\Icon-Ice_Resistance.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Unit\Esther\Passives\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

@@ -35,8 +35,8 @@ namespace FFBE_Soft
                     , "Icon-Storm_Kickers", EquipmentType.Accessory, "TMR Esther");
                 S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
 
-                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(true, 15);
+                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(15);
                 UnitPassive S_K1 = new UnitPassive(0, 0, "Icon-Ability_276", "Inner Limit");
                 S_K1.AddPassiveEffect(S_K1_1);
                 S_K1.AddPassiveEffect(S_K1_2);
@@ -54,13 +54,13 @@ namespace FFBE_Soft
                     "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STM Esther");
                 SBJ.AddFixedStat(StatBuffed.HP, 800); SBJ.AddFixedStat(StatBuffed.ATK, 40); SBJ.AddFixedStat(StatBuffed.DEF, 10);
 
-                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
+                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
                 UnitPassive SBJ1 = new UnitPassive(0, 0, "Icon-Ability_275", "Killer Instincts");
                 SBJ1.AddPassiveEffect(SBJ1_1);
                 SBJ.AddEquipmentEffectPassive(SBJ1);
 
-                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 30);
+                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 30);
                 UnitPassive SBJ2 = new UnitPassive(0, 0, "Icon-Ability_276", "Exquisite Weaving"); SBJ2.UsableWitheList = true; SBJ2.AddUnitToWhiteList("Esther");
                 SBJ2.AddPassiveEffect(SBJ2_1);
                 SBJ2.AddPassiveEffect(SBJ2_2);

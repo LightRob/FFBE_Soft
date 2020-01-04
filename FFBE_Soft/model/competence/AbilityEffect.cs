@@ -207,10 +207,10 @@ namespace FFBE_Soft.model.competence
 
             EditTextForDamageAbility();
         }
-        static public AbilityEffect CreateDamageEffect(bool isDamage, TypeDamage typeDamage, ScalingDamage scalingDamage, ElementDamage elementDamage,
+        static public AbilityEffect CreateDamageEffect(TypeDamage typeDamage, ScalingDamage scalingDamage, ElementDamage elementDamage,
             int coeffDamage, byte ignoreDefense, AbilityTarget target, int hits)
         {
-            return new AbilityEffect(isDamage, typeDamage, scalingDamage, elementDamage,
+            return new AbilityEffect(true, typeDamage, scalingDamage, elementDamage,
             coeffDamage, ignoreDefense, target, hits);
         }
         private void EditTextForDamageAbility()
@@ -328,13 +328,10 @@ namespace FFBE_Soft.model.competence
 
             EditTextForLimitAbility();
         }
-        static public AbilityEffect CreateLimitGaugeEffect (bool isLimitGaugeUp, byte fixedLimitGauge, byte minLimitGauge, byte maxLimitGauge,
-            AbilityTarget target)
+        static public AbilityEffect CreateLimitGaugeEffect(byte fixedLimitGauge, byte minLimitGauge, byte maxLimitGauge, AbilityTarget target)
         {
-            return new AbilityEffect(isLimitGaugeUp, fixedLimitGauge, minLimitGauge, maxLimitGauge,
-            target);
+            return new AbilityEffect(true, fixedLimitGauge, minLimitGauge, maxLimitGauge, target);
         }
-
         private void EditTextForLimitAbility()
         {
             // Text initialisation
@@ -412,9 +409,9 @@ namespace FFBE_Soft.model.competence
             this.IsDebuffStats = isDebuffEnemy; this.StatsDebuffed = statDebuffed; this.CoefficientDebuffedStats = coeff; this.DebuffStatsTurns = turns; this.AbilityTargetDebuff = target;
             EditTextForDebuffStatsAbility();
         }
-        static public AbilityEffect CreateDebuffEnemyEffect(bool isDebuffEnemy, StatsDebuffed statDebuffed, byte coeff, byte turns, AbilityTarget target)
+        static public AbilityEffect CreateDebuffEnemyEffect(StatsDebuffed statDebuffed, byte coeff, byte turns, AbilityTarget target)
         {
-            return new AbilityEffect(isDebuffEnemy, statDebuffed, coeff, turns, target);
+            return new AbilityEffect(true, statDebuffed, coeff, turns, target);
         }
         private void EditTextForDebuffStatsAbility()
         {
@@ -531,9 +528,9 @@ namespace FFBE_Soft.model.competence
             EditTextForCoverAbility();
         }
 
-        static public AbilityEffect CreateCoverEffect(bool isCoverAllies, TypeCover typeCover, byte percentChanceCover, byte percentDamageMitigation, byte minDamageMitigation, byte maxDamageMitigation, byte coverTurn, AbilityTarget target)
+        static public AbilityEffect CreateCoverEffect(TypeCover typeCover, byte percentChanceCover, byte percentDamageMitigation, byte minDamageMitigation, byte maxDamageMitigation, byte coverTurn, AbilityTarget target)
         {
-            return new AbilityEffect(isCoverAllies, typeCover, percentChanceCover, percentDamageMitigation, minDamageMitigation, maxDamageMitigation, coverTurn, target);
+            return new AbilityEffect(true, typeCover, percentChanceCover, percentDamageMitigation, minDamageMitigation, maxDamageMitigation, coverTurn, target);
         }
 
         private void EditTextForCoverAbility()
@@ -615,11 +612,10 @@ namespace FFBE_Soft.model.competence
 
             EditTextForTauntAbility();
         }
-        static public AbilityEffect CreateTauntEffect(bool isTaunt, byte tauntChance, byte tauntTurns, AbilityTarget target)
+        static public AbilityEffect CreateTauntEffect(byte tauntChance, byte tauntTurns, AbilityTarget target)
         {
-            return new AbilityEffect(isTaunt, tauntChance, tauntTurns, target);
+            return new AbilityEffect(true, tauntChance, tauntTurns, target);
         }
-
         private void EditTextForTauntAbility()
         {
             // Text initialisation
@@ -700,9 +696,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForMitigationAbility();
         }
-        static public AbilityEffect CreateMitigationEffect(bool isMitigation, TypeMitigation typeMitigation, byte percentMitigation, byte mitigationTurns, AbilityTarget target)
+        static public AbilityEffect CreateMitigationEffect(TypeMitigation typeMitigation, byte percentMitigation, byte mitigationTurns, AbilityTarget target)
         {
-            return new AbilityEffect(isMitigation, typeMitigation, percentMitigation, mitigationTurns, target);
+            return new AbilityEffect(true, typeMitigation, percentMitigation, mitigationTurns, target);
         }
 
         private void EditTextForMitigationAbility()
@@ -784,9 +780,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForBuffStatsAbility();
         }
-        static public AbilityEffect CreateBuffAlliesEffect(bool isBuffAlly, StatsBuffed statBuffCoeff, short coefficientBuffedStats, byte buffTurn, AbilityTarget target)
+        static public AbilityEffect CreateBuffAlliesEffect(StatsBuffed statBuffCoeff, short coefficientBuffedStats, byte buffTurn, AbilityTarget target)
         {
-            return new AbilityEffect(isBuffAlly, statBuffCoeff, coefficientBuffedStats, buffTurn, target);
+            return new AbilityEffect(true, statBuffCoeff, coefficientBuffedStats, buffTurn, target);
         }
 
         private void EditTextForBuffStatsAbility()
@@ -883,9 +879,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForElementImbueAbility();
         }
-        static public AbilityEffect CreateElementImbueEffect(bool isImbueElement, ElementImbue elementImbue, byte imbueTurns, AbilityTarget target)
+        static public AbilityEffect CreateElementImbueEffect(ElementImbue elementImbue, byte imbueTurns, AbilityTarget target)
         {
-            return new AbilityEffect(isImbueElement, elementImbue, imbueTurns, target);
+            return new AbilityEffect(true, elementImbue, imbueTurns, target);
         }
         private void EditTextForElementImbueAbility()
         {
@@ -972,9 +968,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForHealHPAbility();
         }
-        static public AbilityEffect CreateHealHPEffect(bool isHealHP, int fixedHPHeal, int baseHPHeal, short coeff, byte percentHealHP, AbilityTarget target)
+        static public AbilityEffect CreateHealHPEffect(int fixedHPHeal, int baseHPHeal, short coeff, byte percentHealHP, AbilityTarget target)
         {
-            return new AbilityEffect(isHealHP, fixedHPHeal, baseHPHeal, coeff, percentHealHP, target);
+            return new AbilityEffect(true, fixedHPHeal, baseHPHeal, coeff, percentHealHP, target);
         }
         private void EditTextForHealHPAbility()
         {
@@ -1019,9 +1015,9 @@ namespace FFBE_Soft.model.competence
                     break;
             }
         }
-        public void AddHealHPToAbility(bool isHealHP, int fixedHPHeal, int baseHPHeal, short coeff, byte percentHealHP, AbilityTarget target)
+        public void AddHealHPToAbility(int fixedHPHeal, int baseHPHeal, short coeff, byte percentHealHP, AbilityTarget target)
         {
-            this.IsHealHP = isHealHP; this.FixedHPHeal = fixedHPHeal; this.BaseHPHeal = baseHPHeal; this.CoeffHPHeal = coeff; this.PercentHealHP = percentHealHP;
+            this.IsHealHP = true; this.FixedHPHeal = fixedHPHeal; this.BaseHPHeal = baseHPHeal; this.CoeffHPHeal = coeff; this.PercentHealHP = percentHealHP;
             this.AbilityTargetHealHP = target;
 
             EditTextForHealHPMPAbility();
@@ -1133,13 +1129,13 @@ namespace FFBE_Soft.model.competence
 
             EditTextForHealMPAbility();
         }
-        static public AbilityEffect CreateHealMPEffect(bool isHealMP, int fixedMPHeal, int baseMPHeal, short coeff, byte percentHealMP, AbilityTarget target)
+        static public AbilityEffect CreateHealMPEffect(int fixedMPHeal, int baseMPHeal, short coeff, byte percentHealMP, AbilityTarget target)
         {
-            return new AbilityEffect(isHealMP, fixedMPHeal, baseMPHeal, coeff, percentHealMP, target, true);
+            return new AbilityEffect(true, fixedMPHeal, baseMPHeal, coeff, percentHealMP, target, true);
         }
-        public void AddHealMPToAbility(bool isHealMP, int fixedMPHeal, int baseMPHeal, short coeff, byte percentHealMP, AbilityTarget target)
+        public void AddHealMPToAbility(int fixedMPHeal, int baseMPHeal, short coeff, byte percentHealMP, AbilityTarget target)
         {
-            this.IsHealMP = isHealMP; this.FixedMPHeal = fixedMPHeal; BaseMPHeal = baseMPHeal; this.CoeffMPHeal = coeff; this.PercentHealMP = percentHealMP;
+            this.IsHealMP = true; this.FixedMPHeal = fixedMPHeal; BaseMPHeal = baseMPHeal; this.CoeffMPHeal = coeff; this.PercentHealMP = percentHealMP;
             this.AbilityTargetHealMP = target;
 
             EditTextForHealHPMPAbility();
@@ -1230,9 +1226,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForDebuffElementAbility();
         }
-        static public AbilityEffect CreateDebuffElementEffect(bool isDebuffElement, ElementDebuffed elementDebuffed, short percentElementDebuffed, byte elementDebuffedTurns, AbilityTarget target)
+        static public AbilityEffect CreateDebuffElementEffect(ElementDebuffed elementDebuffed, short percentElementDebuffed, byte elementDebuffedTurns, AbilityTarget target)
         {
-            return new AbilityEffect(isDebuffElement, elementDebuffed, percentElementDebuffed, elementDebuffedTurns, target);
+            return new AbilityEffect(true, elementDebuffed, percentElementDebuffed, elementDebuffedTurns, target);
 
         }
         private void EditTextForDebuffElementAbility()
@@ -1331,9 +1327,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForMultipleSkillAbility();
         }
-        static public AbilityEffect CreateMultipleSkillEffect(bool isMultipleSkill, byte numberOfMultiple, List<UnitAbility> abilitiesMultipleSkill)
+        static public AbilityEffect CreateMultipleSkillEffect(byte numberOfMultiple, List<UnitAbility> abilitiesMultipleSkill)
         {
-            return new AbilityEffect(isMultipleSkill, numberOfMultiple, abilitiesMultipleSkill);
+            return new AbilityEffect(true, numberOfMultiple, abilitiesMultipleSkill);
         }
         private void EditTextForMultipleSkillAbility()
         {
@@ -1397,9 +1393,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForCoeffUpAbility();
         }
-        static public AbilityEffect CreateAbilityCoeffUpEffect(bool isAbilityCoeffUp, short abilityCoeffUp, List<UnitAbility> abilites, byte abilityCoeffUpTurns, bool abilityUpCanBeDispel, AbilityTarget target)
+        static public AbilityEffect CreateAbilityCoeffUpEffect(short abilityCoeffUp, List<UnitAbility> abilites, byte abilityCoeffUpTurns, bool abilityUpCanBeDispel, AbilityTarget target)
         {
-            return new AbilityEffect(isAbilityCoeffUp, abilityCoeffUp, abilites, abilityCoeffUpTurns, abilityUpCanBeDispel, target);
+            return new AbilityEffect(true, abilityCoeffUp, abilites, abilityCoeffUpTurns, abilityUpCanBeDispel, target);
         }
         private void EditTextForCoeffUpAbility()
         {
@@ -1489,9 +1485,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForGiveAbility();
         }
-        static public AbilityEffect CreateGiveAbilityEffect(bool isGiveAbility, List<UnitAbility> newAbilities, byte giveAbilityTurns, AbilityTarget target)
+        static public AbilityEffect CreateGiveAbilityEffect(List<UnitAbility> newAbilities, byte giveAbilityTurns, AbilityTarget target)
         {
-            return new AbilityEffect(isGiveAbility, newAbilities, giveAbilityTurns, target);
+            return new AbilityEffect(true, newAbilities, giveAbilityTurns, target);
         }
         private void EditTextForGiveAbility()
         {
@@ -1569,9 +1565,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForCooldownAbility();
         }
-        static public AbilityEffect CreateCooldownEffect(bool isCooldown, byte cooldownTurns, bool isAvailableTurn1)
+        static public AbilityEffect CreateCooldownEffect(byte cooldownTurns, bool isAvailableTurn1)
         {
-            return new AbilityEffect(isCooldown, cooldownTurns, isAvailableTurn1);
+            return new AbilityEffect(true, cooldownTurns, isAvailableTurn1);
         }
         private void EditTextForCooldownAbility()
         {
@@ -1590,6 +1586,156 @@ namespace FFBE_Soft.model.competence
         #endregion
 
 
+
+        #region Support Ability - HP Barrier
+
+        #region Propriétés
+        /// <summary>
+        /// If the ability give a HP barrier
+        /// </summary>
+        public bool IsHPBarrier { get; set; }
+
+        /// <summary>
+        /// Number of HP to the barrier
+        /// </summary>
+        public short HPBarrier { get; set; }
+
+        /// <summary>
+        /// Number of turns
+        /// </summary>
+        public short HPBarrierTurns { get; set; }
+
+        /// <summary>
+        /// Target of the ability
+        /// </summary>
+        public AbilityTarget AbilityTargetHPBarrier { get; set; }
+        #endregion
+
+
+        #region Méthodes
+        private AbilityEffect(bool isHPBarrier, short hp, short turns, AbilityTarget target)
+        {
+            IsHPBarrier = isHPBarrier; HPBarrier = hp; HPBarrierTurns = turns; AbilityTargetHPBarrier = target;
+
+            EditTextForHPBarrierAbility();
+        }
+        static public AbilityEffect CreateHPBarrierEffect(short hp, short turns, AbilityTarget target)
+        {
+            return new AbilityEffect(true, hp,turns,target);
+        }
+        private void EditTextForHPBarrierAbility()
+        {
+            // Text initialisation
+            Text = "Grant HP barrier (" + HPBarrier + ") for " + HPBarrierTurns;
+
+            if (HPBarrierTurns == 1)
+                Text += " turn ";
+            else
+                Text += " turns ";
+
+            switch (AbilityTargetHPBarrier)
+            {
+                case AbilityTarget.SingleTargetAlly:
+                    Text += "to one ally";
+                    break;
+                case AbilityTarget.SingleTargetEnemy:
+                    Text += "to one enemy";
+                    break;
+                case AbilityTarget.AreaOfEffectAllies:
+                    Text += "to all allies";
+                    break;
+                case AbilityTarget.AreaOfEffectEnemies:
+                    Text += "to all enemies";
+                    break;
+                case AbilityTarget.AreaOfEffectAlliesExceptCaster:
+                    Text += "to all allies except caster";
+                    break;
+                case AbilityTarget.Caster:
+                    Text += "to caster";
+                    break;
+                default:
+                    Text += "to nobody";
+                    break;
+            }
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Support Passive - LB Gauge Fill Rate
+
+        #region Propriétés
+        /// <summary>
+        /// If the ability up the lg fill rate
+        /// </summary>
+        public bool IsLBGaugeFillRate { get; set; }
+
+        /// <summary>
+        /// Coefficient of the buff
+        /// </summary>
+        public short CoefficientLBGaugeFillRate { get; set; }
+
+        /// <summary>
+        /// Numbers of turns
+        /// </summary>
+        public short LBGaugeFillRateTurns { get; set; }
+
+        /// <summary>
+        /// Target of the ability
+        /// </summary>
+        public AbilityTarget AbilityTargetLBGaugeFillRate { get; set; }
+        #endregion
+
+        #region Méthodes
+        private AbilityEffect(bool isLBGaugeFillRate, short coeff, short turns, AbilityTarget target, bool truc)
+        {
+            IsLBGaugeFillRate = isLBGaugeFillRate; CoefficientLBGaugeFillRate = coeff; LBGaugeFillRateTurns = turns; AbilityTargetLBGaugeFillRate = target;
+
+            EditTextForLBGaugeFillRateAbility();
+        }
+        static public AbilityEffect CreateLBGaugeFillRateEffect(short coeff, short turns, AbilityTarget target)
+        {
+            return new AbilityEffect(true, coeff, turns, target, true);
+        }
+        private void EditTextForLBGaugeFillRateAbility()
+        {
+            Text = "Increase LB gauge fill rate (" + CoefficientLBGaugeFillRate + "%) for " + LBGaugeFillRateTurns;
+
+            if (LBGaugeFillRateTurns == 1)
+                Text += " turn ";
+            else
+                Text += " turns ";
+
+            switch (AbilityTargetLBGaugeFillRate)
+            {
+                case AbilityTarget.SingleTargetAlly:
+                    Text += "to one ally";
+                    break;
+                case AbilityTarget.SingleTargetEnemy:
+                    Text += "to one enemy";
+                    break;
+                case AbilityTarget.AreaOfEffectAllies:
+                    Text += "to all allies";
+                    break;
+                case AbilityTarget.AreaOfEffectEnemies:
+                    Text += "to all enemies";
+                    break;
+                case AbilityTarget.AreaOfEffectAlliesExceptCaster:
+                    Text += "to all allies except caster";
+                    break;
+                case AbilityTarget.Caster:
+                    Text += "to caster";
+                    break;
+                default:
+                    Text += "to nobody";
+                    break;
+            }
+        }
+        #endregion
+
+        #endregion
     }
 
 }

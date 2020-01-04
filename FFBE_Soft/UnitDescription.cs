@@ -185,8 +185,8 @@ namespace FFBE_Soft
                     , "Icon-Sword_of_Light", EquipmentType.Sword, "Awakened Warrior of Light TMR");
                 S_L.AddFixedStat(StatBuffed.ATK, 72); S_L.AddFixedStat(StatBuffed.DEF, 46); S_L.AddPercentStat(StatBuffed.DEF, 20);
 
-                PassiveEffect GL_1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect GL_1_2 = PassiveEffect.CreateAutoRegenMPEffect(true, 5);
+                PassiveEffect GL_1_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect GL_1_2 = PassiveEffect.CreateAutoRegenMPEffect(5);
                 UnitPassive GL_1 = new UnitPassive(0, 0, "Icon-Ability_77", "Guiding Light"); GL_1.UsableWitheList = true; GL_1.AddUnitToWhiteList("Warrior of Light"); GL_1.AddUnitToWhiteList("Awakened Warrior of Light");
                 GL_1.AddPassiveEffect(GL_1_1);
                 GL_1.AddPassiveEffect(GL_1_2);
@@ -206,10 +206,10 @@ namespace FFBE_Soft
                 S_L.AddElementResistance(Element.Earth, 30);
                 S_L.AddElementResistance(Element.Dark, 30);
 
-                AbilityEffect S1_1 = AbilityEffect.CreateMitigationEffect(true, TypeMitigation.Physical, 10, 1, AbilityTarget.Caster);
+                AbilityEffect S1_1 = AbilityEffect.CreateMitigationEffect(TypeMitigation.Physical, 10, 1, AbilityTarget.Caster);
                 UnitAbility S1 = new UnitAbility(0, 0, "Icon-Ability_43", "Sentinel", 0);
 
-                PassiveEffect S_L1_1 = PassiveEffect.CreateAutoCastAbilityEffect(true, S1);
+                PassiveEffect S_L1_1 = PassiveEffect.CreateAutoCastAbilityEffect(S1);
                 UnitPassive S_L1 = new UnitPassive(0, 0, "Icon-Ability_43", "Sentinel");
                 S_L1.AddPassiveEffect(S_L1_1);
 
@@ -217,6 +217,34 @@ namespace FFBE_Soft
 
                 u.AddSTMR(S_L);
             }
+            #endregion
+
+            #region WoL Abilities
+
+            // ---- Guardian's Wall of Light
+            {
+                AbilityEffect GWL_1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.DEF, ElementDamage.Neutral, 380, 0, AbilityTarget.SingleTargetEnemy, 7);
+                AbilityEffect GWL_2 = AbilityEffect.CreateHPBarrierEffect(1000, 3, AbilityTarget.AreaOfEffectAllies);
+                UnitAbility GWL = new UnitAbility(5, 1, "Icon-Ability_54", "Guardian's Wall of Light", 48);
+                GWL.AddCompEffect(GWL_1);
+                GWL.AddCompEffect(GWL_2);
+                u.AddAbility(GWL);
+            }
+
+            // ---- Vanguard Glaive
+            {
+                AbilityEffect VG_1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.DEF, ElementDamage.Neutral, 150, 0, AbilityTarget.SingleTargetEnemy, 2);
+                AbilityEffect VG_2 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.DEF, ElementDamage.Neutral, 150, 0, AbilityTarget.SingleTargetEnemy, 3);
+                AbilityEffect VG_3 = AbilityEffect.CreateTauntEffect(100, 3, AbilityTarget.Caster);
+                AbilityEffect VG_4 = AbilityEffect.CreateLBGaugeFillRateEffect(150, 3, AbilityTarget.Caster);
+                UnitAbility VG = new UnitAbility(5, 11, "Icon-Ability_54", "Vanguard Glaive", 24);
+                VG.AddCompEffect(VG_1);
+                VG.AddCompEffect(VG_2);
+                VG.AddCompEffect(VG_3);
+                VG.AddCompEffect(VG_4);
+                u.AddAbility(VG);
+            }
+
             #endregion
 
             return u;
@@ -358,8 +386,8 @@ namespace FFBE_Soft
                     , "Icon-Storm_Kickers", EquipmentType.Accessory, "TMR Esther");
                 S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
 
-                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(true, 15);
+                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(15);
                 UnitPassive S_K1 = new UnitPassive(0, 0, "Icon-Ability_276", "Inner Limit");
                 S_K1.AddPassiveEffect(S_K1_1);
                 S_K1.AddPassiveEffect(S_K1_2);
@@ -379,13 +407,13 @@ namespace FFBE_Soft
                     "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STMR Esther");
                 SBJ.AddFixedStat(StatBuffed.HP, 800); SBJ.AddFixedStat(StatBuffed.ATK, 40); SBJ.AddFixedStat(StatBuffed.DEF, 10);
 
-                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
+                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
                 UnitPassive SBJ1 = new UnitPassive(0, 0, "Icon-Ability_275", "Killer Instincts");
                 SBJ1.AddPassiveEffect(SBJ1_1);
                 SBJ.AddEquipmentEffectPassive(SBJ1);
 
-                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 30);
+                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 30);
                 UnitPassive SBJ2 = new UnitPassive(0, 0, "Icon-Ability_276", "Exquisite Weaving"); SBJ2.UsableWitheList = true; SBJ2.AddUnitToWhiteList("Esther");
                 SBJ2.AddPassiveEffect(SBJ2_1);
                 SBJ2.AddPassiveEffect(SBJ2_2);
@@ -401,19 +429,18 @@ namespace FFBE_Soft
 
             // ---- Shock Flash
             {
-                AbilityEffect S_F1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, AbilityTarget.SingleTargetEnemy, 7);
-                AbilityEffect S_F2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 4, 6, AbilityTarget.Caster);
+                AbilityEffect S_F1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 300, 0, AbilityTarget.SingleTargetEnemy, 7);
+                AbilityEffect S_F2 = AbilityEffect.CreateLimitGaugeEffect(0, 4, 6, AbilityTarget.Caster);
                 UnitAbility S_F = new UnitAbility(5, 5, "Icon-Ability_272", "Shock Flash", 22);
                 S_F.AddCompEffect(S_F1);
                 S_F.AddCompEffect(S_F2);
                 u.AddAbility(S_F);
             }
 
-
             // ---- Shatter Arms
             {
-                AbilityEffect S_A1 = AbilityEffect.CreateDebuffEnemyEffect(true, StatsDebuffed.ATK | StatsDebuffed.MAG, 50, 5, AbilityTarget.SingleTargetEnemy);
-                AbilityEffect S_A2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 6, 8, AbilityTarget.Caster);
+                AbilityEffect S_A1 = AbilityEffect.CreateDebuffEnemyEffect(StatsDebuffed.ATK | StatsDebuffed.MAG, 50, 5, AbilityTarget.SingleTargetEnemy);
+                AbilityEffect S_A2 = AbilityEffect.CreateLimitGaugeEffect(0, 6, 8, AbilityTarget.Caster);
                 UnitAbility S_A = new UnitAbility(5, 38, "Icon-Ability_278", "Shatter Arms", 38);
                 S_A.AddCompEffect(S_A1);
                 S_A.AddCompEffect(S_A2);
@@ -422,8 +449,8 @@ namespace FFBE_Soft
 
             // ---- Shatter Guard
             { 
-                AbilityEffect S_G1 = AbilityEffect.CreateDebuffEnemyEffect(true, StatsDebuffed.DEF | StatsDebuffed.PSY, 50, 5, AbilityTarget.SingleTargetEnemy);
-                AbilityEffect S_G2 = AbilityEffect.CreateLimitGaugeEffect(true, 0, 6, 8, AbilityTarget.Caster);
+                AbilityEffect S_G1 = AbilityEffect.CreateDebuffEnemyEffect(StatsDebuffed.DEF | StatsDebuffed.PSY, 50, 5, AbilityTarget.SingleTargetEnemy);
+                AbilityEffect S_G2 = AbilityEffect.CreateLimitGaugeEffect(0, 6, 8, AbilityTarget.Caster);
                 UnitAbility S_G = new UnitAbility(5, 38, "Icon-Ability_278", "Shatter Guard", 38);
                 S_G.AddCompEffect(S_G1);
                 S_G.AddCompEffect(S_G2);
@@ -432,8 +459,8 @@ namespace FFBE_Soft
 
             // ---- Shock Reflex
             {
-                AbilityEffect S_R1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 80, 0, AbilityTarget.SingleTargetEnemy, 7); S_R1.AddHPDrain(50);
-                AbilityEffect S_R2 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 160, 50, AbilityTarget.SingleTargetEnemy, 7);
+                AbilityEffect S_R1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 80, 0, AbilityTarget.SingleTargetEnemy, 7); S_R1.AddHPDrain(50);
+                AbilityEffect S_R2 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 160, 50, AbilityTarget.SingleTargetEnemy, 7);
                 UnitAbility S_R = new UnitAbility(5, 55, "Icon-Ability_274", "Shock Reflex", 45);
                 S_R.AddCompEffect(S_R1);
                 S_R.AddCompEffect(S_R2);
@@ -442,8 +469,8 @@ namespace FFBE_Soft
 
             // ---- Charged Protection
             {
-                AbilityEffect C_P1 = AbilityEffect.CreateCoverEffect(true, TypeCover.Physical, 50, 0, 50, 70, 1, AbilityTarget.Caster);
-                AbilityEffect C_P2 = AbilityEffect.CreateBuffAlliesEffect(true, StatsBuffed.DEF, 150, 1, AbilityTarget.Caster);
+                AbilityEffect C_P1 = AbilityEffect.CreateCoverEffect(TypeCover.Physical, 50, 0, 50, 70, 1, AbilityTarget.Caster);
+                AbilityEffect C_P2 = AbilityEffect.CreateBuffAlliesEffect(StatsBuffed.DEF, 150, 1, AbilityTarget.Caster);
                 UnitAbility C_P = new UnitAbility(5, 80, "Icon-Ability_69", "Charged Protection", 32);
                 C_P.AddCompEffect(C_P1);
                 C_P.AddCompEffect(C_P2);
@@ -452,9 +479,9 @@ namespace FFBE_Soft
 
             // ---- Storm Brand
             {
-                AbilityEffect S_B1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 280, 50, AbilityTarget.SingleTargetEnemy, 9);
-                AbilityEffect S_B2 = AbilityEffect.CreateElementImbueEffect(true, ElementImbue.Lightning, 5, AbilityTarget.Caster);
-                AbilityEffect S_B3 = AbilityEffect.CreateLimitGaugeEffect(true, 15, 0, 0, AbilityTarget.Caster);
+                AbilityEffect S_B1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Lightning, 280, 50, AbilityTarget.SingleTargetEnemy, 9);
+                AbilityEffect S_B2 = AbilityEffect.CreateElementImbueEffect(ElementImbue.Lightning, 5, AbilityTarget.Caster);
+                AbilityEffect S_B3 = AbilityEffect.CreateLimitGaugeEffect(15, 0, 0, AbilityTarget.Caster);
                 UnitAbility S_B = new UnitAbility(6, 16, "Icon-Ability_271", "Storm Brand", 35);
                 S_B.AddCompEffect(S_B1);
                 S_B.AddCompEffect(S_B2);
@@ -464,10 +491,10 @@ namespace FFBE_Soft
 
             // ---- Storm Calling
             {
-                AbilityEffect S_C1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 430, 0, AbilityTarget.SingleTargetEnemy, 8);
-                AbilityEffect S_C2 = AbilityEffect.CreateHealHPEffect(true, 2500, 0, 0, 0, AbilityTarget.Caster);
-                S_C2.AddHealMPToAbility(true, 65, 0, 0, 0, AbilityTarget.Caster);
-                AbilityEffect S_C3 = AbilityEffect.CreateLimitGaugeEffect(true, 10, 0, 0, AbilityTarget.Caster);
+                AbilityEffect S_C1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 430, 0, AbilityTarget.SingleTargetEnemy, 8);
+                AbilityEffect S_C2 = AbilityEffect.CreateHealHPEffect(2500, 0, 0, 0, AbilityTarget.Caster);
+                S_C2.AddHealMPToAbility(65, 0, 0, 0, AbilityTarget.Caster);
+                AbilityEffect S_C3 = AbilityEffect.CreateLimitGaugeEffect(10, 0, 0, AbilityTarget.Caster);
                 UnitAbility S_C = new UnitAbility(6, 42, "Icon-Ability_272", "Storm Calling", 40);
                 S_C.AddCompEffect(S_C1);
                 S_C.AddCompEffect(S_C2);
@@ -477,8 +504,8 @@ namespace FFBE_Soft
 
             // ---- Stasis Bound
             {
-                AbilityEffect S_B1 = AbilityEffect.CreateTauntEffect(true, 100, 2, AbilityTarget.Caster);
-                AbilityEffect S_B2 = AbilityEffect.CreateMitigationEffect(true, TypeMitigation.Physical, 20, 2, AbilityTarget.Caster);
+                AbilityEffect S_B1 = AbilityEffect.CreateTauntEffect(100, 2, AbilityTarget.Caster);
+                AbilityEffect S_B2 = AbilityEffect.CreateMitigationEffect(TypeMitigation.Physical, 20, 2, AbilityTarget.Caster);
                 UnitAbility S_B = new UnitAbility(6, 65, "Icon-Ability_94", "Stasis Bound", 30);
                 S_B.AddCompEffect(S_B1);
                 S_B.AddCompEffect(S_B2);
@@ -487,9 +514,9 @@ namespace FFBE_Soft
 
             // ---- Demagnetizing Strike
             {
-                AbilityEffect D_S1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 350, 50, AbilityTarget.SingleTargetEnemy, 9);
-                AbilityEffect D_S2 = AbilityEffect.CreateDebuffElementEffect(true, ElementDebuffed.Lightning, 75, 3, AbilityTarget.SingleTargetEnemy);
-                AbilityEffect D_S3 = AbilityEffect.CreateLimitGaugeEffect(true, 15, 0, 0, AbilityTarget.Caster);
+                AbilityEffect D_S1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 350, 50, AbilityTarget.SingleTargetEnemy, 9);
+                AbilityEffect D_S2 = AbilityEffect.CreateDebuffElementEffect(ElementDebuffed.Lightning, 75, 3, AbilityTarget.SingleTargetEnemy);
+                AbilityEffect D_S3 = AbilityEffect.CreateLimitGaugeEffect(15, 0, 0, AbilityTarget.Caster);
                 UnitAbility D_S = new UnitAbility(6, 74, "Icon-Ability_271", "Demagnetizing Strike", 38);
                 D_S.AddCompEffect(D_S1);
                 D_S.AddCompEffect(D_S2);
@@ -500,7 +527,7 @@ namespace FFBE_Soft
             // ---- Electric Charge
             {
                 List<UnitAbility> abilities = new List<UnitAbility>();
-                AbilityEffect E_C1 = AbilityEffect.CreateMultipleSkillEffect(true, 2, abilities);
+                AbilityEffect E_C1 = AbilityEffect.CreateMultipleSkillEffect(2, abilities);
                 UnitAbility E_C = new UnitAbility(6, 100, "Icon-Ability_8", "Electric Charge", 0);
                 E_C.AddCompEffect(E_C1);
                 u.AddAbility(E_C);
@@ -508,11 +535,11 @@ namespace FFBE_Soft
 
             // ---- Combat Overdrive
             {
-                AbilityEffect C_O1 = AbilityEffect.CreateBuffAlliesEffect(true, StatsBuffed.ATK, 200, 3, AbilityTarget.Caster);
+                AbilityEffect C_O1 = AbilityEffect.CreateBuffAlliesEffect(StatsBuffed.ATK, 200, 3, AbilityTarget.Caster);
                 List<UnitAbility> abilities = new List<UnitAbility>();
-                AbilityEffect C_O2 = AbilityEffect.CreateAbilityCoeffUpEffect(true, 150, abilities, 4, false, AbilityTarget.Caster);
+                AbilityEffect C_O2 = AbilityEffect.CreateAbilityCoeffUpEffect(150, abilities, 4, false, AbilityTarget.Caster);
                 List<UnitAbility> abilities2 = new List<UnitAbility>();
-                AbilityEffect C_O3 = AbilityEffect.CreateGiveAbilityEffect(true, abilities2, 2, AbilityTarget.Caster);
+                AbilityEffect C_O3 = AbilityEffect.CreateGiveAbilityEffect(abilities2, 2, AbilityTarget.Caster);
                 UnitAbility C_O = new UnitAbility(6, 100, "Icon-Ability_63", "Combat Overdrive", 48);
                 C_O.AddCompEffect(C_O1);
                 C_O.AddCompEffect(C_O2);
@@ -522,12 +549,12 @@ namespace FFBE_Soft
 
             // ---- Shock Embrace
             {
-                AbilityEffect S_E1 = AbilityEffect.CreateCooldownEffect(true, 5, true);
-                AbilityEffect S_E2 = AbilityEffect.CreateDebuffElementEffect(true, ElementDebuffed.Lightning, 100, 5, AbilityTarget.AreaOfEffectEnemies);
-                AbilityEffect S_E3 = AbilityEffect.CreateElementImbueEffect(true, ElementImbue.Lightning, 5, AbilityTarget.Caster);
-                AbilityEffect S_E4 = AbilityEffect.CreateLimitGaugeEffect(true, 20, 0, 0, AbilityTarget.Caster);
+                AbilityEffect S_E1 = AbilityEffect.CreateCooldownEffect(5, true);
+                AbilityEffect S_E2 = AbilityEffect.CreateDebuffElementEffect(ElementDebuffed.Lightning, 100, 5, AbilityTarget.AreaOfEffectEnemies);
+                AbilityEffect S_E3 = AbilityEffect.CreateElementImbueEffect(ElementImbue.Lightning, 5, AbilityTarget.Caster);
+                AbilityEffect S_E4 = AbilityEffect.CreateLimitGaugeEffect(20, 0, 0, AbilityTarget.Caster);
                 List<UnitAbility> abilities = new List<UnitAbility>();
-                AbilityEffect S_E5 = AbilityEffect.CreateGiveAbilityEffect(true, abilities, 4, AbilityTarget.Caster);
+                AbilityEffect S_E5 = AbilityEffect.CreateGiveAbilityEffect(abilities, 4, AbilityTarget.Caster);
                 UnitAbility S_E = new UnitAbility(7, 105, "Icon-Ability_105", "Shock Embrace", 100);
                 S_E.AddCompEffect(S_E1);
                 S_E.AddCompEffect(S_E2);
@@ -539,11 +566,11 @@ namespace FFBE_Soft
 
             // ---- Storm Clouds
             {
-                AbilityEffect S_C1 = AbilityEffect.CreateCooldownEffect(true, 4, false);
-                AbilityEffect S_C2 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 0, AbilityTarget.SingleTargetEnemy, 8);
+                AbilityEffect S_C1 = AbilityEffect.CreateCooldownEffect(4, false);
+                AbilityEffect S_C2 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 0, AbilityTarget.SingleTargetEnemy, 8);
                 List<UnitAbility> abilities = new List<UnitAbility>();
-                AbilityEffect S_C3 = AbilityEffect.CreateAbilityCoeffUpEffect(true, 300, abilities, 2, false, AbilityTarget.Caster);
-                AbilityEffect S_C4 = AbilityEffect.CreateLimitGaugeEffect(true, 30, 0, 0, AbilityTarget.Caster);
+                AbilityEffect S_C3 = AbilityEffect.CreateAbilityCoeffUpEffect(300, abilities, 2, false, AbilityTarget.Caster);
+                AbilityEffect S_C4 = AbilityEffect.CreateLimitGaugeEffect(30, 0, 0, AbilityTarget.Caster);
                 UnitAbility S_C = new UnitAbility(7, 105, "Icon-Ability_105", "Storm Clouds", 88);
                 S_C.AddCompEffect(S_C1);
                 S_C.AddCompEffect(S_C2);
@@ -554,9 +581,9 @@ namespace FFBE_Soft
 
             // ---- Bolting Strike
             {
-                AbilityEffect B_S1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 400, 50, AbilityTarget.AreaOfEffectEnemies, 9);
-                AbilityEffect B_S2 = AbilityEffect.CreateDebuffEnemyEffect(true, StatsDebuffed.DEF, 60, 5, AbilityTarget.AreaOfEffectEnemies);
-                AbilityEffect B_S3 = AbilityEffect.CreateLimitGaugeEffect(true, 20, 0, 0, AbilityTarget.Caster);
+                AbilityEffect B_S1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 400, 50, AbilityTarget.AreaOfEffectEnemies, 9);
+                AbilityEffect B_S2 = AbilityEffect.CreateDebuffEnemyEffect(StatsDebuffed.DEF, 60, 5, AbilityTarget.AreaOfEffectEnemies);
+                AbilityEffect B_S3 = AbilityEffect.CreateLimitGaugeEffect(20, 0, 0, AbilityTarget.Caster);
                 UnitAbility B_S = new UnitAbility(7, 110, "Icon-Ability_271", "Bolting Strike", 42);
                 B_S.AddCompEffect(B_S1);
                 B_S.AddCompEffect(B_S2);
@@ -570,9 +597,9 @@ namespace FFBE_Soft
 
             // ---- Unstoppable Fervor
             {
-                PassiveEffect U_F1 = PassiveEffect.CreateElementResistanceEffect(true, ElementResistance.Earth, 50);
-                PassiveEffect U_F2 = PassiveEffect.CreateAilmentResistanceEffect(true, AilmentResistance.Paralysis | AilmentResistance.Petrification, 100);
-                PassiveEffect U_F3 = PassiveEffect.CreateAilmentResistanceEffect(true, AilmentResistance.Stop | AilmentResistance.Charm, 100);
+                PassiveEffect U_F1 = PassiveEffect.CreateElementResistanceEffect(ElementResistance.Earth, 50);
+                PassiveEffect U_F2 = PassiveEffect.CreateAilmentResistanceEffect(AilmentResistance.Paralysis | AilmentResistance.Petrification, 100);
+                PassiveEffect U_F3 = PassiveEffect.CreateAilmentResistanceEffect(AilmentResistance.Stop | AilmentResistance.Charm, 100);
                 UnitPassive U_F = new UnitPassive(5, 26, "Icon-Ability_19", "Unstoppable Fervor");
                 U_F.AddPassiveEffect(U_F1);
                 U_F.AddPassiveEffect(U_F2);
@@ -582,8 +609,8 @@ namespace FFBE_Soft
 
             // ---- Terra Resonance
             {
-                PassiveEffect T_R1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP | StatistiquesBuff.DEF, 20);
-                PassiveEffect T_R2 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Physical, 100);
+                PassiveEffect T_R1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP | StatistiquesBuff.DEF, 20);
+                PassiveEffect T_R2 = PassiveEffect.CreateMonsterRaceBuffEffect(MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Physical, 100);
                 UnitPassive T_R = new UnitPassive(5, 42, "Icon-Ability_275", "Terra Resonance");
                 T_R.AddPassiveEffect(T_R1);
                 T_R.AddPassiveEffect(T_R2);
@@ -592,7 +619,7 @@ namespace FFBE_Soft
 
             // ---- Ionized Fragment
             {
-                PassiveEffect I_F1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK | StatistiquesBuff.PSY, 30);
+                PassiveEffect I_F1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK | StatistiquesBuff.PSY, 30);
                 UnitPassive I_F = new UnitPassive(5, 64, "Icon-Ability_276", "Ionized Fragment");
                 I_F.AddPassiveEffect(I_F1);
                 u.AddPassive(I_F);
@@ -600,7 +627,7 @@ namespace FFBE_Soft
 
             // ---- Overcharge
             {
-                PassiveEffect O1 = PassiveEffect.CreateIgnoreFatalDamageEffect(true, 80, 10, 1);
+                PassiveEffect O1 = PassiveEffect.CreateIgnoreFatalDamageEffect(80, 10, 1);
                 UnitPassive O = new UnitPassive(6, 1, "Icon-Ability_277", "Overcharge");
                 O.AddPassiveEffect(O1);
                 u.AddPassive(O);
@@ -608,15 +635,15 @@ namespace FFBE_Soft
 
             // ---- Reverse Polarity
             {
-                AbilityEffect S_B1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 250, 0, AbilityTarget.SingleTargetEnemy, 7);
+                AbilityEffect S_B1 = AbilityEffect.CreateDamageEffect(TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 250, 0, AbilityTarget.SingleTargetEnemy, 7);
                 S_B1.AddConsecutive(4, 50, 450);
-                AbilityEffect S_B2 = AbilityEffect.CreateDebuffEnemyEffect(true, StatsDebuffed.ATK | StatsDebuffed.DEF | StatsDebuffed.MAG | StatsDebuffed.PSY, 50, 1, AbilityTarget.SingleTargetEnemy);
+                AbilityEffect S_B2 = AbilityEffect.CreateDebuffEnemyEffect(StatsDebuffed.ATK | StatsDebuffed.DEF | StatsDebuffed.MAG | StatsDebuffed.PSY, 50, 1, AbilityTarget.SingleTargetEnemy);
                 UnitAbility S_B = new UnitAbility(0, 0, "icon", "Static Barrage", 0);
                 S_B.AddCompEffect(S_B1);
                 S_B.AddCompEffect(S_B2);
 
-                PassiveEffect R_P1 = PassiveEffect.CreateChanceToCounterEffect(true, CounterType.Physical, 40, S_B, 4);
-                PassiveEffect R_P2 = PassiveEffect.CreateChanceToCounterEffect(true, CounterType.Magical, 40, S_B, 4);
+                PassiveEffect R_P1 = PassiveEffect.CreateChanceToCounterEffect(CounterType.Physical, 40, S_B, 4);
+                PassiveEffect R_P2 = PassiveEffect.CreateChanceToCounterEffect(CounterType.Magical, 40, S_B, 4);
                 UnitPassive R_P = new UnitPassive(6, 24, "Icon-Ability_279", "Reverse Polarity");
                 R_P.AddPassiveEffect(R_P1);
                 R_P.AddPassiveEffect(R_P2);
@@ -625,7 +652,7 @@ namespace FFBE_Soft
 
             // ---- Magnetic Grip
             {
-                PassiveEffect M_G1 = PassiveEffect.CreateEquipmentBuffEffect(true, EquipmentStat.ATK, 100, 25, EquipmentBuffCondition.TrueDoubleHand);
+                PassiveEffect M_G1 = PassiveEffect.CreateEquipmentBuffEffect(EquipmentStat.ATK, 100, 25, EquipmentBuffCondition.TrueDoubleHand);
                 UnitPassive M_G = new UnitPassive(6, 38, "Icon-Ability_76", "Magnetic Grip");
                 M_G.AddPassiveEffect(M_G1);
                 u.AddPassive(M_G);
@@ -633,15 +660,15 @@ namespace FFBE_Soft
 
             // ---- Phase Shift
             {
-                PassiveEffect P_S1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP | StatistiquesBuff.MP | StatistiquesBuff.ATK | StatistiquesBuff.DEF, 20);
-                PassiveEffect P_S2 = PassiveEffect.CreateEvasionEffect(true, EvasionType.Physical, 30);
-                PassiveEffect P_S3 = PassiveEffect.CreateAutoRegenMPEffect(true, 7);
+                PassiveEffect P_S1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP | StatistiquesBuff.MP | StatistiquesBuff.ATK | StatistiquesBuff.DEF, 20);
+                PassiveEffect P_S2 = PassiveEffect.CreateEvasionEffect(EvasionType.Physical, 30);
+                PassiveEffect P_S3 = PassiveEffect.CreateAutoRegenMPEffect(7);
 
-                AbilityEffect S_S1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 500, 0, AbilityTarget.Caster, 1);
+                AbilityEffect S_S1 = AbilityEffect.CreateDamageEffect(TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 500, 0, AbilityTarget.Caster, 1);
                 UnitAbility S_S = new UnitAbility(0, 0, "icon", "Static Shift", 0);
                 S_S.AddCompEffect(S_S1);
 
-                PassiveEffect P_S4 = PassiveEffect.CreateAutoCastAbilityEffect(true, S_S);
+                PassiveEffect P_S4 = PassiveEffect.CreateAutoCastAbilityEffect(S_S);
                 UnitPassive P_S = new UnitPassive(6, 56, "Icon-Ability_273", "Phase Shift");
                 P_S.AddPassiveEffect(P_S1);
                 P_S.AddPassiveEffect(P_S2);
@@ -652,8 +679,8 @@ namespace FFBE_Soft
 
             // ---- Stasis Field
             {
-                PassiveEffect S_F1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 20);
-                PassiveEffect S_F2 = PassiveEffect.CreateStatistiquesBuffArmorConditionEffect(true, StatistiquesBuff.ATK | StatistiquesBuff.DEF, 40, ArmorBuffCondition.Clothe);
+                PassiveEffect S_F1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 20);
+                PassiveEffect S_F2 = PassiveEffect.CreateStatistiquesBuffArmorConditionEffect(StatistiquesBuff.ATK | StatistiquesBuff.DEF, 40, ArmorBuffCondition.Clothe);
 
                 UnitPassive S_F = new UnitPassive(6, 86, "Icon-Ability_276", "Stasis Field");
                 S_F.AddPassiveEffect(S_F1);
@@ -663,11 +690,11 @@ namespace FFBE_Soft
 
             // ---- Ancient Figure
             {
-                PassiveEffect A_F1 = PassiveEffect.CreateTMRequirementEffect(true, TMRequirementPassive.Both);
-                PassiveEffect A_F2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK | StatistiquesBuff.HP, 30);
-                PassiveEffect A_F3 = PassiveEffect.CreateLBGaugeFillRateEffect(true, 100);
-                PassiveEffect A_F4 = PassiveEffect.CreateLBDamageEffect(true, 30);
-                PassiveEffect A_F5 = PassiveEffect.CreateEquipmentBuffEffect(true, EquipmentStat.ATK, 100, 25, EquipmentBuffCondition.DoubleHand);
+                PassiveEffect A_F1 = PassiveEffect.CreateTMRequirementEffect(TMRequirementPassive.Both);
+                PassiveEffect A_F2 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK | StatistiquesBuff.HP, 30);
+                PassiveEffect A_F3 = PassiveEffect.CreateLBGaugeFillRateEffect(100);
+                PassiveEffect A_F4 = PassiveEffect.CreateLBDamageEffect(30);
+                PassiveEffect A_F5 = PassiveEffect.CreateEquipmentBuffEffect(EquipmentStat.ATK, 100, 25, EquipmentBuffCondition.DoubleHand);
 
                 UnitPassive A_F = new UnitPassive(7, 101, "Icon-Ability_280", "Ancient Figure");
                 A_F.AddPassiveEffect(A_F1);
@@ -680,7 +707,7 @@ namespace FFBE_Soft
 
             // ---- MP +20%
             {
-                PassiveEffect MP1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.MP, 20);
+                PassiveEffect MP1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.MP, 20);
 
                 UnitPassive MP = new UnitPassive(7, 115, "Icon-Ability_77", "MP +20%");
                 MP.AddPassiveEffect(MP1);
@@ -689,11 +716,11 @@ namespace FFBE_Soft
 
             // ---- Precursor of the Storm
             {
-                PassiveEffect P_S1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP | StatistiquesBuff.ATK, 30);
-                PassiveEffect P_S2 = PassiveEffect.CreateStatistiquesBuffWeaponConditionEffect(true, StatistiquesBuff.ATK, 60, WeaponBuffCondition.GreatSword);
-                PassiveEffect P_S3 = PassiveEffect.CreateLBUpgradeEffect(true);
-                PassiveEffect P_S4 = PassiveEffect.CreateEquipmentBuffEffect(true, EquipmentStat.ATK, 50, 25, EquipmentBuffCondition.TrueDoubleHand);
-                PassiveEffect P_S5 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Physical, 50);
+                PassiveEffect P_S1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP | StatistiquesBuff.ATK, 30);
+                PassiveEffect P_S2 = PassiveEffect.CreateStatistiquesBuffWeaponConditionEffect(StatistiquesBuff.ATK, 60, WeaponBuffCondition.GreatSword);
+                PassiveEffect P_S3 = PassiveEffect.CreateLBUpgradeEffect();
+                PassiveEffect P_S4 = PassiveEffect.CreateEquipmentBuffEffect(EquipmentStat.ATK, 50, 25, EquipmentBuffCondition.TrueDoubleHand);
+                PassiveEffect P_S5 = PassiveEffect.CreateMonsterRaceBuffEffect(MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Physical, 50);
 
                 UnitPassive P_S = new UnitPassive(7, 120, "Icon-Ability_275", "Precursor of the Storm");
                 P_S.AddPassiveEffect(P_S1);
@@ -714,7 +741,7 @@ namespace FFBE_Soft
                 LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 650, 50, LimitTarget.AreaOfEffectEnemies, 30);
                 LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
                 LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 15, 3, LimitTarget.Caster);
-                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 500, 0, AbilityTarget.Caster, 1);
+                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 500, 0, AbilityTarget.Caster, 1);
                 LimitEffect R_B4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
 
                 UnitLimit R_B = new UnitLimit(5, "Raikiri", 20);
@@ -744,7 +771,7 @@ namespace FFBE_Soft
                 LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 850, 50, LimitTarget.AreaOfEffectEnemies, 30);
                 LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
                 LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 20, 3, LimitTarget.Caster);
-                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1000, 0, AbilityTarget.Caster, 1);
+                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1000, 0, AbilityTarget.Caster, 1);
                 LimitEffect R_B4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
 
                 UnitLimit R_B = new UnitLimit(6, "Raikiri", 40);
@@ -774,7 +801,7 @@ namespace FFBE_Soft
                 LimitEffect R_B1 = LimitEffect.CreateDamageEffect(true, TypeDamage.Physical, ScalingDamage.ATK, ElementDamage.Neutral, 1100, 50, LimitTarget.AreaOfEffectEnemies, 30);
                 LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
                 LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 25, 3, LimitTarget.Caster);
-                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1500, 0, AbilityTarget.Caster, 1);
+                AbilityEffect R_B4_1 = AbilityEffect.CreateDamageEffect(TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1500, 0, AbilityTarget.Caster, 1);
                 LimitEffect R_B4 = LimitEffect.CreateAutoCastEffect(false, 1, R_B4_1);
 
                 UnitLimit R_B = new UnitLimit(7, "Raikiri", 60);
@@ -805,7 +832,7 @@ namespace FFBE_Soft
                 LimitEffect R_B2 = LimitEffect.CreateGiveAbilityEffect(true, new List<UnitAbility>(), 3, LimitTarget.Caster);
                 LimitEffect R_B3 = LimitEffect.CreateLimitDamageUpEffect(true, 35, 3, LimitTarget.Caster);
                 LimitEffect R_B4 = LimitEffect.CreateBuffAlliesEffect(StatsBuffed.ATK, 100, 3, LimitTarget.Caster);
-                AbilityEffect R_B5_1 = AbilityEffect.CreateDamageEffect(true, TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1500, 0, AbilityTarget.Caster, 1);
+                AbilityEffect R_B5_1 = AbilityEffect.CreateDamageEffect(TypeDamage.Fixed, ScalingDamage.ATK, ElementDamage.Lightning, 1500, 0, AbilityTarget.Caster, 1);
                 LimitEffect R_B5 = LimitEffect.CreateAutoCastEffect(false, 1, R_B5_1);
 
                 UnitLimit R_B = new UnitLimit(7, "Abolute Raikiri (Upgraded)", 60);
@@ -843,8 +870,8 @@ namespace FFBE_Soft
                     , "Icon-Storm_Kickers", EquipmentType.Accessory, "TMR Esther");
                 S_K.AddFixedStat(StatBuffed.ATK, 45); S_K.AddFixedStat(StatBuffed.DEF, 10);
 
-                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(true, 15);
+                PassiveEffect S_K1_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect S_K1_2 = PassiveEffect.CreateLBDamageEffect(15);
                 UnitPassive S_K1 = new UnitPassive(0, 0, "Icon-Ability_276", "Inner Limit");
                 S_K1.AddPassiveEffect(S_K1_1);
                 S_K1.AddPassiveEffect(S_K1_2);
@@ -864,13 +891,13 @@ namespace FFBE_Soft
                     "Icon-Storm_Bunny_Jacket", EquipmentType.Clothe, "STM Esther");
                 SBJ.AddFixedStat(StatBuffed.HP, 800); SBJ.AddFixedStat(StatBuffed.ATK, 40); SBJ.AddFixedStat(StatBuffed.DEF, 10);
 
-                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(true, MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
+                PassiveEffect SBJ1_1 = PassiveEffect.CreateMonsterRaceBuffEffect(MonsterRace.Machinas | MonsterRace.Stones, TypeDamage.Hybrid, 50);
                 UnitPassive SBJ1 = new UnitPassive(0, 0, "Icon-Ability_275", "Killer Instincts");
                 SBJ1.AddPassiveEffect(SBJ1_1);
                 SBJ.AddEquipmentEffectPassive(SBJ1);
 
-                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 20);
-                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 30);
+                PassiveEffect SBJ2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 20);
+                PassiveEffect SBJ2_2 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 30);
                 UnitPassive SBJ2 = new UnitPassive(0, 0, "Icon-Ability_276", "Exquisite Weaving"); SBJ2.UsableWitheList = true; SBJ2.AddUnitToWhiteList("Esther");
                 SBJ2.AddPassiveEffect(SBJ2_1);
                 SBJ2.AddPassiveEffect(SBJ2_2);
@@ -890,12 +917,12 @@ namespace FFBE_Soft
                 S_C1.AddPassiveEffect(S_C1_1);
                 S_C.AddEquipmentEffectPassive(S_C1);
 
-                PassiveEffect S_C2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                PassiveEffect S_C2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 10);
                 UnitPassive S_C2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); S_C2.UsableWitheList = true; S_C2.AddUnitToWhiteList("Esther");
                 S_C2.AddPassiveEffect(S_C2_1);
                 S_C.AddEquipmentEffectPassive(S_C2);
 
-                PassiveEffect S_C3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                PassiveEffect S_C3_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 10);
                 UnitPassive S_C3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); S_C3.UsableWitheList = true; S_C3.AddUnitToWhiteList("Sylvie");
                 S_C3.AddPassiveEffect(S_C3_1);
                 S_C.AddEquipmentEffectPassive(S_C3);
@@ -914,12 +941,12 @@ namespace FFBE_Soft
                 S_V1.AddPassiveEffect(S_V1_1);
                 S_V.AddEquipmentEffectPassive(S_V1);
 
-                PassiveEffect S_V2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                PassiveEffect S_V2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 10);
                 UnitPassive S_V2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); S_V2.UsableWitheList = true; S_V2.AddUnitToWhiteList("Esther");
                 S_V2.AddPassiveEffect(S_V2_1);
                 S_V.AddEquipmentEffectPassive(S_V2);
 
-                PassiveEffect S_V3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                PassiveEffect S_V3_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 10);
                 UnitPassive S_V3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); S_V3.UsableWitheList = true; S_V3.AddUnitToWhiteList("Sylvie");
                 S_V3.AddPassiveEffect(S_V3_1);
                 S_V.AddEquipmentEffectPassive(S_V3);
@@ -938,12 +965,12 @@ namespace FFBE_Soft
                 T_B1.AddPassiveEffect(T_B1_1);
                 T_B.AddEquipmentEffectPassive(T_B1);
 
-                PassiveEffect T_B2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                PassiveEffect T_B2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 10);
                 UnitPassive T_B2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); T_B2.UsableWitheList = true; T_B2.AddUnitToWhiteList("Esther");
                 T_B2.AddPassiveEffect(T_B2_1);
                 T_B.AddEquipmentEffectPassive(T_B2);
 
-                PassiveEffect T_B3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                PassiveEffect T_B3_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 10);
                 UnitPassive T_B3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); T_B3.UsableWitheList = true; T_B3.AddUnitToWhiteList("Sylvie");
                 T_B3.AddPassiveEffect(T_B3_1);
                 T_B.AddEquipmentEffectPassive(T_B3);
@@ -962,12 +989,12 @@ namespace FFBE_Soft
                 T_C1.AddPassiveEffect(T_C1_1);
                 T_C.AddEquipmentEffectPassive(T_C1);
 
-                PassiveEffect T_C2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                PassiveEffect T_C2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 10);
                 UnitPassive T_C2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); T_C2.UsableWitheList = true; T_C2.AddUnitToWhiteList("Esther");
                 T_C2.AddPassiveEffect(T_C2_1);
                 T_C.AddEquipmentEffectPassive(T_C2);
 
-                PassiveEffect T_C3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                PassiveEffect T_C3_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 10);
                 UnitPassive T_C3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); T_C3.UsableWitheList = true; T_C3.AddUnitToWhiteList("Sylvie");
                 T_C3.AddPassiveEffect(T_C3_1);
                 T_C.AddEquipmentEffectPassive(T_C3);
@@ -986,12 +1013,12 @@ namespace FFBE_Soft
                 T_V1.AddPassiveEffect(T_V1_1);
                 T_V.AddEquipmentEffectPassive(T_V1);
 
-                PassiveEffect T_V2_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.ATK, 10);
+                PassiveEffect T_V2_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.ATK, 10);
                 UnitPassive T_V2 = new UnitPassive(0, 0, "Icon-Ability_77", "Liveliness"); T_V2.UsableWitheList = true; T_V2.AddUnitToWhiteList("Esther");
                 T_V2.AddPassiveEffect(T_V2_1);
                 T_V.AddEquipmentEffectPassive(T_V2);
 
-                PassiveEffect T_V3_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 10);
+                PassiveEffect T_V3_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 10);
                 UnitPassive T_V3 = new UnitPassive(0, 0, "Icon-Ability_77", "Cheerfulness"); T_V3.UsableWitheList = true; T_V3.AddUnitToWhiteList("Sylvie");
                 T_V3.AddPassiveEffect(T_V3_1);
                 T_V.AddEquipmentEffectPassive(T_V3);
@@ -1005,7 +1032,7 @@ namespace FFBE_Soft
                     "Icon-Asterisk", EquipmentType.GreatSword, "Reward Event");
                 A.AddFixedStat(StatBuffed.ATK, 125); A.ElementDamage = Element.Lightning;
 
-                PassiveEffect A1_1 = PassiveEffect.CreateStatistiquesBuffEffect(true, StatistiquesBuff.HP, 15);
+                PassiveEffect A1_1 = PassiveEffect.CreateStatistiquesBuffEffect(StatistiquesBuff.HP, 15);
                 UnitPassive A1 = new UnitPassive(0, 0, "Icon-Ability_77", "Static Body"); A1.UsableWitheList = true; A1.AddUnitToWhiteList("Esther");
                 A1.AddPassiveEffect(A1_1);
                 A.AddEquipmentEffectPassive(A1);

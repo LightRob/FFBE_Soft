@@ -181,9 +181,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForElementBuffPassive();
         }
-        static public PassiveEffect CreateElementResistanceEffect(bool isBuffElementResistance, ElementResistance element, short coeffElementResistance)
+        static public PassiveEffect CreateElementResistanceEffect(ElementResistance element, short coeffElementResistance)
         {
-            return new PassiveEffect(isBuffElementResistance, element, coeffElementResistance);
+            return new PassiveEffect(true, element, coeffElementResistance);
         }
         private void EditTextForElementBuffPassive()
         {
@@ -245,9 +245,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForAilmentBuffPassive();
         }
-        static public PassiveEffect CreateAilmentResistanceEffect(bool isBuffAilmentResistance, AilmentResistance ailment, byte coeffAilmentResistance)
+        static public PassiveEffect CreateAilmentResistanceEffect(AilmentResistance ailment, byte coeffAilmentResistance)
         {
-            return new PassiveEffect(isBuffAilmentResistance, ailment, coeffAilmentResistance);
+            return new PassiveEffect(true, ailment, coeffAilmentResistance);
         }
         private void EditTextForAilmentBuffPassive()
         {
@@ -312,9 +312,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForStatistiquesBuffPassive();
         }
-        static public PassiveEffect CreateStatistiquesBuffEffect(bool isBuffStats, StatistiquesBuff statistiques, short coeff)
+        static public PassiveEffect CreateStatistiquesBuffEffect(StatistiquesBuff statistiques, short coeff)
         {
-            return new PassiveEffect(isBuffStats, statistiques, coeff);
+            return new PassiveEffect(true, statistiques, coeff);
         }
         private void EditTextForStatistiquesBuffPassive()
         {
@@ -379,9 +379,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForRaceDamageBuffPassive();
         }
-        static public PassiveEffect CreateMonsterRaceBuffEffect(bool isBuffRaceDamage, MonsterRace monsterRace, TypeDamage typeDamage, short coeffRaceDamageBuff)
+        static public PassiveEffect CreateMonsterRaceBuffEffect(MonsterRace monsterRace, TypeDamage typeDamage, short coeffRaceDamageBuff)
         {
-            return new PassiveEffect(isBuffRaceDamage, monsterRace, typeDamage, coeffRaceDamageBuff);
+            return new PassiveEffect(true, monsterRace, typeDamage, coeffRaceDamageBuff);
         }
         private void EditTextForRaceDamageBuffPassive()
         {
@@ -455,9 +455,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForIgnoreFatalDamagePassive();
         }
-        static public PassiveEffect CreateIgnoreFatalDamageEffect(bool isIgnoreFatalDamage, byte chanceToIgnoreFatalDamage, byte percentAboveHPToIgnoreDamage, byte maxIgnoreFatalDamage)
+        static public PassiveEffect CreateIgnoreFatalDamageEffect(byte chanceToIgnoreFatalDamage, byte percentAboveHPToIgnoreDamage, byte maxIgnoreFatalDamage)
         {
-            return new PassiveEffect(isIgnoreFatalDamage, chanceToIgnoreFatalDamage, percentAboveHPToIgnoreDamage, maxIgnoreFatalDamage);
+            return new PassiveEffect(true, chanceToIgnoreFatalDamage, percentAboveHPToIgnoreDamage, maxIgnoreFatalDamage);
         }
         private void EditTextForIgnoreFatalDamagePassive()
         {
@@ -518,13 +518,13 @@ namespace FFBE_Soft.model.competence
 
             EditTextForChanceToCounterPassive();
         }
-        static public PassiveEffect CreateChanceToCounterEffect(bool isCounterPassive, CounterType type, byte chancetoCounter, bool counterWithNormalAttack, byte maxCounter)
+        static public PassiveEffect CreateChanceToCounterEffect(CounterType type, byte chancetoCounter, bool counterWithNormalAttack, byte maxCounter)
         {
-            return new PassiveEffect(isCounterPassive, type, chancetoCounter, counterWithNormalAttack, maxCounter);
+            return new PassiveEffect(true, type, chancetoCounter, counterWithNormalAttack, maxCounter);
         }
-        static public PassiveEffect CreateChanceToCounterEffect(bool isCounterPassive, CounterType type, byte chancetoCounter, UnitAbility ability, byte maxCounter)
+        static public PassiveEffect CreateChanceToCounterEffect(CounterType type, byte chancetoCounter, UnitAbility ability, byte maxCounter)
         {
-            return new PassiveEffect(isCounterPassive, type, chancetoCounter, ability, maxCounter);
+            return new PassiveEffect(true, type, chancetoCounter, ability, maxCounter);
         }
         private void EditTextForChanceToCounterPassive()
         {
@@ -581,9 +581,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForEquipmentBuffPassive();
         }
-        static public PassiveEffect CreateEquipmentBuffEffect(bool isEquipmentBuff, EquipmentStat stats, short coeff, byte accuracy, EquipmentBuffCondition condition)
+        static public PassiveEffect CreateEquipmentBuffEffect(EquipmentStat stats, short coeff, byte accuracy, EquipmentBuffCondition condition)
         {
-            return new PassiveEffect(isEquipmentBuff, stats, coeff, accuracy, condition);
+            return new PassiveEffect(true, stats, coeff, accuracy, condition);
         }
         private void EditTextForEquipmentBuffPassive()
         {
@@ -658,9 +658,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForEvasionBuffPassive();
         }
-        static public PassiveEffect CreateEvasionEffect(bool isEvasion, EvasionType type, byte coeff)
+        static public PassiveEffect CreateEvasionEffect(EvasionType type, byte coeff)
         {
-            return new PassiveEffect(isEvasion, type, coeff);
+            return new PassiveEffect(true, type, coeff);
         }
         private void EditTextForEvasionBuffPassive()
         {
@@ -710,9 +710,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForAutoRegenMPPassive();
         }
-        static public PassiveEffect CreateAutoRegenMPEffect(bool isAutoRegenMP, byte percent)
+        static public PassiveEffect CreateAutoRegenMPEffect(byte percent)
         {
-            return new PassiveEffect(isAutoRegenMP, percent);
+            return new PassiveEffect(true, percent);
         }
         private void EditTextForAutoRegenMPPassive()
         {
@@ -750,9 +750,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForAutoRegenHPPassive();
         }
-        static public PassiveEffect CreateAutoRegenHPEffect(bool isAutoRegenHP, short baseHP, short coeff)
+        static public PassiveEffect CreateAutoRegenHPEffect(short baseHP, short coeff)
         {
-            return new PassiveEffect(isAutoRegenHP, baseHP, coeff);
+            return new PassiveEffect(true, baseHP, coeff);
         }
         private void EditTextForAutoRegenHPPassive()
         {
@@ -785,9 +785,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForAutoCastAbilityPassive();
         }
-        static public PassiveEffect CreateAutoCastAbilityEffect(bool isAutoCastAbility, UnitAbility ability)
+        static public PassiveEffect CreateAutoCastAbilityEffect(UnitAbility ability)
         {
-            return new PassiveEffect(isAutoCastAbility, ability);
+            return new PassiveEffect(true, ability);
         }
         private void EditTextForAutoCastAbilityPassive()
         {
@@ -851,17 +851,17 @@ namespace FFBE_Soft.model.competence
             EditTextForStatistiquesBuffEquipmentConditionPassive();
         }
 
-        static public PassiveEffect CreateStatistiquesBuffEquipmentConditionEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon, ArmorBuffCondition armor)
+        static public PassiveEffect CreateStatistiquesBuffEquipmentConditionEffect(StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon, ArmorBuffCondition armor)
         {
-            return new PassiveEffect(isBuffStatsEquipmentCondition, stats, coeff, weapon, armor);
+            return new PassiveEffect(true, stats, coeff, weapon, armor);
         }
-        static public PassiveEffect CreateStatistiquesBuffWeaponConditionEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon)
+        static public PassiveEffect CreateStatistiquesBuffWeaponConditionEffect(StatistiquesBuff stats, short coeff, WeaponBuffCondition weapon)
         {
-            return new PassiveEffect(isBuffStatsEquipmentCondition, stats, coeff, weapon);
+            return new PassiveEffect(true, stats, coeff, weapon);
         }
-        static public PassiveEffect CreateStatistiquesBuffArmorConditionEffect(bool isBuffStatsEquipmentCondition, StatistiquesBuff stats, short coeff, ArmorBuffCondition armor)
+        static public PassiveEffect CreateStatistiquesBuffArmorConditionEffect(StatistiquesBuff stats, short coeff, ArmorBuffCondition armor)
         {
-            return new PassiveEffect(isBuffStatsEquipmentCondition, stats, coeff, armor);
+            return new PassiveEffect(true, stats, coeff, armor);
         }
 
         private void EditTextForStatistiquesBuffEquipmentConditionPassive()
@@ -987,9 +987,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForTMRequirementPassive();
         }
-        static public PassiveEffect CreateTMRequirementEffect(bool isTMRequirement, TMRequirementPassive tm)
+        static public PassiveEffect CreateTMRequirementEffect(TMRequirementPassive tm)
         {
-            return new PassiveEffect(isTMRequirement, tm);
+            return new PassiveEffect(true, tm);
         }
         private void EditTextForTMRequirementPassive()
         {
@@ -1040,9 +1040,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForLBGaugeFillRatePassive();
         }
-        static public PassiveEffect CreateLBGaugeFillRateEffect(bool isLBGaugeFillRate, short coeff)
+        static public PassiveEffect CreateLBGaugeFillRateEffect(short coeff)
         {
-            return new PassiveEffect(isLBGaugeFillRate, coeff);
+            return new PassiveEffect(true, coeff);
         }
         private void EditTextForLBGaugeFillRatePassive()
         {
@@ -1075,9 +1075,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForLBDamagePassive();
         }
-        static public PassiveEffect CreateLBDamageEffect(bool isLBDamage, short coeff)
+        static public PassiveEffect CreateLBDamageEffect(short coeff)
         {
-            return new PassiveEffect(isLBDamage, coeff, true);
+            return new PassiveEffect(true, coeff, true);
         }
         private void EditTextForLBDamagePassive()
         {
@@ -1107,9 +1107,9 @@ namespace FFBE_Soft.model.competence
 
             EditTextForLBUpgradePassive();
         }
-        static public PassiveEffect CreateLBUpgradeEffect(bool isLBUpgrade)
+        static public PassiveEffect CreateLBUpgradeEffect()
         {
-            return new PassiveEffect(isLBUpgrade);
+            return new PassiveEffect(true);
         }
         private void EditTextForLBUpgradePassive()
         {
